@@ -2,13 +2,15 @@ package hei.projets7.mobiliti.pojos;
 
 public class Eleve {
 
+    private Integer id_eleve;
     private String nom;
     private String prenom;
     private String email;
     private String password;
     private String domaine;
 
-    public Eleve(String nom, String prenom, String email, String password, String domaine){
+    public Eleve(Integer id, String nom, String prenom, String email, String password, String domaine){
+        this.id_eleve =id;
         this.nom=nom;
         this.prenom=prenom;
         this.email=email;
@@ -56,5 +58,13 @@ public class Eleve {
 
     public void setDomaine(String domaine) {
         this.domaine = domaine;
+    }
+
+    public Integer getId_eleve() {
+        return id_eleve;
+    }
+
+    public void setId_eleve(Integer id_eleve) {
+        this.id_eleve = id_eleve;
     }
 }
