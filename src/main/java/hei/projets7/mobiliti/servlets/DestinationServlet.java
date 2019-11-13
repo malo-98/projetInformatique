@@ -1,4 +1,4 @@
-package hei.projets7.mobiliti.daos.servlets;
+package hei.projets7.mobiliti.servlets;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;

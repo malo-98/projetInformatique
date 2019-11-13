@@ -1,4 +1,4 @@
-package hei.projets7.mobiliti.daos.servlets;
+package hei.projets7.mobiliti.servlets;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/inscription")
-public class InscriptionServlet extends UtilsServlet {
+@WebServlet("/profil")
+public class ProfilServlet extends UtilsServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -18,6 +18,6 @@ public class InscriptionServlet extends UtilsServlet {
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
-        templateEngine.process("inscription", context, resp.getWriter());
+        templateEngine.process("Profil", context, resp.getWriter());
     }
 }

@@ -1,7 +1,7 @@
-package hei.projets7.mobiliti.daos.daos.impl;
+package hei.projets7.mobiliti.daos.impl;
 
-import hei.projets7.mobiliti.daos.daos.DestinationDao;
-import hei.projets7.mobiliti.daos.pojos.Destination;
+import hei.projets7.mobiliti.daos.DestinationDao;
+import hei.projets7.mobiliti.pojos.Destination;
 
 import java.sql.*;
 import java.util.ArrayList;

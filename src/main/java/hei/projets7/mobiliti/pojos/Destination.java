@@ -1,4 +1,4 @@
-package hei.projets7.mobiliti.daos.pojos;
+package hei.projets7.mobiliti.pojos;
 
 public class Destination {
     Integer id;

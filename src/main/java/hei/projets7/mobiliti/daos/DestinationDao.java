@@ -1,6 +1,6 @@
-package hei.projets7.mobiliti.daos.daos;
+package hei.projets7.mobiliti.daos;
 
-import hei.projets7.mobiliti.daos.pojos.Destination;
+import hei.projets7.mobiliti.pojos.Destination;
 
 import java.util.List;
 

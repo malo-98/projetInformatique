@@ -1,13 +1,12 @@
 package hei.projets7.mobiliti.daos;
 
-import hei.projets7.mobiliti.daos.daos.impl.DataSourceProvider;
-import hei.projets7.mobiliti.daos.daos.impl.DestinationDaoImpl;
-import hei.projets7.mobiliti.daos.pojos.Destination;
+import hei.projets7.mobiliti.daos.impl.DataSourceProvider;
+import hei.projets7.mobiliti.daos.impl.DestinationDaoImpl;
+import hei.projets7.mobiliti.pojos.Destination;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 
