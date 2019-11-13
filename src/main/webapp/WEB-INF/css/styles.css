@@ -2,7 +2,62 @@ body {
     margin: 10px;
     font-family: Calibri, sans-serif;
     font-size: 0.8em;
-    color: deepskyblue;
-    background-color: dimgray;
+    color: #29335c;
+    background-color: #aba8b2;
+}
+
+/*mise en page navbar*/
+.navbar {
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    text-align: center;
+    font-size: 2em;
+    color : #be6e46;
+    position: relative;
+}
+
+.navbar li {
+    display: inline;
+    list-style: none;
+}
+
+/*mise en page lien navbar*/
+.navbar a {
+    display: inline-block;
+    color: #be6e46;
+    margin: 0 1em;
+    text-decoration: none;
+}
+
+.title {
+    font-size: 4em;
+    color : #29335c;
+    text-align: left;
+}
+
+caption {
+    margin-bottom: 5%;
+}
+
+/*rebord de la table*/
+table {
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    width:90%;
+}
+
+table td {
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    width:90%;
+}
+
+
+table tr th {
+    width : 25%;
+    text-align: left;
 }
 
