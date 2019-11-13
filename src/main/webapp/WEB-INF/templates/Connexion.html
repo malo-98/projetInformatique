@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Liste</title>
+    <META charset="utf-8">
+    <LINK href="../css/Styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="titre">
+
+    <h1>MobilITI</h1>
+
+
+    <img  src="../images/logo.png" width="52" height="40" alt="Logo Mobility"/>
+
+
+
+</div>
+
+<!-- ************** Barre de menu ************** -->
+
+
+<div>
+    <UL class="navbar">
+        <LI>
+            <A title="Map" href="Map.html" class="bouton" target="_top">
+                <SPAN>Map</SPAN>
+            </A>
+        </LI>
+        <LI>
+            <A title="Liste" href="Liste.html" class="bouton" target="_top">
+                <SPAN>Liste</SPAN>
+            </A>
+        </LI>
+        <LI>
+            <A title="Favoris" href="Favoris.html" class="bouton" target="_top">
+                <SPAN>Favoris</SPAN>
+            </A>
+        </LI>
+        <LI>
+            <A title="Profil" href="Profil.html" class="bouton" target="_top">
+                <SPAN>Profil</SPAN>
+            </A>
+
+        </LI>
+
+
+
+    </UL>
+</div>
+
+
+
+<!-- ************** Corps de la page ************** -->
+
+<div id="login">
+<form action="verification.php" method="POST">
+    <h1>Connexion</h1>
+
+    <label><b>Identifiant</b></label>
+    <input type="text" placeholder="Entrer l'identifiant" name="email" required>
+
+    <label><b>Mot de passe</b></label>
+    <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+
+    <input type="submit" id='submit' value='LOGIN' >
+
+
+</form>
+
+</div>
+
+<div id="sign in">
+
+    <br/>
+    <p>Vous n'avez pas de compte &eacute;l&egrave;ve ?</p>
+    <br/>
+    <p>Inscrivez-vous : </p>
+    <a title="Inscription" href="Inscription.html" class="bouton" target="_top"></a>
+
+</div>
+
+
+<!-- ************** Pied de page ************** -->
+
+
+<FOOTER>
+    <center>
+        <hr  width="75%" />
+        <p>Derni&egrave;re mise &agrave; jour : 2019 <br/>
+            Contact : <a href="mailto: paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr">paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr</a></p>
+
+
+        <SCRIPT language="javascript">
+            function ouvre_popup(page)
+            {
+                window.open(page,"HEI","menubar=no, status=no, scrollbars=no, menubar=no, width=600, height=600");
+            }
+        </SCRIPT>
+
+
+        <a href="javascript:ouvre_popup('https://www.hei.fr')">
+            <img  src="../images/HEI.jpg" width="100" height="80" alt="Logo HEI"/>
+        </a>
+
+    </center>
+
+</FOOTER>
+
+</BODY>
+
+</body>
+</html>
