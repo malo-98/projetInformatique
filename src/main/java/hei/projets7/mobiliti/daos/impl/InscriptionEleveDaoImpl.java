@@ -5,6 +5,8 @@ import hei.projets7.mobiliti.pojos.Eleve;
 
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
     @Override
@@ -47,6 +49,36 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
         }catch(SQLException e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Eleve> listEleve(){
+        List<Eleve> eleves=new ArrayList<>();
+        try (Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(Statement statement=connection.createStatement()){
+                try(ResultSet results=statement.executeQuery("SELECT * FROM destination ORDER BY Domaine;")){
+                    while (results.next()){
+                        Eleve eleve=new Eleve(
+                                results.getInt("id_eleve"),
+                                results.getString("Nom"),
+                                results.getString("Prenom"),
+                                results.getString("Email"),
+                                results.getString("Mdp"),
+                                results.getString("Domaine")
+                        );
+                        eleves.add(eleve);
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return eleves;
+    }
+
+    @Override
+    public void deleteEleve(Integer idEleve) {
+        
     }
 
 
