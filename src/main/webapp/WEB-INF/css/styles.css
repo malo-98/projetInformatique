@@ -30,7 +30,13 @@ body {
     text-decoration: none;
 }
 
+h1 {
+    margin: 0;
+}
+
 .title {
+    margin : 0;
+    padding: 0;
     font-size: 4em;
     color : #29335c;
     text-align: left;
