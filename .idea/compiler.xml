@@ -10,6 +10,6 @@
         <module name="projet-s7-mobiliti" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="9" />
+    <bytecodeTargetLevel target="11" />
   </component>
 </project>
