@@ -1,4 +1,4 @@
-package hei.projets7.mobiliti.daos;
+package hei.projets7.mobiliti.daos.impl;
 
 import org.mariadb.jdbc.MariaDbDataSource;
 
