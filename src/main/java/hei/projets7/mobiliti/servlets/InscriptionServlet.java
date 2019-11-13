@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/profil")
-public class ProfilServlet extends UtilsServlet {
+@WebServlet("/inscription")
+public class InscriptionServlet extends UtilsServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -18,6 +18,6 @@ public class ProfilServlet extends UtilsServlet {
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
-        templateEngine.process("Profil", context, resp.getWriter());
+        templateEngine.process("inscription", context, resp.getWriter());
     }
 }
