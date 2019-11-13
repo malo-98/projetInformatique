@@ -7,10 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="projetS7" />
+        <module name="projet-s7-mobiliti" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="projetS7" target="7" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11" />
   </component>
 </project>
