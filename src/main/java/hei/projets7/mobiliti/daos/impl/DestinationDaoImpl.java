@@ -73,4 +73,17 @@ public class DestinationDaoImpl implements DestinationDao {
             e.printStackTrace();
         }
     }
+
+    public void modifyDescription (int idDestination, String description){
+        String sqlQuery="UPDATE destination set Description=? WHERE id_destination=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1,description);
+                statement.setInt(2, idDestination);
+                statement.executeUpdate();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

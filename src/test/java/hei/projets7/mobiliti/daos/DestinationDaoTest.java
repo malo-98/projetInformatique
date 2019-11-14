@@ -77,4 +77,36 @@ public class DestinationDaoTest  {
         }
 
     }
+
+    @Test
+    public void shouldModifyPlace(){
+        //WHEN
+        destinationDao.modifyNbrePlace(1, 13);
+
+        //THEN
+        try (Connection connection=DataSourceProvider.getDataSource().getConnection();
+        PreparedStatement statement=connection.prepareStatement("SELECT * FROM destination WHERE id_destination=1")){
+            try (ResultSet resultSet=statement.executeQuery()){
+                assertThat(resultSet.getInt("Nombre_de_place")).isEqualTo(13);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void shouldModifyDescription(){
+        //WHEN
+        destinationDao.modifyDescription(1, "LA vies est belle");
+
+        //THEN
+        try (Connection connection=DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement statement=connection.prepareStatement("SELECT * FROM destination WHERE id_destination=1")){
+            try (ResultSet resultSet=statement.executeQuery()){
+                assertThat(resultSet.getString("Descritpion")).isEqualTo("LA vies est belle");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
