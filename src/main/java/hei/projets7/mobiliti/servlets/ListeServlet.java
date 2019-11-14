@@ -18,6 +18,6 @@ public class ListeServlet extends UtilsServlet {
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
-        templateEngine.process("Accueil", context, resp.getWriter());
+        templateEngine.process("Liste", context, resp.getWriter());
     }
 }
