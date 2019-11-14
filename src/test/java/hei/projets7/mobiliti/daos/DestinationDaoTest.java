@@ -20,11 +20,11 @@ public class DestinationDaoTest  {
             Statement statement=connection.createStatement()){
             statement.executeUpdate("DELETE FROM destination");
             statement.executeUpdate(
-                    "INSERT INTO destination(id_destination, Nom, Ville, Pays, Domaine, Nombre_de_place )"
-                        +"VALUES(1,'testNom1','testVille1','testPays1', 'testDomaine1', 4)");
+                    "INSERT INTO destination(id_destination, Nom, Ville, Pays, Description, Domaine, Nombre_de_place )"
+                        +"VALUES(1,'testNom1','testVille1','testPays1', 'test description 1', 'testDomaine1', 4)");
             statement.executeUpdate(
-                    "INSERT INTO destination(id_destination, Nom, Ville, Pays, Domaine, Nombre_de_place )"
-                            +"VALUES(2,'testNom2','testVille2','testPays2', 'testDomaine2', 11)");
+                    "INSERT INTO destination(id_destination, Nom, Ville, Pays, Description, Domaine, Nombre_de_place )"
+                            +"VALUES(2,'testNom2','testVille2','testPays2', 'test description 2', 'testDomaine2', 11)");
         }
     }
 
@@ -40,10 +40,11 @@ public class DestinationDaoTest  {
                 Destination::getName,
                 Destination::getCity,
                 Destination::getCountry,
+                Destination::getDescription,
                 Destination::getDomaine,
                 Destination::getPlace).containsOnly(
-                        tuple(1,"testNom1","testVille1","testPays1", "testDomaine1", 4),
-                        tuple(2,"testNom2","testVille2","testPays2", "testDomaine2", 11)
+                        tuple(1,"testNom1","testVille1","testPays1", "test description 1", "testDomaine1", 4),
+                        tuple(2,"testNom2","testVille2","testPays2", "test description 2", "testDomaine2", 11)
         );
     }
 
@@ -51,7 +52,7 @@ public class DestinationDaoTest  {
     @Test
     public void shouldAddDestination(){
         //GIVEN
-        Destination destinationAcreer=new Destination(null, "UnivTest","Londres","England","BFA",4);
+        Destination destinationAcreer=new Destination(null, "UnivTest","Londres","England","Il s'agit de a de la description test", "BFA",4);
 
         //WHEN
         Destination destinationCree=destinationDao.addDestination(destinationAcreer);
@@ -66,6 +67,7 @@ public class DestinationDaoTest  {
                 assertThat(resultSet.getString("Nom")).isEqualTo(destinationCree.getName());
                 assertThat(resultSet.getString("Ville")).isEqualTo(destinationCree.getCity());
                 assertThat(resultSet.getString("Pays")).isEqualTo(destinationCree.getCountry());
+                assertThat(resultSet.getString("Description")).isEqualTo(destinationCree.getDescription());
                 assertThat(resultSet.getString("Domaine")).isEqualTo(destinationCree.getDomaine());
                 assertThat(resultSet.getInt("Nombre_de_place")).isEqualTo(destinationCree.getPlace());
                 assertThat(resultSet.next()).isFalse();

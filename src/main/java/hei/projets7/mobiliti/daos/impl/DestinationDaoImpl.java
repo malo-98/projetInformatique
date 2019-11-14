@@ -20,6 +20,7 @@ public class DestinationDaoImpl implements DestinationDao {
                                 results.getString("Nom"),
                                 results.getString("Ville"),
                                 results.getString("Pays"),
+                                results.getString("Description"),
                                 results.getString("Domaine"),
                                 results.getInt("Nombre_de_place")
                         );
@@ -35,13 +36,14 @@ public class DestinationDaoImpl implements DestinationDao {
 
     public Destination addDestination(Destination destination){
         try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
-            String sqlQuery="INSERT INTO destination(Nom, Ville, Pays, Domaine, Nombre_de_place) VALUE(?, ?, ?, ?, ?);";
+            String sqlQuery="INSERT INTO destination(Nom, Ville, Pays, Description, Domaine, Nombre_de_place) VALUE(?, ?, ?, ?, ?, ?);";
             try(PreparedStatement statement=connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)){
                 statement.setString(1, destination.getName());
                 statement.setString(2, destination.getCity());
                 statement.setString(3,destination.getCountry());
-                statement.setString(4,destination.getDomaine());
-                statement.setInt(5,destination.getPlace() );
+                statement.setString(4,destination.getDescription());
+                statement.setString(5,destination.getDomaine());
+                statement.setInt(6,destination.getPlace() );
                 statement.executeUpdate();
 
                 try(ResultSet resultSet=statement.getGeneratedKeys()){
