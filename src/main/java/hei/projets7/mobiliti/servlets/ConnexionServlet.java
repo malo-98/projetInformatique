@@ -21,25 +21,21 @@ public class ConnexionServlet extends UtilsServlet {
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
         templateEngine.process("Connexion", context, resp.getWriter());
+
+        //System.out.println("J'ai récepere "+req.getSession().getAttribute("utilisateurConnecte")+" dans la session");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // GET PARAMETERS
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
+        String identifiant = req.getParameter("identifiant");
 
-        //CREATE ELEVE
-        Eleve neweleve = new Eleve(null, null,null,email,password,null);
+        //System.out.println("J'ai récupéré "+identifiant+" en paramètre de la requete ");
 
-        //CONNECT
-        if (email== neweleve.getEmail() && password == neweleve.getPassword()){
-            resp.sendRedirect("Map");
+        req.getSession().setAttribute("utilisateurConnecte", identifiant);
 
-        }
-        else{
-            resp.sendError(1,"Identifiant ou mot de passe incorrect");
-        }
+        resp.sendRedirect("liste");
+
+
 
 
     }

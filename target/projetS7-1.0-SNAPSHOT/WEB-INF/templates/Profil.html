@@ -5,45 +5,65 @@
 <head>
     <title>Profil</title>
     <META charset="utf-8">
- <LINK href="../WEB-INF/css/Styles.css" rel="stylesheet" type="text/css">
+ <LINK href="../css/Styles.css" rel="stylesheet" type="text/css">
 </head>
 
 
-    <div align="center">
+    <div class="titre">
         <h1>MobilITI</h1>
-        <hr width="75%" />
 
-        <div/>
+
+    </div>
 
         <!-- ************** Barre de menu ************** -->
 
-    <body>
+    <div>
+        <UL class="navbar">
+            <LI>
+                <A title="Map" href="Map.html" class="bouton" target="_top">
+                    <SPAN>Map</SPAN>
+                </A>
+            </LI>
+            <LI>
+                <A title="Liste" href="Liste.html" class="bouton" target="_top">
+                    <SPAN>Liste</SPAN>
+                </A>
+            </LI>
+            <LI>
+                <A title="Favoris" href="Favoris.html" class="bouton" target="_top">
+                    <SPAN>Favoris</SPAN>
+                </A>
+            </LI>
+            <LI>
+                <A title="Profil" href="Profil.html" class="bouton" target="_top">
+                    <SPAN>Profil</SPAN>
+                </A>
 
-        <div>
-            <UL class="navbar">
-                <LI>
-                    <A title="Accueil" href="Accueil.html" class="bouton" target="_top">
-                        <SPAN>Liste</SPAN>
-                    </A>
-                </LI>
-                <LI>
-                    <A title="Favoris" href="Favoris.html" class="bouton" target="_top">
-                        <SPAN>Favoris</SPAN>
-                    </A>
-                </LI>
-                <LI>
-                    <A title="Profil" href="Profil.html" class="bouton" target="_top">
-                        <SPAN>Profil</SPAN>
-                    </A>
+            </LI>
 
-                </LI>
-            </UL>
-        </div>
+
+
+        </UL>
+    </div>
 
 
 
         <!-- ************** Corps de la page ************** -->
         <div>
+            <h1>Profil</h1>
+
+            <section class="profil info">
+                <p>Nom :</p>
+                <p>Prénom :</p>
+                <p>Domaine :</p>
+                <p>Photo :</p>
+                <p>Mail :</p>
+                <p>Mot de passe :</p>
+            </section>
+
+
+
+
 
             <table>
 
@@ -51,6 +71,7 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Domaine</th>
+                    <th>Photo</th>
                     <th>Mail</th>
                     <th>Mot de passe</th>
                 </tr>
@@ -58,6 +79,7 @@
                     <td>Paul</td>
                     <td>Jourdan</td>
                     <td>ITI</td>
+                    <td><img src="../images/Paul.JPG" width="40" height="40" alt="Photo Paul"></td>
                     <td> paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr</td>
                     <td>  *********</td>
                 </tr>
@@ -88,7 +110,7 @@
 
 
                 <a href="javascript:ouvre_popup('https://www.hei.fr')">
-                    <img  src="..\HEI.jpg" width="40" height="40" alt="Logo HEI"/>
+                    <img  src="../images/HEI.jpg" width="40" height="40" alt="Logo HEI"/>
                 </a>
 
             </center>

@@ -3,8 +3,53 @@
   <head>
     <title>Formulaire de création de compte Mobil'ITI</title>
 	<meta charset="UTF-8">
+      <LINK href="../css/Styles.css" rel="stylesheet" type="text/css">
   </head>
+
+
+
   <body>
+
+  <div class="titre">
+      <h1>MobilITI</h1>
+
+  </div>
+
+      <!-- ************** Barre de menu ************** -->
+
+
+      <div>
+          <UL class="navbar">
+              <LI>
+                  <A title="Map" href="Map.html" class="bouton" target="_top">
+                      <SPAN>Map</SPAN>
+                  </A>
+              </LI>
+              <LI>
+                  <A title="Liste" href="Liste.html" class="bouton" target="_top">
+                      <SPAN>Liste</SPAN>
+                  </A>
+              </LI>
+              <LI>
+                  <A title="Favoris" href="Favoris.html" class="bouton" target="_top">
+                      <SPAN>Favoris</SPAN>
+                  </A>
+              </LI>
+              <LI>
+                  <A title="Profil" href="Profil.html" class="bouton" target="_top">
+                      <SPAN>Profil</SPAN>
+                  </A>
+
+              </LI>
+
+
+
+          </UL>
+      </div>
+
+      <!-- ************** Corps de la page ************** -->
+
+
 	<form action="/ma-page-de-traitement" method="post">
     <div>
         <label for="lastname">Nom :</label>
@@ -41,5 +86,36 @@
     <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
 	</div> 
 </form>
+
+
+
+
+    <!-- ************** Pied de page ************** -->
+
+    <FOOTER>
+        <center>
+            <hr  width="75%" />
+            <p>Derni&egrave;re mise &agrave; jour : 2019 <br/>
+                Contact : <a href="mailto: paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr">paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr</a></p>
+
+
+            <SCRIPT language="javascript">
+                function ouvre_popup(page)
+                {
+                    window.open(page,"HEI","menubar=no, status=no, scrollbars=no, menubar=no, width=600, height=600");
+                }
+            </SCRIPT>
+
+
+            <a href="javascript:ouvre_popup('https://www.hei.fr')">
+                <img  src="../images/HEI.jpg" width="40" height="40" alt="Logo HEI"/>
+            </a>
+
+        </center>
+
+    </FOOTER>
+
+
+
   </body>
 </html>
