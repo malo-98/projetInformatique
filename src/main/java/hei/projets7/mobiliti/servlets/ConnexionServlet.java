@@ -2,6 +2,7 @@ package hei.projets7.mobiliti.servlets;
 
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.EleveServices;
+import hei.projets7.mobiliti.utils.MotDePasseUtils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -34,8 +35,13 @@ public class ConnexionServlet extends UtilsServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
+        String Mdp = req.getParameter("Mdp");
 
-        req.getSession().setAttribute("utilisateurConnecte", email);
+      //  if(utilisateursAutorises.containsKey(email)
+      //          && MotDePasseUtils.validerMotDePasse(Mdp, utilisateursAutorises.get(email))) {
+
+            req.getSession().setAttribute("utilisateurConnecte", email);
+       // }
 
         resp.sendRedirect("connexion");
 
