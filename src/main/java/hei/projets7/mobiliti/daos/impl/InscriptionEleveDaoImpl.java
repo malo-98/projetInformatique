@@ -78,7 +78,7 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
 
     @Override
     public void deleteEleve(Integer idEleve) {
-        
+
     }
 
 
