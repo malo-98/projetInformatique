@@ -7,12 +7,14 @@ public class Destination {
     private String country;
     private String domaine;
     Integer nbre_place;
+    private String description;
 
-    public Destination (Integer id, String name, String city, String country,String domaine, Integer nbre_place){
+    public Destination (Integer id, String name, String city, String country,String des, String domaine , Integer nbre_place){
         this.id=id;
         this.name=name;
         this.city=city;
         this.country=country;
+        this.description=des;
         this.domaine=domaine;
         this.nbre_place=nbre_place;
     }
@@ -27,6 +29,8 @@ public class Destination {
 
     public String getDomaine(){return this.domaine;}
 
+    public String getDescription(){return this.description;}
+
     public int getPlace(){return this.nbre_place;}
 
     public void setId(int id) {this.id=id;}
@@ -39,7 +43,7 @@ public class Destination {
 
     public void setDomaine(String domaine){this.domaine=domaine;}
 
+    public void setDescription(String description){this.description=description;}
+
     public void setNbre_place(int place){this.nbre_place=place;}
-
-
 }

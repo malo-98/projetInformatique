@@ -10,4 +10,6 @@ public interface DestinationDao {
     Destination addDestination(Destination destination);
 
     void modifyNbrePlace(int idDestination, int nbrePlace);
+
+    void modifyDescription(int idDestination, String description);
 }

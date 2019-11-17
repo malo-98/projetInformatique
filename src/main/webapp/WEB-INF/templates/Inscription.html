@@ -50,17 +50,17 @@
       <!-- ************** Corps de la page ************** -->
 
 
-	<form action="/ma-page-de-traitement" method="post">
+	<form action="Liste.html" method="link">
     <div>
         <label for="lastname">Nom :</label>
-        <input type="text" id="lastname" name="user_nom">
+        <input type="text" id="lastname" name="user_nom" required>
     </div>
     <div>
         <label for="prenom">Prenom :</label>
-        <input type="text" id="prenom" name="user_prenom">
+        <input type="text" id="prenom" name="user_prenom" required>
     </div>
     Domaine :
-    <select name="domaine">
+    <select name="domaine" >
     	<option value="BTP">Votre domaine</option>
         <option value="BTP">BTP</option>
         <option value="BAA">BAA</option>
@@ -74,17 +74,19 @@
     </select>
     <div>
         <label for="mail">Mail :</label>
-        <input type="mail" id="mail" name="user_mail">
+        <input type="mail" id="mail" name="user_mail" required>
     </div>
    
     <div>
         <label for="mdp">Mot de passe :</label>
-        <input type="password" id="mdp" name="user_mdp">
+        <input type="password" id="mdp" name="user_mdp" required>
     </div> 
     <div> 
     Photo : <input type="file" name="Photo" />
     <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
-	</div> 
+
+	</div>
+        <input type="submit" id='submit' value='Valider' >
 </form>
 
 
