@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.LogRecord;
 
-@WebFilter("")
+@WebFilter("/map/*")
 public class AuthentificationFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -17,8 +17,8 @@ public class AuthentificationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        String identifiant = (String) httpRequest.getSession().getAttribute("utilisateurConnecte");
-        if (identifiant == null || "".equals(identifiant)) {
+        String email = (String) httpRequest.getSession().getAttribute("utilisateurConnecte");
+        if (email == null || "".equals(email)) {
             //System.out.println("Il faut être connecté pour accéder à cette page !");
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.sendRedirect("/connexion");

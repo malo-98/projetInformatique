@@ -16,24 +16,28 @@ public class ConnexionServlet extends UtilsServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WebContext context = new WebContext(req, resp, req.getServletContext());
+        String utilisateurConnecte = (String) req.getSession().getAttribute("utilisateurConnecte");
 
-        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+        if(utilisateurConnecte==null || "".equals(utilisateurConnecte)) {
+            WebContext context = new WebContext(req, resp, req.getServletContext());
+            TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+            templateEngine.process("Connexion", context, resp.getWriter());
+        }
+        else{
+            WebContext context = new WebContext(req, resp, req.getServletContext());
+            TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+            templateEngine.process("Map", context, resp.getWriter());
+        }
 
-        templateEngine.process("Connexion", context, resp.getWriter());
-
-        //System.out.println("J'ai récepere "+req.getSession().getAttribute("utilisateurConnecte")+" dans la session");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String identifiant = req.getParameter("identifiant");
+        String email = req.getParameter("email");
 
-        //System.out.println("J'ai récupéré "+identifiant+" en paramètre de la requete ");
+        req.getSession().setAttribute("utilisateurConnecte", email);
 
-        req.getSession().setAttribute("utilisateurConnecte", identifiant);
-
-        resp.sendRedirect("liste");
+        resp.sendRedirect("connexion");
 
 
 
