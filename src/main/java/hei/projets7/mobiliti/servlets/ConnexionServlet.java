@@ -26,6 +26,7 @@ public class ConnexionServlet extends UtilsServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        String utilisateurConnecte = (String) req.getSession().getAttribute("utilisateurConnecte");
 
+        System.out.println("J'ai récupéré " + utilisateurConnecte + " dans la session");
 
         if(utilisateurConnecte==null || "".equals(utilisateurConnecte)) {
             WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -47,7 +48,8 @@ public class ConnexionServlet extends UtilsServlet {
         String Mdp = req.getParameter("Mdp");
 
         if(test.getEmail()==email
-               && MotDePasseUtils.validerMotDePasse(Mdp, test.getEmail())) {
+               && test.getPassword()==Mdp) {
+                //MotDePasseUtils.validerMotDePasse(Mdp, test.getEmail())) {
 
             req.getSession().setAttribute("utilisateurConnecte", email);
         }
