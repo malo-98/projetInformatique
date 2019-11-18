@@ -1,3 +1,5 @@
+/*1. CSS Général du site*/
+
 body {
     margin: 10px;
     font-family: Calibri, sans-serif;
@@ -6,7 +8,32 @@ body {
     background-color: #fbfbf2;
 }
 
-/*mise en page navbar*/
+h1 {
+    margin: 0;
+}
+
+.titre {
+    margin : 0;
+    padding: 0;
+    font-size: 2em;
+    color : #29335c;
+    text-align: left;
+    display: flex;
+}
+
+.titre img {
+    margin-bottom: 1.5%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+caption {
+    margin-bottom: 5%;
+}
+
+/*1.A. mise en page navbar*/
+
 .navbar {
     padding: 0;
     margin: 0;
@@ -19,6 +46,20 @@ body {
     width: 100%;
 }
 
+.navbar a {
+    display: inline-block;
+    color: #fbfbf2;
+    margin: 0 5em;
+    text-decoration: none;
+}
+
+.navbar li {
+    display: inline;
+    list-style: none;
+}
+
+/*Fin du CSS général*/
+/*2. CSS de liste */
 #univ-liste {
     list-style-type: none;
     padding: 0;
@@ -61,43 +102,7 @@ body {
     margin-top : 8%;
 }
 
-.navbar li {
-    display: inline;
-    list-style: none;
-}
-
-/*mise en page lien navbar*/
-.navbar a {
-    display: inline-block;
-    color: #fbfbf2;
-    margin: 0 5em;
-    text-decoration: none;
-}
-
-h1 {
-    margin: 0;
-}
-
-.titre {
-    margin : 0;
-    padding: 0;
-    font-size: 2em;
-    color : #29335c;
-    text-align: left;
-    display: flex;
-}
-
-.titre img {
-    margin-top: 1.5%;
-    margin-left: 2%;
-    margin-right: 2%;
-}
-
-caption {
-    margin-bottom: 5%;
-}
-
-/*rebord de la table*/
+/*2.A. table liste*/
 table {
     border-width:1px;
     border-style:solid;
@@ -118,12 +123,21 @@ table tr th {
     text-align: left;
 }
 
-footer {
-    color: #29335c;
-}
+/*Fin du CSS de liste */
 
 h2 {margin-top: 5%;
     margin-left: 5%;
     font-size: 2em;
 
+}
+
+/* CSS de la page profil */
+
+
+
+
+
+/*LAST. CSS du footer*/
+footer {
+    color: #29335c;
 }
