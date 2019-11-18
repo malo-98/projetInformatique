@@ -23,7 +23,7 @@ public class ConnexionServlet extends UtilsServlet {
     @Override
     public void init() throws ServletException {
         utilisateurs = new HashMap<>();
-        utilisateurs.put(eleve.getEmail(), MotDePasseUtils.genererMotDePasse(eleve.getPassword()));
+        utilisateurs.put(eleve.getEmail(),eleve.getPassword());
 
     }
 
@@ -32,6 +32,7 @@ public class ConnexionServlet extends UtilsServlet {
        String utilisateurConnecte = (String) req.getSession().getAttribute("utilisateurConnecte");
 
         System.out.println("J'ai récupéré " + utilisateurConnecte + " dans la session");
+
 
         if(utilisateurConnecte==null || "".equals(utilisateurConnecte)) {
             WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -50,12 +51,17 @@ public class ConnexionServlet extends UtilsServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        String Mdp = req.getParameter("Mdp");
-        System.out.println("J'ai récupéré " + email + " en paramètre de la requête.");
+        System.out.println("J'ai récupéré " + email + " en email de la requête.");
 
-       if(utilisateurs.containsKey(email)
-                && MotDePasseUtils.validerMotDePasse(Mdp, utilisateurs.get(email))) {
+        String mdp = req.getParameter("mdp");
+        System.out.println("J'ai récupéré " + mdp + " en mot de passe de la requête.");
 
+
+        if(utilisateurs.containsKey(email)){
+               // && MotDePasseUtils.validerMotDePasse(Mdp, utilisateurs.get(email)))
+            //&& mdp==eleve.getPassword()){
+
+            System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres de la requete.");
             req.getSession().setAttribute("utilisateurConnecte", email);
         }
 
