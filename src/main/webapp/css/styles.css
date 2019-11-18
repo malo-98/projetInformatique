@@ -148,6 +148,21 @@ h2 {margin-top: 5%;
 
 .profilinfo p {
     font-size: 2em;
+    margin-left: 2em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*css photo + encadré photo*/
+.photoprofil {
+    margin-right: 15%;
+    float:right;
+    position: relative;
+    top: 10%;
+    }
+
+.photoprofil p {
+    width: 20%;
 }
 
 
