@@ -2,7 +2,9 @@ package hei.projets7.mobiliti.daos;
 
 import hei.projets7.mobiliti.daos.impl.DataSourceProvider;
 import hei.projets7.mobiliti.daos.impl.DestinationDaoImpl;
+import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
 import hei.projets7.mobiliti.pojos.Destination;
+import hei.projets7.mobiliti.pojos.Eleve;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,7 +49,6 @@ public class DestinationDaoTest  {
                         tuple(2,"testNom2","testVille2","testPays2", "test description 2", "testDomaine2", 11)
         );
     }
-
 
     @Test
     public void shouldAddDestination(){
@@ -109,4 +110,6 @@ public class DestinationDaoTest  {
             e.printStackTrace();
         }
     }
+
+
 }
