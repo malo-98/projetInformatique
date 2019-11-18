@@ -1,5 +1,15 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
+<<<<<<< HEAD
 Built-By: LENOVO
 Build-Jdk: 12.0.2
+=======
+<<<<<<< HEAD
+Built-By: thiba
+Build-Jdk: 12.0.2
+=======
+Built-By: pauld
+Build-Jdk: 11.0.2
+>>>>>>> 17df22c3e99159b9c0af61d2e1af9a5a6ec3a5b6
+>>>>>>> c3cca81fb46b8984ef6dfe629879f04b4ba352ac
 
