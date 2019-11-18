@@ -23,7 +23,7 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
 
                 try(ResultSet resultSet=statement.getGeneratedKeys()){
                     if(resultSet.next()){
-                        int DestinationId=resultSet.getInt("id_destination");
+                        int DestinationId=resultSet.getInt("id_eleve");
                         eleve.setId_eleve(DestinationId);
                         return eleve;
                     }
@@ -56,7 +56,7 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
         List<Eleve> eleves=new ArrayList<>();
         try (Connection connection=DataSourceProvider.getDataSource().getConnection()){
             try(Statement statement=connection.createStatement()){
-                try(ResultSet results=statement.executeQuery("SELECT * FROM destination ORDER BY Domaine;")){
+                try(ResultSet results=statement.executeQuery("SELECT * FROM eleve ;")){
                     while (results.next()){
                         Eleve eleve=new Eleve(
                                 results.getInt("id_eleve"),
@@ -78,7 +78,7 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
 
     @Override
     public void deleteEleve(Integer idEleve) {
-        
+
     }
 
 

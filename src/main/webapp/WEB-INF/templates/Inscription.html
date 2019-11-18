@@ -52,14 +52,14 @@
       <!-- ************** Corps de la page ************** -->
 
 
-	<form action="Liste.html" method="link">
+	<form method="post">
     <div>
         <label for="lastname">Nom :</label>
-        <input type="text" id="lastname" name="user_nom" required>
+        <input type="text" id="lastname" name="nom" required>
     </div>
     <div>
         <label for="prenom">Prenom :</label>
-        <input type="text" id="prenom" name="user_prenom" required>
+        <input type="text" id="prenom" name="prenom" required>
     </div>
     Domaine :
     <select name="domaine" >
@@ -76,12 +76,12 @@
     </select>
     <div>
         <label for="mail">Mail :</label>
-        <input type="mail" id="mail" name="user_mail" required>
+        <input type="mail" id="mail" name="email" required>
     </div>
    
     <div>
         <label for="mdp">Mot de passe :</label>
-        <input type="password" id="mdp" name="user_mdp" required>
+        <input type="password" id="mdp" name="password" required>
     </div> 
     <div> 
     Photo : <input type="file" name="Photo" />

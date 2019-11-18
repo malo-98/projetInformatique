@@ -4,8 +4,18 @@ import hei.projets7.mobiliti.daos.InscriptionEleveDao;
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
 import hei.projets7.mobiliti.pojos.Eleve;
 
+import java.util.List;
+
 
 public class EleveServices {
+
+    private static class EleveLibraryHolder {
+        private final static EleveServices instance = new EleveServices();
+    }
+
+    public static EleveServices getInstance() {
+        return EleveLibraryHolder.instance;
+    }
 
     private InscriptionEleveDao inscriptionEleveDao = new InscriptionEleveDaoImpl();
 
@@ -32,6 +42,12 @@ public class EleveServices {
         return inscriptionEleveDao.addEleve(eleve);
     }
 
+    public List<Eleve> listEleve() {
+        return inscriptionEleveDao.listEleve();
+    }
 
+    public void modifyPassword(Integer id, String password){
+        inscriptionEleveDao.modifyPassword(id, password);
+    }
 
 }
