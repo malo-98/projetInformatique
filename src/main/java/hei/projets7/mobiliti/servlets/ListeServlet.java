@@ -24,4 +24,22 @@ public class ListeServlet extends UtilsServlet {
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         templateEngine.process("Liste", context, resp.getWriter());
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //GET PARAMETERS
+        String name = req.getParameter("univ");
+        String ville = req.getParameter("ville");
+        String pays = req.getParameter("pays");
+        String desc = req.getParameter("description");
+        String domaine = req.getParameter("domaine");
+        Integer nbre=Integer.parseInt(req.getParameter("nombre"));
+
+        //CREATE DESTINATION
+        Destination newDestination=new Destination(null, name, ville, pays, desc, domaine, nbre);
+        Destination createdDestination=DestinationServices.getInstance().addDestination(newDestination);
+
+        //REDIRECT TO LIST
+        resp.sendRedirect("accueil");
+    }
 }
