@@ -2,6 +2,7 @@ package hei.projets7.mobiliti.servlets;
 
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.EleveServices;
+import hei.projets7.mobiliti.utils.MotDePasseUtils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -16,24 +17,33 @@ public class ConnexionServlet extends UtilsServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WebContext context = new WebContext(req, resp, req.getServletContext());
+        String utilisateurConnecte = (String) req.getSession().getAttribute("utilisateurConnecte");
 
-        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+        if(utilisateurConnecte==null || "".equals(utilisateurConnecte)) {
+            WebContext context = new WebContext(req, resp, req.getServletContext());
+            TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+            templateEngine.process("Connexion", context, resp.getWriter());
+        }
+        else{
+            WebContext context = new WebContext(req, resp, req.getServletContext());
+            TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+            templateEngine.process("Map", context, resp.getWriter());
+        }
 
-        templateEngine.process("Connexion", context, resp.getWriter());
-
-        //System.out.println("J'ai récepere "+req.getSession().getAttribute("utilisateurConnecte")+" dans la session");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String identifiant = req.getParameter("identifiant");
+        String email = req.getParameter("email");
+        String Mdp = req.getParameter("Mdp");
 
-        //System.out.println("J'ai récupéré "+identifiant+" en paramètre de la requete ");
+      //  if(utilisateursAutorises.containsKey(email)
+      //          && MotDePasseUtils.validerMotDePasse(Mdp, utilisateursAutorises.get(email))) {
 
-        req.getSession().setAttribute("utilisateurConnecte", identifiant);
+            req.getSession().setAttribute("utilisateurConnecte", email);
+       // }
 
-        resp.sendRedirect("liste");
+        resp.sendRedirect("connexion");
 
 
 

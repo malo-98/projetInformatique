@@ -20,7 +20,7 @@ public class InscriptionServlet extends UtilsServlet {
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
-        templateEngine.process("inscription", context, resp.getWriter());
+        templateEngine.process("Inscription", context, resp.getWriter());
     }
 
     @Override
@@ -38,10 +38,10 @@ public class InscriptionServlet extends UtilsServlet {
             Eleve newEleve = new Eleve(null,nom,prenom,email,password,domaine);
             Eleve createdEleve = EleveServices.getInstance().addEleve(newEleve);
 
-
         } catch (IllegalArgumentException e) {
             req.getSession().setAttribute("errorMessage", e.getMessage());
-         
         }
+
+        resp.sendRedirect("/accueil");
     }
 }
