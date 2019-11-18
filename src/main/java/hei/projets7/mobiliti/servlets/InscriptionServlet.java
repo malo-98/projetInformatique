@@ -42,6 +42,6 @@ public class InscriptionServlet extends UtilsServlet {
             req.getSession().setAttribute("errorMessage", e.getMessage());
         }
 
-        resp.sendRedirect("/accueil");
+        resp.sendRedirect("accueil");
     }
 }
