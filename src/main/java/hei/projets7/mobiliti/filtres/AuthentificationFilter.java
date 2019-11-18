@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.LogRecord;
 
-@WebFilter("/map/*")
+@WebFilter("/liste/*")
 public class AuthentificationFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
