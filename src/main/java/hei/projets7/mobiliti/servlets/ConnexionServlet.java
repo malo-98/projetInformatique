@@ -15,9 +15,17 @@ import java.io.IOException;
 @WebServlet("/connexion")
 public class ConnexionServlet extends UtilsServlet {
 
+    private Eleve test = new Eleve(5,"TEST","test", "test@gmail.com","1234","ITI");
+
+    @Override
+    public void init() throws ServletException {
+
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String utilisateurConnecte = (String) req.getSession().getAttribute("utilisateurConnecte");
+       String utilisateurConnecte = (String) req.getSession().getAttribute("utilisateurConnecte");
+
 
         if(utilisateurConnecte==null || "".equals(utilisateurConnecte)) {
             WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -27,7 +35,8 @@ public class ConnexionServlet extends UtilsServlet {
         else{
             WebContext context = new WebContext(req, resp, req.getServletContext());
             TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-            templateEngine.process("Map", context, resp.getWriter());
+            templateEngine.process("Liste", context, resp.getWriter());
+            resp.sendRedirect("/accueil");
         }
 
     }
@@ -37,11 +46,11 @@ public class ConnexionServlet extends UtilsServlet {
         String email = req.getParameter("email");
         String Mdp = req.getParameter("Mdp");
 
-      //  if(utilisateursAutorises.containsKey(email)
-      //          && MotDePasseUtils.validerMotDePasse(Mdp, utilisateursAutorises.get(email))) {
+        if(test.getEmail()==email
+               && MotDePasseUtils.validerMotDePasse(Mdp, test.getEmail())) {
 
             req.getSession().setAttribute("utilisateurConnecte", email);
-       // }
+        }
 
         resp.sendRedirect("connexion");
 
