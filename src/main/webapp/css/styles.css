@@ -60,6 +60,23 @@ caption {
 
 /*Fin du CSS général*/
 /*2. CSS de liste */
+
+#banniere{
+    padding-bottom: 20%;
+    text-align: center;
+    background-image:url("../images/route.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+a.bouton1 {
+    margin-top: 10%;
+    padding: 10px 30px;
+    background: #fbfbf2;
+    color: black;
+}
+a.bouton1:hover {
+    background: #29335c;
+}
 #univ-liste {
     list-style-type: none;
     padding: 0;
@@ -120,14 +137,18 @@ caption {
 
 }
 
+#titre_listuniv {
+    text-align: center;
+    margin-top: 5%;
+    font-size: 2em;
+}
+
+#titre_univ{
+    text-align: center;
+}
 
 
 /*Fin du CSS de liste */
-
-#titre_listuniv {margin-top: 5%;
-    margin-left: 5%;
-    font-size: 2em;
-}
 
 form {
     margin-left: 30%;
