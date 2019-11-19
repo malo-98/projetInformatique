@@ -1,6 +1,7 @@
 package hei.projets7.mobiliti.services;
 
 import hei.projets7.mobiliti.daos.InscriptionEleveDao;
+import hei.projets7.mobiliti.daos.impl.ConnexionEleveDaoImpl;
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Eleve;
@@ -9,6 +10,7 @@ import java.util.List;
 
 
 public class EleveServices {
+
 
     private static class EleveLibraryHolder {
         private final static EleveServices instance = new EleveServices();
@@ -19,6 +21,7 @@ public class EleveServices {
     }
 
     private InscriptionEleveDao inscriptionEleveDao = new InscriptionEleveDaoImpl();
+    private ConnexionEleveDaoImpl connexionEleveDao=new ConnexionEleveDaoImpl();
 
     public Eleve addEleve(Eleve eleve) throws EleveAlreadyExistException {
 
@@ -56,6 +59,22 @@ public class EleveServices {
 
     public void modifyPassword(Integer id, String password){
         inscriptionEleveDao.modifyPassword(id, password);
+    }
+
+
+    public boolean checkPassword(String email, String mdp) {
+        //LOGGER.info("Vérification du mot de passe pour le user {}", login);
+
+        Eleve eleve = getEleve(email);
+        return eleve.getPassword().equals(mdp);
+    }
+
+    public Eleve getEleve(String email) {
+        Eleve eleve =connexionEleveDao.read(email);
+
+            //LOGGER.debug("Recuperation du user avec l'ID {}",user.getId());
+            return eleve;
+
     }
 
 }

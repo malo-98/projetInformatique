@@ -20,6 +20,8 @@ import java.util.Map;
 @WebServlet("/connexion")
 public class ConnexionServlet extends UtilsServlet {
 
+    private EleveServices eleveServices = new EleveServices();
+
     /*
     private Eleve eleve = new Eleve(5,"TEST","test", "test@gmail.com","1234","ITI");
     private Map<String, String> utilisateurs;
@@ -67,8 +69,8 @@ public class ConnexionServlet extends UtilsServlet {
         System.out.println("J'ai récupéré " + mdp + " en mot de passe de la requête.");
 
         // CREATE ELEVE
-        Eleve newEleve =new Eleve(null, null, null, email, mdp, null);
 
+        Eleve newEleve = eleveServices.getEleve(email);
         //COMPARE WITH BDD
         if(EleveServices.getInstance().listEleve().contains(newEleve.getEmail())
                     && EleveServices.getInstance().listEleve().contains(newEleve.getPassword())){

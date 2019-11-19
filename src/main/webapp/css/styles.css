@@ -74,7 +74,10 @@ caption {
 
 #univ-liste li hr {
     color: #fbfbf2;
-    width :90%;
+    width :60%;
+    margin-left: 15%;
+    bottom: 20%;
+
 }
 
 #univ-liste li p {
@@ -95,47 +98,49 @@ caption {
     color: #fbfbf2;
 }
 
-#univ-liste li img{
-    position: absolute;
-    margin-right: 0;
-    margin-left: 80%;
-    margin-top : 8%;
+#LOGO_HEI{
+    position: relative;
+    bottom: 25%;
+    left: 80%;
 }
 
-/*2.A. table liste*/
-table {
-    border-width:1px;
-    border-style:solid;
-    border-color:black;
-    width:90%;
+.ajout_destination{
+    text-align: center;
 }
 
-table td {
-    border-width:1px;
-    border-style:solid;
-    border-color:black;
-    width:90%;
+#STAR1 {
+    position: relative;
+    bottom: 75%;
+    left: 90%;
+}
+
+.tableform tr {
+    margin-left: 5%;
+    margin-right: 5%;
+
 }
 
 
-table tr th {
-    width : 25%;
-    text-align: left;
-}
 
 /*Fin du CSS de liste */
 
-h2 {margin-top: 5%;
+#titre_listuniv {margin-top: 5%;
     margin-left: 5%;
     font-size: 2em;
-
 }
 
+form {
+    margin-left: 30%;
+    width:50%;
+    text-align: center;
+    margin-left: 25%;
+}
 /* CSS de la page profil */
 
 .profilpage h1 {
     margin-top: 2%;
     margin-bottom: 2%;
+    font-size: 3em;
 }
 
 .elementform {
@@ -144,6 +149,7 @@ h2 {margin-top: 5%;
     color: #fbfbf2;
     width: 14%;
     text-align: center;
+    margin-left: 25%;
 }
 
 .profilinfo p {
@@ -155,21 +161,27 @@ h2 {margin-top: 5%;
 
 /*css photo + encadré photo*/
 .photoprofil {
-    margin-right: 15%;
-    float:right;
-    position: relative;
+    margin-top: 8%;
+    position: absolute;
     top: 10%;
+    left: 70%;
     }
 
 .photoprofil p {
-    width: 20%;
+    font-size:2em;
+    background-color: #29335c;
+    color: #fbfbf2;
+    text-align: center;
 }
 
 
 
-
-
 /*LAST. CSS du footer*/
-footer {
+.footerbis {
     color: #29335c;
+    text-align: center;
+}
+
+.footerbis img {
+    left: 40%;
 }

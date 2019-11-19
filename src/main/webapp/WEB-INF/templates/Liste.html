@@ -13,7 +13,6 @@
 
     <h1>MobilITI</h1>
     <img  src="images/logo2.png" width="52" height="40" alt="Logo Mobility"/>
-
 </div>
 
         <!-- ************** Barre de menu ************** -->
@@ -54,81 +53,89 @@
 
 
 
-<h2>Liste des universités partenaires</h2>
+<h2 id="titre_listuniv">Liste des universités partenaires</h2>
 </br>
 
     <ul id="univ-liste">
         <li th:each="destination : ${destinationList}">
             <h3><bold th:text="${destination.city}">Laval</bold> - <bold th:text="${destination.country}">Canada</bold> - <bold th:text="${destination.domaine}">ITI</bold></h3>
             <hr>
-            <img  src="images/HEI.jpg" width="100" height="80" alt="Logo HEI"/>
+            <img  src="images/HEI.jpg" width="100" height="100" alt="Logo HEI" id="LOGO_HEI"/>
+            <img  src="images/STAR1.png" width="70" height="70" alt="STAR1" id="STAR1"/>
             <p th:text="${destination.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
         </li>
     </ul>
 
-    <table>
-<caption>Destinations</caption>
-    <tr>
-        <th>Nom</th>
-        <th>Pays</th>
-        <th>Domaine</th>
-        <th>Image</th>
-        <th>Favori</th>
-    </tr>
-    <tr th:each="destination : ${destinationList}">
-        <td th:text="${destination.city}">Laval</td>
-        <td th:text="${destination.country}">Canada</td>
-        <td th:text="${destination.domaine}">ITI</td>
-        <td> <img  src="images/HEI.jpg" width="40" height="40" alt="Logo HEI"/></td>
-        <td>  <img  src="images/HEI.jpg" width="40" height="40" alt="Etoile Favori"/></td>
-    </tr>
-</table>
 
+
+
+
+    <div class="ajout_destination">
     <h2>Ajouter une destination</h2>
     <form method="post">
+        <table class="tableform">
+            <tr>
+                <td>
         <div>
             <h3>Université</h3>
             <input type="text" name="univ" id="univ" placeholder="Nom de l'université..." />
         </div>
+                </td>
+                <td>
         <div>
             <h3>Ville</h3>
             <input type="text" name="ville" id="ville" placeholder="Ville de l'université..." />
         </div>
+                </td>
+                <td>
         <div>
             <h3>Pays</h3>
             <input type="text" name="pays" id="pays" placeholder="Pays de l'université..." />
         </div>
-        <div>
-            <h3>Description</h3>
-            <textarea name="description" cols="40" rows="10" id="description">Description...</textarea>
-        </div>
-        <div>
-            <h3>Domaine</h3>
-            <select name="domaine" id="domaine">
-                <option value="moil">MOIL</option>
-                <option value="iti">ITI</option>
-                <option value="ims">IMS</option>
-                <option value="btp">BTP</option>
-                <option value="baa">BAA</option>
-                <option value="smart" >Smart cities</option>
-                <option value="esea">ESEA</option>
-                <option value="entre">Entrepreneuriat</option>
-                <option value="timtex">TIMTEX</option>
-                <option value="ese">ESE</option>
-                <option value="cm">CM</option>
-                <option value="bfa">BFA</option>
-                <option value="chimie">Chimie</option>
-            </select>
-        </div>
-        <div>
-            <h3>Nombre de place</h3>
-            <input type="number" name="nombre" id="nombre" placeholder="Nombre de place..."/>
-        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+            <div>
+                <h3>Domaine</h3>
+                <select name="domaine" id="domaine">
+                    <option value="moil">MOIL</option>
+                    <option value="iti">ITI</option>
+                    <option value="ims">IMS</option>
+                    <option value="btp">BTP</option>
+                    <option value="baa">BAA</option>
+                    <option value="smart" >Smart cities</option>
+                    <option value="esea">ESEA</option>
+                    <option value="entre">Entrepreneuriat</option>
+                    <option value="timtex">TIMTEX</option>
+                    <option value="ese">ESE</option>
+                    <option value="cm">CM</option>
+                    <option value="bfa">BFA</option>
+                    <option value="chimie">Chimie</option>
+                </select>
+            </div>
+                </td>
+                <td>
+            <div>
+                <h3>Nombre de place</h3>
+                <input type="number" name="nombre" id="nombre" placeholder="Nombre de place..."/>
+            </div>
+                </td>
+            </tr>
+        </table>
+                    <div>
+                        <h3>Description</h3>
+                        <textarea name="description" cols="40" rows="10" id="description">Description...</textarea>
+                    </div>
+
         <div>
             <input type="submit" id="submit" value="Ajouter">
         </div>
+        </table>
     </form>
+    </div>
+
 
 
 

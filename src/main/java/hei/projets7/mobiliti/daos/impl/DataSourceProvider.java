@@ -5,6 +5,7 @@ import org.mariadb.jdbc.MariaDbDataSource;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -36,5 +37,13 @@ public class DataSourceProvider {
         } catch (IOException e) {
             throw new RuntimeException("Problem when reading the properties file.", e);
         }
+    }
+
+    private static class DataSourceProviderHolder {
+        private final static DataSourceProvider instance = new DataSourceProvider();
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return DataSourceProviderHolder.instance.getDataSource().getConnection();
     }
 }
