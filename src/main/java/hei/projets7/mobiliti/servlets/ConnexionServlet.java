@@ -71,15 +71,14 @@ public class ConnexionServlet extends UtilsServlet {
         // CREATE ELEVE
 
         Eleve newEleve = eleveServices.getEleve(email);
-        //COMPARE WITH BDD
-        if(EleveServices.getInstance().listEleve().contains(newEleve.getEmail())
-                    && EleveServices.getInstance().listEleve().contains(newEleve.getPassword())){
-               // && MotDePasseUtils.validerMotDePasse(Mdp, utilisateurs.get(email)))
-            //&& mdp==eleve.getPassword()){
 
+        //COMPARE WITH BDD
+        if(newEleve.getEmail().equals(email) && eleveServices.checkPassword(email, mdp)){;
 
             System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres de la requete.");
             req.getSession().setAttribute("utilisateurConnecte", email);
+        }else {
+            System.out.println("Identifiants inconnus");
         }
 
         resp.sendRedirect("connexion");

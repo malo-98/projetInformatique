@@ -12,21 +12,21 @@ import java.util.List;
 
 public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
 
-    private static Eleve resultSetToUser(ResultSet resultSet) throws SQLException {
+    private static Eleve resultSetToEleve(ResultSet resultSet) throws SQLException {
         return new Eleve(resultSet.getInt("id_eleve"), resultSet.getString("Nom"),resultSet.getString("Prenom"), resultSet.getString("Email"), resultSet.getString("Mdp"),resultSet.getString("Domaine"));
     }
 
 
     public Eleve read(String email) {
         Eleve eleve = null;
-        String query="SELECT id, Email, Mdp FROM eleve WHERE Email=?";
+        String query="SELECT id_eleve, Email, Mdp FROM eleve WHERE Email=?";
         try {
             Connection connection = DataSourceProvider.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
-                eleve = resultSetToUser(resultSet);
+                eleve = resultSetToEleve(resultSet);
             }
         }catch (SQLException e) {
             throw new RuntimeException(e);
@@ -37,13 +37,13 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
     @Override
     public List<Eleve> read() {
         List<Eleve> eleves = new ArrayList<Eleve>();
-        String query="SELECT id, Email, Mdp FROM eleve";
+        String query="SELECT id_eleve, Email, Mdp FROM eleve";
         try {
             Connection connection = DataSourceProvider.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
-                eleves.add(resultSetToUser(resultSet));
+                eleves.add(resultSetToEleve(resultSet));
             }
         }catch (SQLException e) {
             throw new RuntimeException(e);
