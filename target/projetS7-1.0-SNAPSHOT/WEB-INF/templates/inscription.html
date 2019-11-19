@@ -14,36 +14,38 @@
   <!-- ************** Corps de la page ************** -->
   <form method="post">
       <div>
-          <label for="lastname">Nom :</label>
+          <label for="lastname"><p class="elementform">Nom :</p></label>
           <input type="text" id="lastname" name="nom" required>
       </div>
       <div>
-          <label for="prenom">Prenom :</label>
+          <label for="prenom"><p class="elementform">Prenom :</p></label>
           <input type="text" id="prenom" name="prenom" required>
       </div>
-      Domaine :
-      <select name="domaine" >
-          <option value="BTP">Votre domaine</option>
-          <option value="BTP">BTP</option>
-          <option value="BAA">BAA</option>
-          <option value="ITI">ITI</option>
-          <option value="PCE">PCE</option>
-          <option value="CM">CM</option>
-          <option value="CM">ESEA</option>
-          <option value="CM">IMS</option>
-          <option value="CM">SMART CITIES</option>
-          <option value="CM">TIMTEX</option>
-      </select>
       <div>
-          <label for="mail">Mail :</label>
+          <p class="elementform">Domaine :</p>
+          <select name="domaine" >
+              <option value="BTP">Votre domaine</option>
+              <option value="BTP">BTP</option>
+              <option value="BAA">BAA</option>
+              <option value="ITI">ITI</option>
+              <option value="PCE">PCE</option>
+              <option value="CM">CM</option>
+              <option value="CM">ESEA</option>
+              <option value="CM">IMS</option>
+              <option value="CM">SMART CITIES</option>
+              <option value="CM">TIMTEX</option>
+          </select>
+      </div>
+      <div>
+          <label for="mail"><p class="elementform">Mail :</p></label>
           <input type="mail" id="mail" name="email" required>
       </div>
       <div>
-          <label for="mdp">Mot de passe :</label>
+          <label for="mdp"><p class="elementform">Mot de passe :</p></label>
           <input type="password" id="mdp" name="password" required>
       </div>
       <div>
-          Photo : <input type="file" name="Photo" />
+          <p class="elementform">Photo :</p> <input type="file" name="Photo" />
           <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
       </div>
       <input type="submit" id='submit' value='Valider' >
