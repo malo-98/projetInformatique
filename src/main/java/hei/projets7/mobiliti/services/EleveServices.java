@@ -2,6 +2,7 @@ package hei.projets7.mobiliti.services;
 
 import hei.projets7.mobiliti.daos.InscriptionEleveDao;
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
+import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Eleve;
 
 import java.util.List;
@@ -19,7 +20,14 @@ public class EleveServices {
 
     private InscriptionEleveDao inscriptionEleveDao = new InscriptionEleveDaoImpl();
 
-    public Eleve addEleve(Eleve eleve) {
+    public Eleve addEleve(Eleve eleve) throws EleveAlreadyExistException {
+
+        List<Eleve> eleves = inscriptionEleveDao.listEleve();
+
+        if(eleves.contains(eleve.getEmail())) {
+            throw new EleveAlreadyExistException(eleve);
+        }
+
         if(eleve == null) {
             throw new IllegalArgumentException("The eleve can not be null.");
         }

@@ -1,6 +1,7 @@
 package hei.projets7.mobiliti.services;
 
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
+import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Eleve;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -13,6 +14,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
+import static junit.framework.TestCase.fail;
+
 @RunWith(MockitoJUnitRunner.class)
 public class EleveServiceTest  {
 
@@ -21,6 +24,7 @@ public class EleveServiceTest  {
 
     @InjectMocks
     EleveServices eleveServices;
+
 
     @Test
     public void shouldListEleve(){
@@ -38,6 +42,43 @@ public class EleveServiceTest  {
         //THEN
         Assertions.assertThat(results).containsExactlyInAnyOrderElementsOf(eleves);
 
+    }
+
+    @Test
+    public void shouldAddEleve() throws EleveAlreadyExistException {
+        //GIVEN
+        List<Eleve> eleves = new ArrayList<Eleve>();
+        Eleve e1= new Eleve(1,"testNom1","testPrenom1","testDomaine1","testEmail1","testMdp1");
+        eleves.add(e1);
+        Eleve e2= new Eleve(2,"testNom2","testPrenom2","testDomaine2","testEmail2","testMdp2");
+        Mockito.when(inscriptionEleveDao.addEleve(e2)).thenReturn(e2);
+
+        //WHEN
+        Eleve result = eleveServices.addEleve(e2);
+
+        //THEN
+        Assertions.assertThat(result).isEqualTo(e2);
+
+    }
+
+    @Test(expected = EleveAlreadyExistException.class)
+    public void shouldNotAddEleveAndThrowUserAlreadyExistException() throws EleveAlreadyExistException {
+        //GIVEN
+        List<Eleve> eleves = new ArrayList<Eleve>();
+        Eleve e1= new Eleve(1,"testNom1","testPrenom1","testEmail1","testMdp1","testdomaine1");
+        eleves.add(e1);
+        Eleve e2= new Eleve(1,"testNom1","testPrenom1","testEmail1","testMdp1","testdomaine1");
+        Mockito.when(inscriptionEleveDao.addEleve(e2)).thenThrow(new EleveAlreadyExistException(e2));
+
+        //WHEN
+        eleveServices.addEleve(e2);
+
+        //THEN
+        fail("Eleve already exist exception");
+    }
+
+    @Test
+    public void shouldNotAddEleveAndThrowIllegalArgumentException(){
 
     }
 

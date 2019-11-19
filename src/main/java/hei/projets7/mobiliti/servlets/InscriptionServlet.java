@@ -1,5 +1,6 @@
 package hei.projets7.mobiliti.servlets;
 
+import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.EleveServices;
 import org.thymeleaf.TemplateEngine;
@@ -38,7 +39,7 @@ public class InscriptionServlet extends UtilsServlet {
             Eleve newEleve = new Eleve(null,nom,prenom,email,password,domaine);
             Eleve createdEleve = EleveServices.getInstance().addEleve(newEleve);
 
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | EleveAlreadyExistException e) {
             req.getSession().setAttribute("errorMessage", e.getMessage());
         }
 
