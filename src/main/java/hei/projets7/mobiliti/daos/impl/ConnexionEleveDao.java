@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ConnexionEleveDao {
 
-    Eleve read(String login);
+    static Eleve read(String login);
     List<Eleve> read();
 }

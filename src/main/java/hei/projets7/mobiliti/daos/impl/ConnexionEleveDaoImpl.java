@@ -11,12 +11,12 @@ import java.util.List;
 
 public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
 
-    private Eleve resultSetToUser(ResultSet resultSet) throws SQLException {
+    private static Eleve resultSetToUser(ResultSet resultSet) throws SQLException {
         return new Eleve(resultSet.getInt("id_eleve"), resultSet.getString("Nom"),resultSet.getString("Prenom"), resultSet.getString("Email"), resultSet.getString("Mdp"),resultSet.getString("Domaine"));
     }
 
-    @Override
-    public Eleve read(String email) {
+
+    public static Eleve read(String email) {
         Eleve eleve = null;
         String query="SELECT id, Email, Mdp FROM eleve WHERE Email=?";
         try {
