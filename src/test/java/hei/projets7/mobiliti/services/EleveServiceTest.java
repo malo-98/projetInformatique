@@ -62,13 +62,13 @@ public class EleveServiceTest  {
     }
 
     @Test(expected = EleveAlreadyExistException.class)
-    public void shouldNotAddEleveAndThrowUserAlreadyExistException() throws EleveAlreadyExistException {
+    public void shouldNotAddEleveAndThrowEleveAlreadyExistException() throws EleveAlreadyExistException {
         //GIVEN
         List<Eleve> eleves = new ArrayList<Eleve>();
         Eleve e1= new Eleve(1,"testNom1","testPrenom1","testEmail1","testMdp1","testdomaine1");
         eleves.add(e1);
         Eleve e2= new Eleve(1,"testNom1","testPrenom1","testEmail1","testMdp1","testdomaine1");
-        Mockito.when(inscriptionEleveDao.addEleve(e2)).thenThrow(new EleveAlreadyExistException(e2));
+        Mockito.when(inscriptionEleveDao.listEleve()).thenReturn(eleves);
 
         //WHEN
         eleveServices.addEleve(e2);

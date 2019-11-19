@@ -5,7 +5,9 @@ import hei.projets7.mobiliti.daos.impl.ConnexionEleveDaoImpl;
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Eleve;
+import org.thymeleaf.expression.Strings;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,8 +28,12 @@ public class EleveServices {
     public Eleve addEleve(Eleve eleve) throws EleveAlreadyExistException {
 
         List<Eleve> eleves = inscriptionEleveDao.listEleve();
+        List<String> emails=new ArrayList<String>();
+        for (int i=0;i<eleves.size();i++){
+            emails.add(eleves.get(i).getEmail());
+        }
 
-        if(eleves.contains(eleve.getEmail())) {
+        if(emails.contains(eleve.getEmail())) {
             throw new EleveAlreadyExistException(eleve);
         }
 
