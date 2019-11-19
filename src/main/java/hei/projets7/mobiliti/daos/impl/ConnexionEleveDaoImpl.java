@@ -19,7 +19,7 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
 
     public Eleve read(String email) {
         Eleve eleve = null;
-        String query="SELECT id_eleve, Email, Mdp FROM eleve WHERE Email=?";
+        String query="SELECT id_eleve, Nom, Prenom, Domaine, Email, Mdp FROM eleve WHERE Email=?";
         try {
             Connection connection = DataSourceProvider.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -37,7 +37,7 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
     @Override
     public List<Eleve> read() {
         List<Eleve> eleves = new ArrayList<Eleve>();
-        String query="SELECT id_eleve, Email, Mdp FROM eleve";
+        String query="SELECT id_eleve, Nom, Prenom, Domaine, Email, Mdp FROM eleve";
         try {
             Connection connection = DataSourceProvider.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
