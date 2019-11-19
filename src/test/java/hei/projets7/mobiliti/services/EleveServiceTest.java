@@ -92,5 +92,16 @@ public class EleveServiceTest  {
 
     }
 
+    @Test
+    public void shouldModifyPassword(){
+        //GIVEN
+        Eleve e1= new Eleve(1,"testNom1","testPrenom1","testEmail1","testMdp1","testdomaine1");
+        String newPassword= "newpassword";
+
+        //WHEN
+
+        //THEN
+    }
+
 
 }

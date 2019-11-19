@@ -1,5 +1,6 @@
 package hei.projets7.mobiliti.servlets;
 
+import hei.projets7.mobiliti.exception.DestinationAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.services.DestinationServices;
 import org.thymeleaf.TemplateEngine;
@@ -37,7 +38,11 @@ public class ListeServlet extends UtilsServlet {
 
         //CREATE DESTINATION
         Destination newDestination=new Destination(null, name, ville, pays, desc, domaine, nbre);
-        Destination createdDestination=DestinationServices.getInstance().addDestination(newDestination);
+        try {
+            Destination createdDestination=DestinationServices.getInstance().addDestination(newDestination);
+        } catch (DestinationAlreadyExistException e) {
+            e.printStackTrace();
+        }
 
         //REDIRECT TO LIST
         resp.sendRedirect("accueil");
