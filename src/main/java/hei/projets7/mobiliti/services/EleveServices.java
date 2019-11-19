@@ -10,6 +10,7 @@ import java.util.List;
 
 public class EleveServices {
 
+
     private static class EleveLibraryHolder {
         private final static EleveServices instance = new EleveServices();
     }
@@ -19,6 +20,7 @@ public class EleveServices {
     }
 
     private InscriptionEleveDao inscriptionEleveDao = new InscriptionEleveDaoImpl();
+    private ConnexionEleveDaoImpl connexionEleveDao=new ConnexionEleveDaoImpl();
 
     public Eleve addEleve(Eleve eleve) {
         if(eleve == null) {
@@ -59,8 +61,8 @@ public class EleveServices {
         return eleve.getPassword().equals(mdp);
     }
 
-    private Eleve getEleve(String email) {
-        Eleve eleve = ConnexionEleveDaoImpl.read(email);
+    public Eleve getEleve(String email) {
+        Eleve eleve =connexionEleveDao.read(email);
 
             //LOGGER.debug("Recuperation du user avec l'ID {}",user.getId());
             return eleve;

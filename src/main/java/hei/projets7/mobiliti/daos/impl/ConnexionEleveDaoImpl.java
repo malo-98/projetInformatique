@@ -17,7 +17,7 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
     }
 
 
-    public static Eleve read(String email) {
+    public Eleve read(String email) {
         Eleve eleve = null;
         String query="SELECT id, Email, Mdp FROM eleve WHERE Email=?";
         try {
