@@ -23,7 +23,7 @@ public class EleveServices {
     }
 
     private InscriptionEleveDao inscriptionEleveDao = new InscriptionEleveDaoImpl();
-    private ConnexionEleveDaoImpl connexionEleveDao=new ConnexionEleveDaoImpl();
+    private ConnexionEleveDaoImpl connexionEleveDao = new ConnexionEleveDaoImpl();
 
     public Eleve addEleve(Eleve eleve) throws EleveAlreadyExistException {
 
