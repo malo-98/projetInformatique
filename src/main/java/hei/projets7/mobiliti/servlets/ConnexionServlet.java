@@ -22,19 +22,6 @@ public class ConnexionServlet extends UtilsServlet {
 
     private EleveServices eleveServices = new EleveServices();
 
-    /*
-    private Eleve eleve = new Eleve(5,"TEST","test", "test@gmail.com","1234","ITI");
-    private Map<String, String> utilisateurs;
-
-    @Override
-    public void init() throws ServletException {
-        utilisateurs = new HashMap<>();
-        utilisateurs.put(eleve.getEmail(),eleve.getPassword());
-
-    }
-
-     */
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        String utilisateurConnecte = (String) req.getSession().getAttribute("utilisateurConnecte");
