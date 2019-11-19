@@ -56,4 +56,16 @@ public class DestinationServiceTest {
         Assertions.assertThat(result).isEqualTo(d2);
     }
 
+    @Test
+    public void shouldDeleteDestination(){
+        //Given
+        Destination destination=new Destination(1, "name1", "city1", "country1", "des1", "dom1", 4);
+
+        //WHEN
+        destinationServices.deleteDestination(destination.getId());
+
+        //THEN
+        Mockito.verify(destinationDao).deleteDestinationByID(destination.getId());
+    }
+
 }

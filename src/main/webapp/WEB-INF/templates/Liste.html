@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Liste</title>
@@ -14,48 +14,12 @@
     <h1>MobilITI</h1>
     <img  src="images/logo2.png" width="52" height="40" alt="Logo Mobility"/>
 </div>
+    <!-- ************** Barre de menu ************** -->
+    <nav th:insert="~{fragement::menu}"></nav>
 
-        <!-- ************** Barre de menu ************** -->
-
-
-        <div>
-            <UL class="navbar">
-                <LI>
-                    <A title="Map" href="map" class="bouton" target="_top">
-                        <SPAN>Map</SPAN>
-                    </A>
-                </LI>
-                <LI>
-                    <A title="Liste" href="accueil" class="bouton" target="_top">
-                        <SPAN>Liste</SPAN>
-                    </A>
-                </LI>
-                <LI>
-                    <A title="Favoris" href="favoris" class="bouton" target="_top">
-                        <SPAN>Favoris</SPAN>
-                    </A>
-                </LI>
-                <LI>
-                    <A title="Profil" href="profil" class="bouton" target="_top">
-                        <SPAN>Profil</SPAN>
-                    </A>
-                        
-                </LI>
-
-                
-               
-            </UL>
-        </div>
-
-
-
- <!-- ************** Corps de la page ************** -->
-
-
-
-<h2 id="titre_listuniv">Liste des universités partenaires</h2>
-</br>
-
+    <!-- ************** Corps de la page ************** -->
+    <h2 id="titre_listuniv">Liste des universités partenaires</h2>
+    </br>
     <ul id="univ-liste">
         <li th:each="destination : ${destinationList}">
             <h3><bold th:text="${destination.city}">Laval</bold> - <bold th:text="${destination.country}">Canada</bold> - <bold th:text="${destination.domaine}">ITI</bold></h3>
@@ -66,10 +30,6 @@
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
         </li>
     </ul>
-
-
-
-
 
     <div class="ajout_destination">
     <h2>Ajouter une destination</h2>
@@ -136,39 +96,8 @@
     </form>
     </div>
 
-
-
-
-
-
-
-  <!-- ************** Pied de page ************** -->
-
-
-
-
-        <FOOTER>
-    <center>
-        <hr  width="75%" />
-        <p>Derni&egrave;re mise &agrave; jour : 2019 <br/>
-        Contact : <a href="mailto: paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr">paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr</a></p>
-        
-
-    <SCRIPT language="javascript">
-        function ouvre_popup(page) 
-        {
-            window.open(page,"HEI","menubar=no, status=no, scrollbars=no, menubar=no, width=600, height=600");
-        }
-    </SCRIPT>
-
-
-        <a href="javascript:ouvre_popup('https://www.hei.fr')">
-            <img  src="images/HEI.jpg" width="100" height="80" alt="Logo HEI"/>
-        </a>
-
-    </center>
-    
-</FOOTER>
+    <!-- ************** Pied de page ************** -->
+    <FOOTER th:insert="~{fragement::pied}"></FOOTER>
 
 </BODY>
 

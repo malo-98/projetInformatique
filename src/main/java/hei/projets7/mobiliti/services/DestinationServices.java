@@ -21,5 +21,7 @@ public class DestinationServices {
 
     public Destination addDestination(Destination destination){return destinationDao.addDestination(destination);}
 
+    public void deleteDestination(Integer id){destinationDao.deleteDestinationByID(id);}
+
 }
 

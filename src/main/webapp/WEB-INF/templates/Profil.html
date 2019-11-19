@@ -1,128 +1,44 @@
 <!DOCTYPE html>
 
-<hmtl>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Profil</title>
     <META charset="utf-8">
- <LINK href="css/styles.css" rel="stylesheet" type="text/css">
+    <LINK href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
-
     <body>
     <div class="titre">
         <h1>MobilITI</h1>
         <img  src="images/logo2.png" width="52" height="40" alt="Logo Mobility"/>
     </div>
 
-        <!-- ************** Barre de menu ************** -->
+    <!-- ************** Barre de menu ************** -->
+    <nav th:insert="~{fragement::menu}"></nav>
 
-    <div>
-        <UL class="navbar">
-            <LI>
-                <A title="Map" href="map" class="bouton" target="_top">
-                    <SPAN>Map</SPAN>
-                </A>
-            </LI>
-            <LI>
-                <A title="Liste" href="accueil" class="bouton" target="_top">
-                    <SPAN>Liste</SPAN>
-                </A>
-            </LI>
-            <LI>
-                <A title="Favoris" href="favoris" class="bouton" target="_top">
-                    <SPAN>Favoris</SPAN>
-                </A>
-            </LI>
-            <LI>
-                <A title="Profil" href="profil" class="bouton" target="_top">
-                    <SPAN>Profil</SPAN>
-                </A>
-
-            </LI>
-
-
-
-        </UL>
+    <!-- ************** Corps de la page ************** -->
+    <div class="profilpage">
+        <h1>Profil</h1>
+        <section class="profilinfo">
+            <p class="elementform">Nom :</p>
+            <p>Jourdan</p>
+            <p class="elementform">Prénom :</p>
+            <p>Paul</p>
+            <p class="elementform">Domaine :</p>
+            <p>ITI</p>
+            <p class="elementform">Mail :</p>
+            <p>paul.jourdan@hotmail.fr</p>
+            <p class="elementform">Mot de passe :</p>
+            <p>......</p>
+        </section>
+        <div class="photoprofil">
+            <p>Photo :</p>
+            <img src="images/Paul.JPG" width="150" height="150" alt="Photo Paul"/>
+        </div>
     </div>
 
 
-
-        <!-- ************** Corps de la page ************** -->
-        <div class="profilpage">
-            <h1>Profil</h1>
-
-            <section class="profilinfo">
-                <p class="elementform">Nom :</p>
-                <p>Jourdan</p>
-                <p class="elementform">Prénom :</p>
-                <p>Paul</p>
-                <p class="elementform">Domaine :</p>
-                <p>ITI</p>
-                <p class="elementform">Mail :</p>
-                <p>paul.jourdan@hotmail.fr</p>
-                <p class="elementform">Mot de passe :</p>
-                <p>......</p>
-            </section>
-
-            <div class="photoprofil">
-                <p>Photo :</p>
-                <img src="images/Paul.JPG" width="150" height="150" alt="Photo Paul"/>
-            </div>
-
-
-
-
-            <!--<table>
-
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Domaine</th>
-                    <th>Photo</th>
-                    <th>Mail</th>
-                    <th>Mot de passe</th>
-                </tr>
-                <tr>
-                    <td>Paul</td>
-                    <td>Jourdan</td>
-                    <td>ITI</td>
-                    <td><img src="../images/Paul.JPG" width="40" height="40" alt="Photo Paul"></td>
-                    <td> paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr</td>
-                    <td>  *********</td>
-                </tr>
-
-            </table>-->
-
-        </div>
-
-
-        <!-- ************** Pied de page ************** -->
-
-
-
-
-        <FOOTER>
-            <div class="footerbis">
-                <hr  width="75%" />
-                <p>Derni&egrave;re mise &agrave; jour : 2019 <br/>
-                    Contact : <a href="mailto: paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr">paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr</a></p>
-
-
-                <SCRIPT language="javascript">
-                    function ouvre_popup(page)
-                    {
-                        window.open(page,"HEI","menubar=no, status=no, scrollbars=no, menubar=no, width=600, height=600");
-                    }
-                </SCRIPT>
-
-
-                <a href="javascript:ouvre_popup('https://www.hei.fr')">
-                    <img  src="../images/HEI.jpg" width="40" height="40" alt="Logo HEI"/>
-                </a>
-            </div>
-        </FOOTER>
-
-
+    <!-- ************** Pied de page ************** -->
+    <FOOTER th:insert="~{fragement::pied}"></FOOTER>
     </body>
-
-</hmtl>
+</html>
