@@ -13,13 +13,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 
 @WebServlet("/connexion")
 public class ConnexionServlet extends UtilsServlet {
 
+    static final Logger LOGGER = LogManager.getLogger();
     private EleveServices eleveServices = new EleveServices();
 
     @Override
@@ -50,10 +54,12 @@ public class ConnexionServlet extends UtilsServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //GET PARAMETERS
         String email = req.getParameter("email");
-        System.out.println("J'ai récupéré " + email + " en email de la requête.");
+        //System.out.println("J'ai récupéré " + email + " en email de la requête.");
+        LOGGER.info("J'ai récupéré " + email + " en email de la requête.");
 
         String mdp = req.getParameter("mdp");
-        System.out.println("J'ai récupéré " + mdp + " en mot de passe de la requête.");
+        //System.out.println("J'ai récupéré " + mdp + " en mot de passe de la requête.");
+        LOGGER.info("J'ai récupéré " + mdp + " en mot de passe de la requête.");
 
         // CREATE ELEVE
 
@@ -62,10 +68,12 @@ public class ConnexionServlet extends UtilsServlet {
         //COMPARE WITH BDD
         if(newEleve != null && newEleve.getEmail().equals(email) && eleveServices.checkPassword(email, mdp)){
 
-            System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres");
+            //System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres");
+            LOGGER.info("J'ai " +email+ " et "+ mdp + " en paramètres");
             req.getSession().setAttribute("utilisateurConnecte", email);
         }else{
-            System.out.println("Identifiants inconnus");
+            //System.out.println("Identifiants inconnus");
+            LOGGER.info("Identifiants inconnus");
         }
 
         resp.sendRedirect("connexion");
