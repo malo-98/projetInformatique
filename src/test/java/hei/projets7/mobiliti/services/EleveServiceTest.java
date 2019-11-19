@@ -77,8 +77,18 @@ public class EleveServiceTest  {
         fail("Eleve already exist exception");
     }
 
-    @Test
-    public void shouldNotAddEleveAndThrowIllegalArgumentException(){
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldNotAddEleveAndThrowIllegalArgumentException() throws EleveAlreadyExistException {
+        //GIVEN
+        Eleve e2= new Eleve(1," "," "," "," "," ");
+        Mockito.when(inscriptionEleveDao.addEleve(e2)).thenThrow(new IllegalArgumentException("The eleve can not be null."));
+
+        //WHEN
+        eleveServices.addEleve(e2);
+
+        //THEN
+        fail("illegal argument exception");
+
 
     }
 
