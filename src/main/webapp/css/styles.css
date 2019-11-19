@@ -160,15 +160,14 @@ a.bouton1:hover {
 #titre_univ{
     }
 
-
-/*Fin du CSS de liste */
-
-form {
+#form_list {
     margin-left: 30%;
     width:50%;
     text-align: center;
     margin-left: 25%;
 }
+/*Fin du CSS de liste */
+
 /* CSS de la page profil */
 
 .profilpage h1 {
@@ -209,7 +208,17 @@ form {
 }
 
 /*Debut CSS de inscription*/
+.inscription{
+    width: 100%;
+}
 
+.formulaire-text{
+    font-size:2em;
+    background-color: #29335c;
+    color: #fbfbf2;
+    width: 14%;
+    text-align: center;
+}
 
 /*LAST. CSS du footer*/
 .footerbis {
