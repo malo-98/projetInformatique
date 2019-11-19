@@ -61,6 +61,18 @@ public class DestinationDaoImpl implements DestinationDao {
         throw new RuntimeException("problème pour l'exécution de cette requête");
     }
 
+    public void deleteDestinationByID(Integer id){
+        String SQLquery="DELETE FROM destination where id=?";
+        try{
+            Connection connection=DataSourceProvider.getConnection();
+            PreparedStatement statement=connection.prepareStatement(SQLquery);
+            statement.setInt(1,id);
+            statement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public void modifyNbrePlace(int idDestination, int nbrePlace){
         String sqlQuery="UPDATE destination SET Nombre_de_place=? WHERE id_destination=?;";
         try(Connection connection=DataSourceProvider.getDataSource().getConnection()){

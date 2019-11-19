@@ -22,19 +22,6 @@ public class ConnexionServlet extends UtilsServlet {
 
     private EleveServices eleveServices = new EleveServices();
 
-    /*
-    private Eleve eleve = new Eleve(5,"TEST","test", "test@gmail.com","1234","ITI");
-    private Map<String, String> utilisateurs;
-
-    @Override
-    public void init() throws ServletException {
-        utilisateurs = new HashMap<>();
-        utilisateurs.put(eleve.getEmail(),eleve.getPassword());
-
-    }
-
-     */
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        String utilisateurConnecte = (String) req.getSession().getAttribute("utilisateurConnecte");
@@ -71,15 +58,14 @@ public class ConnexionServlet extends UtilsServlet {
         // CREATE ELEVE
 
         Eleve newEleve = eleveServices.getEleve(email);
+
         //COMPARE WITH BDD
-        if(EleveServices.getInstance().listEleve().contains(newEleve.getEmail())
-                    && EleveServices.getInstance().listEleve().contains(newEleve.getPassword())){
-               // && MotDePasseUtils.validerMotDePasse(Mdp, utilisateurs.get(email)))
-            //&& mdp==eleve.getPassword()){
+        if(newEleve != null && newEleve.getEmail().equals(email) && eleveServices.checkPassword(email, mdp)){
 
-
-            System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres de la requete.");
+            System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres");
             req.getSession().setAttribute("utilisateurConnecte", email);
+        }else{
+            System.out.println("Identifiants inconnus");
         }
 
         resp.sendRedirect("connexion");

@@ -1,125 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>Formulaire de création de compte Mobil'ITI</title>
 	<meta charset="UTF-8">
       <LINK href="css/styles.css" rel="stylesheet" type="text/css">
   </head>
-
-
-
   <body>
+  <div class="titre" th:insert="~{fragement::titre}"></div>
 
-  <div class="titre">
+  <!-- ************** Barre de menu ************** -->
+  <nav th:insert="~{fragement::menu}"></nav>
 
-      <h1>MobilITI</h1>
-      <img  src="images/logo2.png" width="52" height="40" alt="Logo Mobility"/>
+  <!-- ************** Corps de la page ************** -->
+  <form method="post">
+      <div>
+          <label for="lastname">Nom :</label>
+          <input type="text" id="lastname" name="nom" required>
+      </div>
+      <div>
+          <label for="prenom">Prenom :</label>
+          <input type="text" id="prenom" name="prenom" required>
+      </div>
+      Domaine :
+      <select name="domaine" >
+          <option value="BTP">Votre domaine</option>
+          <option value="BTP">BTP</option>
+          <option value="BAA">BAA</option>
+          <option value="ITI">ITI</option>
+          <option value="PCE">PCE</option>
+          <option value="CM">CM</option>
+          <option value="CM">ESEA</option>
+          <option value="CM">IMS</option>
+          <option value="CM">SMART CITIES</option>
+          <option value="CM">TIMTEX</option>
+      </select>
+      <div>
+          <label for="mail">Mail :</label>
+          <input type="mail" id="mail" name="email" required>
+      </div>
+      <div>
+          <label for="mdp">Mot de passe :</label>
+          <input type="password" id="mdp" name="password" required>
+      </div>
+      <div>
+          Photo : <input type="file" name="Photo" />
+          <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+      </div>
+      <input type="submit" id='submit' value='Valider' >
+  </form>
 
-  </div>
-
-      <!-- ************** Barre de menu ************** -->
-
-
-  <div>
-      <UL class="navbar">
-          <LI>
-              <A title="Map" href="map" class="bouton" target="_top">
-                  <SPAN>Map</SPAN>
-              </A>
-          </LI>
-          <LI>
-              <A title="Liste" href="accueil" class="bouton" target="_top">
-                  <SPAN>Liste</SPAN>
-              </A>
-          </LI>
-          <LI>
-              <A title="Favoris" href="favoris" class="bouton" target="_top">
-                  <SPAN>Favoris</SPAN>
-              </A>
-          </LI>
-          <LI>
-              <A title="Profil" href="profil" class="bouton" target="_top">
-                  <SPAN>Profil</SPAN>
-              </A>
-
-          </LI>
-
-
-
-      </UL>
-  </div>
-
-      <!-- ************** Corps de la page ************** -->
-
-
-	<form method="post">
-    <div>
-        <label for="lastname">Nom :</label>
-        <input type="text" id="lastname" name="nom" required>
-    </div>
-    <div>
-        <label for="prenom">Prenom :</label>
-        <input type="text" id="prenom" name="prenom" required>
-    </div>
-    Domaine :
-    <select name="domaine" >
-    	<option value="BTP">Votre domaine</option>
-        <option value="BTP">BTP</option>
-        <option value="BAA">BAA</option>
-        <option value="ITI">ITI</option>
-        <option value="PCE">PCE</option>
-        <option value="CM">CM</option>
-        <option value="CM">ESEA</option>
-        <option value="CM">IMS</option>
-        <option value="CM">SMART CITIES</option>
-        <option value="CM">TIMTEX</option>
-    </select>
-    <div>
-        <label for="mail">Mail :</label>
-        <input type="mail" id="mail" name="email" required>
-    </div>
-   
-    <div>
-        <label for="mdp">Mot de passe :</label>
-        <input type="password" id="mdp" name="password" required>
-    </div> 
-    <div> 
-    Photo : <input type="file" name="Photo" />
-    <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
-
-	</div>
-        <input type="submit" id='submit' value='Valider' >
-</form>
-
-
-
-
-    <!-- ************** Pied de page ************** -->
-
-    <FOOTER>
-        <center>
-            <hr  width="75%" />
-            <p>Derni&egrave;re mise &agrave; jour : 2019 <br/>
-                Contact : <a href="mailto: paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr">paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr</a></p>
-
-
-            <SCRIPT language="javascript">
-                function ouvre_popup(page)
-                {
-                    window.open(page,"HEI","menubar=no, status=no, scrollbars=no, menubar=no, width=600, height=600");
-                }
-            </SCRIPT>
-
-
-            <a href="javascript:ouvre_popup('https://www.hei.fr')">
-                <img  src="../images/HEI.jpg" width="40" height="40" alt="Logo HEI"/>
-            </a>
-
-        </center>
-
-    </FOOTER>
-
-
-
+  <!-- ************** Pied de page ************** -->
+  <FOOTER th:insert="~{fragement::pied}"></FOOTER>
   </body>
 </html>

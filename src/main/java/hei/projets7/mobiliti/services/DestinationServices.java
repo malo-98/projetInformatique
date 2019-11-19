@@ -53,5 +53,7 @@ public class DestinationServices {
     }
 
 
+    public void deleteDestination(Integer id){destinationDao.deleteDestinationByID(id);}
+
 }
 
