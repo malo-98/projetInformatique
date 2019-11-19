@@ -1,4 +1,4 @@
-package hei.projets7.mobiliti.daos.impl;
+package hei.projets7.mobiliti.daos;
 
 import hei.projets7.mobiliti.pojos.Eleve;
 
