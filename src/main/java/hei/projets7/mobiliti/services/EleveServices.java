@@ -79,6 +79,10 @@ public class EleveServices {
     }
 
 
+    public Eleve getEleve(String email){
+        return connexionEleveDao.read(email);
+    }
+
     public String getPasswordByEmail (String email) throws EleveNotFoundException {
         //Récupération des informations de connexion par le mail
         //LOGGER.info("Recuperation du password du user avec l'email {}",user.getPassword());
