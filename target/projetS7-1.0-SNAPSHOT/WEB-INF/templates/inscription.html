@@ -15,15 +15,15 @@
   <form  method="post" class="inscription">
       <div>
           <label for="lastname"><p class="formulaire-text">Nom :</p></label>
-          <input type="text" id="lastname" name="nom" required>
+          <input class="input" type="text" id="lastname" name="nom" required>
       </div>
       <div>
           <label for="prenom"><p class="formulaire-text">Prenom :</p></label>
-          <input type="text" id="prenom" name="prenom" required>
+          <input class="input" type="text" id="prenom" name="prenom" required>
       </div>
       <div>
           <p class="formulaire-text">Domaine :</p>
-          <select name="domaine" >
+          <select class="input" name="domaine" >
               <option value="BTP">Votre domaine</option>
               <option value="BTP">BTP</option>
               <option value="BAA">BAA</option>
@@ -38,17 +38,19 @@
       </div>
       <div>
           <label for="mail"><p class="formulaire-text">Mail :</p></label>
-          <input type="mail" id="mail" name="email" required>
+          <input class="input" type="mail" id="mail" name="email" required>
       </div>
       <div>
           <label for="mdp"><p class="formulaire-text">Mot de passe :</p></label>
-          <input type="password" id="mdp" name="password" required>
+          <input class="input" type="password" id="mdp" name="password" required>
       </div>
       <div>
-          <p class="formulaire-text">Photo :</p> <input type="file" name="Photo" />
-          <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+          <p class="formulaire-text">Photo :</p> <input class="input" type="file" name="Photo" />
+          <input class="input" type="hidden" name="MAX_FILE_SIZE" value="100000" />
       </div>
-      <input type="submit" id='submit' value='Inscription' >
+      <div>
+          <input class="input form-button" type="submit" id='submit' value='Inscription' >
+      </div>
   </form>
 
   <!-- ************** Pied de page ************** -->

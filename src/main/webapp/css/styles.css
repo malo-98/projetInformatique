@@ -215,10 +215,27 @@ a.bouton1:hover {
 .formulaire-text{
     font-size:2em;
     background-color: #be6e46;
-    color: #be6e46;
+    color: #fbfbf2;
     text-align: center;
 }
 
+.input{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-button{
+    font-size: 2em;
+    margin-top: 4%;
+    background-color: #29335c;
+    color: white;
+}
+
+.form-button:hover{
+    background-color: #fbfbf2;
+    color: black;
+}
 /*LAST. CSS du footer*/
 .footerbis {
     color: #29335c;
