@@ -51,5 +51,34 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
         return eleves;
     }
 
+<<<<<<< HEAD
 
+=======
+    @Override
+    public void modifyPassword(String email, String Password) {
+        String sqlQuery="UPDATE eleve SET Mdp=? WHERE email=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1, Password);
+                statement.setString(2, email);
+                statement.executeUpdate();
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteEleve(String email) {
+        String query="DELETE FROM eleve where email=?";
+        try {
+            Connection connection = DataSourceProvider.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,email);
+            statement.executeUpdate();
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+>>>>>>> da257079a4e287a5561e9ef3ce42fd292a45350b
 }

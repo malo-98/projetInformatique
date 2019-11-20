@@ -37,19 +37,7 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
         throw new RuntimeException("problème pour l'exécution de la requête inscription");
     }
 
-    @Override
-    public void modifyPassword(Integer idEleve, String Password) {
-        String sqlQuery="UPDATE eleve SET Mdp=? WHERE id_eleve=?;";
-        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
-            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
-                statement.setString(1, Password);
-                statement.setInt(2, idEleve);
-                statement.executeUpdate();
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-    }
+
 
     @Override
     public List<Eleve> listEleve(){
@@ -76,10 +64,8 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
         return eleves;
     }
 
-    @Override
-    public void deleteEleve(Integer idEleve) {
 
-    }
+
 
 
 

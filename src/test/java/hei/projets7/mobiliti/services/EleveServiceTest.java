@@ -1,5 +1,7 @@
 package hei.projets7.mobiliti.services;
 
+import hei.projets7.mobiliti.daos.ConnexionEleveDao;
+import hei.projets7.mobiliti.daos.impl.ConnexionEleveDaoImpl;
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Eleve;
@@ -21,6 +23,7 @@ public class EleveServiceTest  {
 
     @Mock
     InscriptionEleveDaoImpl inscriptionEleveDao;
+    ConnexionEleveDaoImpl connexionEleveDao;
 
     @InjectMocks
     EleveServices eleveServices;
@@ -104,4 +107,21 @@ public class EleveServiceTest  {
     }
 
 
+    @Test
+    public void shouldDeleteUser(){
+        //GIVEN
+        List<Eleve> eleves = new ArrayList<Eleve>();
+        Eleve e1= new Eleve(1,"testNom1","testPrenom1","testDomaine1","testEmail1","testMdp1");
+        Eleve e2=new Eleve(2,"testNom2","testPrenom2","testDomaine2","testEmail2","testMdp2");
+        eleves.add(e1);
+        eleves.add(e2);
+        Mockito.when(connexionEleveDao.read(e2.getEmail())).thenReturn(e2);
+
+        //WHEN
+        eleveServices.deleteUser(e2.getEmail());
+
+        //THEN
+        
+
+    }
 }

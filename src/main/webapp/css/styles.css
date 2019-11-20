@@ -160,18 +160,16 @@ a.bouton1:hover {
 }
 
 #titre_univ{
-    text-align: center;
-}
+    }
 
-
-/*Fin du CSS de liste */
-
-form {
+#form_list {
     margin-left: 30%;
     width:50%;
     text-align: center;
     margin-left: 25%;
 }
+/*Fin du CSS de liste */
+
 /* CSS de la page profil */
 
 .profilpage h1 {
@@ -211,8 +209,35 @@ form {
     text-align: center;
 }
 
+/*Debut CSS de inscription*/
+.inscription{
+    width: 100%;
+}
 
+.formulaire-text{
+    font-size:2em;
+    background-color: #be6e46;
+    color: #fbfbf2;
+    text-align: center;
+}
 
+.input{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-button{
+    font-size: 2em;
+    margin-top: 4%;
+    background-color: #29335c;
+    color: white;
+}
+
+.form-button:hover{
+    background-color: #fbfbf2;
+    color: black;
+}
 /*LAST. CSS du footer*/
 .footerbis {
     color: #29335c;
