@@ -98,7 +98,7 @@ public class ConnexionServlet extends UtilsServlet {
             e.printStackTrace();
         }
 
-        resp.sendRedirect("accueil");
+        resp.sendRedirect("connexion");
 
 
 
