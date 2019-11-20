@@ -88,7 +88,7 @@ public class ConnexionServlet extends UtilsServlet {
             LOGGER.error("Identifiants inconnus");
         }
 
-        resp.sendRedirect("accueil");
+        resp.sendRedirect("connexion");
 
 
 
