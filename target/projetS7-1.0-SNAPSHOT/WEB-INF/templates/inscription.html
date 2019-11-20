@@ -12,51 +12,44 @@
   <nav th:insert="~{fragement::menu}"></nav>
 
   <!-- ************** Corps de la page ************** -->
-  <section>
-      <div style="display: inline;">
-      <img  src="images/HEI.jpg" width="50%" alt="Logo HEI"/>
+  <form  method="post" class="inscription">
+      <div>
+          <label for="lastname"><p class="formulaire-text">Nom :</p></label>
+          <input type="text" id="lastname" name="nom" required>
       </div>
-      <div style="display: inline;">
-      <form  method="post" class="inscription">
-          <div>
-              <label for="lastname"><p class="formulaire-text">Nom :</p></label>
-              <input type="text" id="lastname" name="nom" required>
-          </div>
-          <div>
-              <label for="prenom"><p class="formulaire-text">Prenom :</p></label>
-              <input type="text" id="prenom" name="prenom" required>
-          </div>
-          <div>
-              <p class="formulaire-text">Domaine :</p>
-              <select name="domaine" >
-                  <option value="BTP">Votre domaine</option>
-                  <option value="BTP">BTP</option>
-                  <option value="BAA">BAA</option>
-                  <option value="ITI">ITI</option>
-                  <option value="PCE">PCE</option>
-                  <option value="CM">CM</option>
-                  <option value="ESEA">ESEA</option>
-                  <option value="IMS">IMS</option>
-                  <option value="SC">SMART CITIES</option>
-                  <option value="TIMTEX">TIMTEX</option>
-              </select>
-          </div>
-          <div>
-              <label for="mail"><p class="formulaire-text">Mail :</p></label>
-              <input type="mail" id="mail" name="email" required>
-          </div>
-          <div>
-              <label for="mdp"><p class="formulaire-text">Mot de passe :</p></label>
-              <input type="password" id="mdp" name="password" required>
-          </div>
-          <div>
-              <p class="formulaire-text">Photo :</p> <input type="file" name="Photo" />
-              <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
-          </div>
-          <input type="submit" id='submit' value='Inscription' >
-      </form>
+      <div>
+          <label for="prenom"><p class="formulaire-text">Prenom :</p></label>
+          <input type="text" id="prenom" name="prenom" required>
       </div>
-  </section>
+      <div>
+          <p class="formulaire-text">Domaine :</p>
+          <select name="domaine" >
+              <option value="BTP">Votre domaine</option>
+              <option value="BTP">BTP</option>
+              <option value="BAA">BAA</option>
+              <option value="ITI">ITI</option>
+              <option value="PCE">PCE</option>
+              <option value="CM">CM</option>
+              <option value="ESEA">ESEA</option>
+              <option value="IMS">IMS</option>
+              <option value="SC">SMART CITIES</option>
+              <option value="TIMTEX">TIMTEX</option>
+          </select>
+      </div>
+      <div>
+          <label for="mail"><p class="formulaire-text">Mail :</p></label>
+          <input type="mail" id="mail" name="email" required>
+      </div>
+      <div>
+          <label for="mdp"><p class="formulaire-text">Mot de passe :</p></label>
+          <input type="password" id="mdp" name="password" required>
+      </div>
+      <div>
+          <p class="formulaire-text">Photo :</p> <input type="file" name="Photo" />
+          <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+      </div>
+      <input type="submit" id='submit' value='Inscription' >
+  </form>
 
   <!-- ************** Pied de page ************** -->
   <FOOTER th:insert="~{fragement::pied}"></FOOTER>
