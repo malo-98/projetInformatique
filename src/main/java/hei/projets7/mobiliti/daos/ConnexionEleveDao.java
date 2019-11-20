@@ -9,6 +9,6 @@ public interface ConnexionEleveDao {
     Eleve read(String login);
     List<Eleve> read();
     void modifyPassword(String email, String Password);
-    void deleteEleve(String email);
+    void deleteEleve(Integer id);
 
 }
