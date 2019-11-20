@@ -64,7 +64,7 @@ public class EleveServices {
         return inscriptionEleveDao.listEleve();
     }
 
-    public void modifyPassword(Integer id, String password){ connexionEleveDao.modifyPassword(id, password);
+    public void modifyPassword(String email, String password){ connexionEleveDao.modifyPassword(email, password);
     }
 
 
@@ -93,5 +93,9 @@ public class EleveServices {
         connexionEleveDao.deleteEleve(email);
         return inscriptionEleveDao.listEleve();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4561af820c2925d257f8b336af00487ab728aea8
 
 }

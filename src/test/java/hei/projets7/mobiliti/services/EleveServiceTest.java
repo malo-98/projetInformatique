@@ -121,7 +121,7 @@ public class EleveServiceTest  {
         eleveServices.deleteUser(e2.getEmail());
 
         //THEN
-        
+        Mockito.verify(connexionEleveDao,Mockito.times(1)).deleteEleve(e2.getEmail());
 
     }
 }

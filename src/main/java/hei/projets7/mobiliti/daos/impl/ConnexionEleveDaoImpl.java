@@ -52,6 +52,7 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
     }
 
     @Override
+<<<<<<< HEAD
     public String getPasswordByEmail(String email) throws EleveNotFoundException {
         return null;
     }
@@ -94,6 +95,16 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
         return null;
     }*/
 
+=======
+    public String getPasswordByEmail(String email) {
+        return null;
+    }
+
+    @Override
+    public Eleve getEleve(String email) {
+        return null;
+    }
+>>>>>>> 4561af820c2925d257f8b336af00487ab728aea8
 
     @Override
     public void modifyPassword(String email, String Password) {
@@ -121,7 +132,10 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
             throw new RuntimeException(e);
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4561af820c2925d257f8b336af00487ab728aea8
 }
 
 
