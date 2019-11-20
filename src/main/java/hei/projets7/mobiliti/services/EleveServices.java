@@ -63,8 +63,7 @@ public class EleveServices {
         return inscriptionEleveDao.listEleve();
     }
 
-    public void modifyPassword(Integer id, String password){
-        inscriptionEleveDao.modifyPassword(id, password);
+    public void modifyPassword(Integer id, String password){ connexionEleveDao.modifyPassword(id, password);
     }
 
 

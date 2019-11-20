@@ -37,7 +37,7 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
         throw new RuntimeException("problème pour l'exécution de la requête inscription");
     }
 
-    
+
 
     @Override
     public List<Eleve> listEleve(){
@@ -66,8 +66,17 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
 
     @Override
     public void deleteEleve(Integer idEleve) {
-
+        String query="DELETE FROM eleve where id_eleve=?";
+        try {
+            Connection connection = DataSourceProvider.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1,idEleve);
+            statement.executeUpdate();
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
 
 
