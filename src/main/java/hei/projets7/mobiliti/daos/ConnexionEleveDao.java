@@ -8,4 +8,8 @@ public interface ConnexionEleveDao {
 
     Eleve read(String login);
     List<Eleve> read();
+    String getPasswordByEmail(String email);
+    Eleve getEleve(String email);
+
+
 }

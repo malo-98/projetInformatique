@@ -4,6 +4,7 @@ import hei.projets7.mobiliti.daos.InscriptionEleveDao;
 import hei.projets7.mobiliti.daos.impl.ConnexionEleveDaoImpl;
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
+import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Eleve;
 import org.thymeleaf.expression.Strings;
 
@@ -80,7 +81,15 @@ public class EleveServices {
 
             //LOGGER.debug("Recuperation du user avec l'ID {}",user.getId());
             return eleve;
-
     }
+
+    public String getPasswordByEmail (String email) throws EleveNotFoundException {
+        //Récupération des informations de connexion par le mail
+        //LOGGER.debug("Recuperation du password du user avec l'email {}",user.getPassword());
+        Eleve eleve = getEleve(email);
+        return eleve.getPassword();
+    }
+
+
 
 }
