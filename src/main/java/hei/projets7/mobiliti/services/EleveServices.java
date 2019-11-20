@@ -89,13 +89,11 @@ public class EleveServices {
         return eleve.getPassword();
     }
 
-<<<<<<< HEAD
 
-=======
     public List<Eleve> deleteUser(String email){
         connexionEleveDao.deleteEleve(email);
         return inscriptionEleveDao.listEleve();
     }
->>>>>>> da257079a4e287a5561e9ef3ce42fd292a45350b
+
 
 }
