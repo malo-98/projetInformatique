@@ -51,6 +51,9 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
         return eleves;
     }
 
+<<<<<<< HEAD
+
+=======
     @Override
     public void modifyPassword(String email, String Password) {
         String sqlQuery="UPDATE eleve SET Mdp=? WHERE email=?;";
@@ -77,4 +80,5 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
             throw new RuntimeException(e);
         }
     }
+>>>>>>> da257079a4e287a5561e9ef3ce42fd292a45350b
 }
