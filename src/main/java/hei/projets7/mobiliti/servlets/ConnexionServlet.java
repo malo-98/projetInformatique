@@ -79,8 +79,8 @@ public class ConnexionServlet extends UtilsServlet {
                 req.getSession().setAttribute("utilisateurConnecte", email);
 
             }else{
-                //System.out.println("Probleme mot de passe");
-                LOGGER.info("Probleme de mot de mot de passe");
+                //System.out.println("Probleme mot de passe Argon");
+                LOGGER.info("Probleme mot de mot de passe Argon");
             }
 
         }else{
