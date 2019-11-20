@@ -84,14 +84,15 @@ public class EleveServices {
 
     public String getPasswordByEmail (String email) throws EleveNotFoundException {
         //Récupération des informations de connexion par le mail
-        //LOGGER.debug("Recuperation du password du user avec l'email {}",user.getPassword());
+        //LOGGER.info("Recuperation du password du user avec l'email {}",user.getPassword());
         Eleve eleve = getEleve(email);
         return eleve.getPassword();
     }
 
-    public List<Eleve> deleteUser(String email){
-        connexionEleveDao.deleteEleve(email);
-        return inscriptionEleveDao.listEleve();
+
+    public void deleteUser(String email){
+        Eleve eleve=connexionEleveDao.read(email);
+        connexionEleveDao.deleteEleve(eleve.getId_eleve());
     }
 
 

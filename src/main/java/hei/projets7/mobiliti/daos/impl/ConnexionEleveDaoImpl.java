@@ -1,6 +1,7 @@
 package hei.projets7.mobiliti.daos.impl;
 
 import hei.projets7.mobiliti.daos.ConnexionEleveDao;
+import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Eleve;
 
 import java.sql.Connection;
@@ -15,7 +16,6 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
     private static Eleve resultSetToEleve(ResultSet resultSet) throws SQLException {
         return new Eleve(resultSet.getInt("id_eleve"), resultSet.getString("Nom"),resultSet.getString("Prenom"), resultSet.getString("Email"), resultSet.getString("Mdp"),resultSet.getString("Domaine"));
     }
-
 
     public Eleve read(String email) {
         Eleve eleve = null;
@@ -51,23 +51,16 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
         return eleves;
     }
 
-    @Override
-    public String getPasswordByEmail(String email) {
-        return null;
-    }
+
+
 
     @Override
-    public Eleve getEleve(String email) {
-        return null;
-    }
-
-    @Override
-    public void modifyPassword(String email, String Password) {
-        String sqlQuery="UPDATE eleve SET Mdp=? WHERE email=?;";
+    public void modifyPassword(Integer id, String Password) {
+        String sqlQuery="UPDATE eleve SET Mdp=? WHERE id_eleve=?;";
         try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
             try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
                 statement.setString(1, Password);
-                statement.setString(2, email);
+                statement.setInt(2, id);
                 statement.executeUpdate();
             }
         }catch(SQLException e){
@@ -76,15 +69,17 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
     }
 
     @Override
-    public void deleteEleve(String email) {
+    public void deleteEleve(Integer id) {
         String query="DELETE FROM eleve where email=?";
         try {
             Connection connection = DataSourceProvider.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,email);
+            statement.setInt(1,id);
             statement.executeUpdate();
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 }
+
+

@@ -23,6 +23,8 @@ public class EleveServiceTest  {
 
     @Mock
     InscriptionEleveDaoImpl inscriptionEleveDao;
+
+    @Mock
     ConnexionEleveDaoImpl connexionEleveDao;
 
     @InjectMocks
@@ -101,6 +103,7 @@ public class EleveServiceTest  {
         Eleve e1= new Eleve(1,"testNom1","testPrenom1","testEmail1","testMdp1","testdomaine1");
         String newPassword= "newpassword";
 
+
         //WHEN
 
         //THEN
@@ -110,18 +113,14 @@ public class EleveServiceTest  {
     @Test
     public void shouldDeleteUser(){
         //GIVEN
-        List<Eleve> eleves = new ArrayList<Eleve>();
-        Eleve e1= new Eleve(1,"testNom1","testPrenom1","testDomaine1","testEmail1","testMdp1");
-        Eleve e2=new Eleve(2,"testNom2","testPrenom2","testDomaine2","testEmail2","testMdp2");
-        eleves.add(e1);
-        eleves.add(e2);
-        Mockito.when(connexionEleveDao.read(e2.getEmail())).thenReturn(e2);
+        Eleve e1= new Eleve(1,"testNom1","testPrenom1","testEmail1","testMdp1","testdomaine1");
+        Mockito.when(connexionEleveDao.read(e1.getEmail())).thenReturn(e1);
 
         //WHEN
-        eleveServices.deleteUser(e2.getEmail());
+        eleveServices.deleteUser(e1.getEmail());
 
         //THEN
-        Mockito.verify(connexionEleveDao,Mockito.times(1)).deleteEleve(e2.getEmail());
+        Mockito.verify(connexionEleveDao,Mockito.times(1)).deleteEleve(e1.getId_eleve());
 
     }
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration strict="true">
+	<appenders>
+		<appender type="Console" name="CONSOLE">
+			<layout type="PatternLayout"
+				pattern="%d{HH:mm:ss.SSS}|[%t]|%-5level|%logger{36}|%msg%n" />
+		</appender>
+	</appenders>
+	<loggers>
+		<root level="debug">
+			<appenderRef ref="CONSOLE" />
+		</root>
+	</loggers>
+</configuration>

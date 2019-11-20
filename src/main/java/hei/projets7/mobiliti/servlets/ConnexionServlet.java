@@ -23,7 +23,7 @@ import org.apache.logging.log4j.Logger;
 @WebServlet("/connexion")
 public class ConnexionServlet extends UtilsServlet {
 
-    static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
     private EleveServices eleveServices = new EleveServices();
 
     @Override
@@ -66,12 +66,23 @@ public class ConnexionServlet extends UtilsServlet {
 
         Eleve newEleve = eleveServices.getEleve(email);
 
+        // CRYPTER MDP
+        String mdpArgon = MotDePasseUtils.genererMotDePasse(mdp);
+
+
         //COMPARE WITH BDD
         if(newEleve != null && newEleve.getEmail().equals(email) && eleveServices.checkPassword(email, mdp)){
 
-            //System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres");
-            LOGGER.info("J'ai " +email+ " et "+ mdp + " en paramètres");
-            req.getSession().setAttribute("utilisateurConnecte", email);
+            if(MotDePasseUtils.validerMotDePasse(mdp, mdpArgon)){
+                //System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres");
+                LOGGER.info("J'ai " +email+ " et "+ mdp + " en paramètres");
+                req.getSession().setAttribute("utilisateurConnecte", email);
+
+            }else{
+                //System.out.println("Probleme mot de passe Argon");
+                LOGGER.info("Probleme mot de mot de passe Argon");
+            }
+
         }else{
             //System.out.println("Identifiants inconnus");
             LOGGER.error("Identifiants inconnus");

@@ -1,15 +1,15 @@
 package hei.projets7.mobiliti.daos;
 
+import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Eleve;
 
 import java.util.List;
 
 public interface ConnexionEleveDao {
 
-    Eleve read(String login);
+    Eleve read(String email);
     List<Eleve> read();
-    String getPasswordByEmail(String email);
-    Eleve getEleve(String email);
-    void modifyPassword(String email, String Password);
-    void deleteEleve(String email);
+    void modifyPassword(Integer id, String Password);
+    void deleteEleve(Integer id);
+
 }
