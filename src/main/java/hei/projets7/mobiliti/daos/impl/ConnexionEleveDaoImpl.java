@@ -1,6 +1,7 @@
 package hei.projets7.mobiliti.daos.impl;
 
 import hei.projets7.mobiliti.daos.ConnexionEleveDao;
+import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Eleve;
 
 import java.sql.Connection;
@@ -15,7 +16,6 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
     private static Eleve resultSetToEleve(ResultSet resultSet) throws SQLException {
         return new Eleve(resultSet.getInt("id_eleve"), resultSet.getString("Nom"),resultSet.getString("Prenom"), resultSet.getString("Email"), resultSet.getString("Mdp"),resultSet.getString("Domaine"));
     }
-
 
     public Eleve read(String email) {
         Eleve eleve = null;
@@ -51,9 +51,50 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
         return eleves;
     }
 
-<<<<<<< HEAD
+    @Override
+    public String getPasswordByEmail(String email) throws EleveNotFoundException {
+        return null;
+    }
 
-=======
+    /*@Override
+    public String getPasswordByEmail(String email) {
+        Eleve eleve = null;
+        String query="SELECT Mdp FROM eleve WHERE Email=?";
+        try {
+            Connection connection = DataSourceProvider.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            ResultSet
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }*/
+
+    @Override
+    public Eleve getEleve(String email) throws EleveNotFoundException {
+        return null;
+    }
+
+    /*@Override
+    public Eleve getEleve(String email) {
+        String query="SELECT eleve FROM eleve WHERE Email=?";
+        try {
+            Connection connection = DataSourceProvider.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                eleve = resultSetToEleve(resultSet);
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }*/
+
+
     @Override
     public void modifyPassword(String email, String Password) {
         String sqlQuery="UPDATE eleve SET Mdp=? WHERE email=?;";
@@ -80,5 +121,7 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
             throw new RuntimeException(e);
         }
     }
->>>>>>> da257079a4e287a5561e9ef3ce42fd292a45350b
+
 }
+
+
