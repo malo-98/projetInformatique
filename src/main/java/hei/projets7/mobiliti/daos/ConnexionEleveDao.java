@@ -9,7 +9,7 @@ public interface ConnexionEleveDao {
 
     Eleve read(String email);
     List<Eleve> read();
-    void modifyPassword(String email, String Password);
+    void modifyPassword(Integer id, String Password);
     void deleteEleve(Integer id);
 
 }
