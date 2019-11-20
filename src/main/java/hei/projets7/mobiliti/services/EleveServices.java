@@ -77,7 +77,6 @@ public class EleveServices {
 
     public Eleve getEleve(String email) {
         Eleve eleve =connexionEleveDao.read(email);
-
             //LOGGER.debug("Recuperation du user avec l'ID {}",user.getId());
             return eleve;
     }
