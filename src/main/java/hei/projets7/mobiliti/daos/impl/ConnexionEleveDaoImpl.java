@@ -50,4 +50,18 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
         }
         return eleves;
     }
+
+    @Override
+    public void modifyPassword(Integer idEleve, String Password) {
+        String sqlQuery="UPDATE eleve SET Mdp=? WHERE id_eleve=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1, Password);
+                statement.setInt(2, idEleve);
+                statement.executeUpdate();
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
