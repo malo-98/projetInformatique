@@ -64,28 +64,25 @@ public class EleveServices {
         return inscriptionEleveDao.listEleve();
     }
 
-    public void modifyPassword(String email, String password){ connexionEleveDao.modifyPassword(email, password);
+    public void modifyPassword(String email, String password){
+        Eleve eleve =connexionEleveDao.read(email);
+        Integer id=eleve.getId_eleve();
+        connexionEleveDao.modifyPassword(id, password);
     }
 
 
     public boolean checkPassword(String email, String mdp) {
         //LOGGER.info("Vérification du mot de passe pour le user {}", login);
 
-        Eleve eleve = getEleve(email);
+        Eleve eleve = connexionEleveDao.read(email);
         return eleve.getPassword().equals(mdp);
     }
 
-    public Eleve getEleve(String email) {
-        Eleve eleve =connexionEleveDao.read(email);
-
-            //LOGGER.debug("Recuperation du user avec l'ID {}",user.getId());
-            return eleve;
-    }
 
     public String getPasswordByEmail (String email) throws EleveNotFoundException {
         //Récupération des informations de connexion par le mail
         //LOGGER.info("Recuperation du password du user avec l'email {}",user.getPassword());
-        Eleve eleve = getEleve(email);
+        Eleve eleve = connexionEleveDao.read(email);
         return eleve.getPassword();
     }
 
