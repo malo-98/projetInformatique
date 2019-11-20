@@ -93,9 +93,4 @@ public class EleveServices {
         connexionEleveDao.deleteEleve(email);
         return inscriptionEleveDao.listEleve();
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 4561af820c2925d257f8b336af00487ab728aea8
-
 }

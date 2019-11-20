@@ -52,61 +52,6 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
     }
 
     @Override
-<<<<<<< HEAD
-    public String getPasswordByEmail(String email) throws EleveNotFoundException {
-        return null;
-    }
-
-    /*@Override
-    public String getPasswordByEmail(String email) {
-        Eleve eleve = null;
-        String query="SELECT Mdp FROM eleve WHERE Email=?";
-        try {
-            Connection connection = DataSourceProvider.getConnection();
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, email);
-            ResultSet resultSet = statement.executeQuery();
-            ResultSet
-
-        }catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return null;
-    }*/
-
-    @Override
-    public Eleve getEleve(String email) throws EleveNotFoundException {
-        return null;
-    }
-
-    /*@Override
-    public Eleve getEleve(String email) {
-        String query="SELECT eleve FROM eleve WHERE Email=?";
-        try {
-            Connection connection = DataSourceProvider.getConnection();
-            PreparedStatement statement = connection.prepareStatement(query);
-            ResultSet resultSet = statement.executeQuery();
-            while(resultSet.next()){
-                eleve = resultSetToEleve(resultSet);
-            }
-        }catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return null;
-    }*/
-
-=======
-    public String getPasswordByEmail(String email) {
-        return null;
-    }
-
-    @Override
-    public Eleve getEleve(String email) {
-        return null;
-    }
->>>>>>> 4561af820c2925d257f8b336af00487ab728aea8
-
-    @Override
     public void modifyPassword(String email, String Password) {
         String sqlQuery="UPDATE eleve SET Mdp=? WHERE email=?;";
         try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
@@ -132,10 +77,9 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
             throw new RuntimeException(e);
         }
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 4561af820c2925d257f8b336af00487ab728aea8
 }
+
+
+
 
 
