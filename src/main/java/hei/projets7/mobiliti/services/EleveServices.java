@@ -89,8 +89,11 @@ public class EleveServices {
         return eleve.getPassword();
     }
 
-    public List<Eleve> deleteUser(String email){
-        connexionEleveDao.deleteEleve(email);
-        return inscriptionEleveDao.listEleve();
+
+    public void deleteUser(String email){
+        Eleve eleve=connexionEleveDao.read(email);
+        connexionEleveDao.deleteEleve(eleve.getId_eleve());
     }
+
+
 }

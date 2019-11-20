@@ -7,8 +7,9 @@ import java.util.List;
 
 public interface ConnexionEleveDao {
 
-    Eleve read(String login);
+    Eleve read(String email);
     List<Eleve> read();
-    void modifyPassword(String email, String Password);
-    void deleteEleve(String email);
+    void modifyPassword(Integer id, String Password);
+    void deleteEleve(Integer id);
+
 }
