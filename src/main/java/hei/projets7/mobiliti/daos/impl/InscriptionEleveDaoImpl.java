@@ -64,18 +64,7 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
         return eleves;
     }
 
-    @Override
-    public void deleteEleve(Integer idEleve) {
-        String query="DELETE FROM eleve where id_eleve=?";
-        try {
-            Connection connection = DataSourceProvider.getConnection();
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setLong(1,idEleve);
-            statement.executeUpdate();
-        }catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 
 
 

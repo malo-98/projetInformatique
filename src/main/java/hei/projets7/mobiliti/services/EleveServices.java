@@ -82,4 +82,9 @@ public class EleveServices {
 
     }
 
+    public List<Eleve> deleteUser(String email){
+        connexionEleveDao.deleteEleve(email);
+        return inscriptionEleveDao.listEleve();
+    }
+
 }

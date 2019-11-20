@@ -8,7 +8,6 @@ import java.util.List;
 public interface InscriptionEleveDao {
 
     Eleve addEleve(Eleve eleve);
-
     List<Eleve> listEleve();
-    void deleteEleve(Integer idEleve);
+
 }
