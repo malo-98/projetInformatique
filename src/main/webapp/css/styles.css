@@ -36,30 +36,67 @@ caption {
 
 .navbar {
     padding: 0;
-    margin: 0;
-    display: inline-flex;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em;
     color : #fbfbf2;
     position: relative;
     background-color: #29335c;
-    width: 100%;
 }
 
 .navbar a {
-    display: inline-block;
+    display:inline-flex;
     color: #fbfbf2;
     margin: 0 5em;
     text-decoration: none;
 }
 
 .navbar li {
-    display: inline;
+    display: inline-flex;
     list-style: none;
 }
 
 /*Fin du CSS général*/
 /*2. CSS de liste */
+
+/*Liste correction*/
+#list{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#list li{
+    position: relative;
+    width: 90%;
+    height: 10rem;
+    margin: 0.5em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #29335c;
+    color: #fbfbf2;
+}
+
+#list li h2,
+#list li p,
+#list li span{
+    margin-left: 11rem;
+}
+
+#list li img {
+    position: absolute;
+    top: 0;
+    left: 0.5rem;
+    height: 10rem;
+}
+
+/*fin correction */
 
 #banniere{
     padding-bottom: 20%;
@@ -93,58 +130,9 @@ a.bouton1 {
 a.bouton1:hover {
     background: #29335c;
 }
-#univ-liste {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-#univ-liste li h3{
-    margin-left: 10%;
-}
-
-#univ-liste li hr {
-    color: #fbfbf2;
-    width :60%;
-    margin-left: 15%;
-    bottom: 20%;
-
-}
-
-#univ-liste li p {
-    width :70%;
-    margin-left: 5%;
-}
-
-
-#univ-liste li {
-    position: relative;
-    width: 90%;
-    height: 10rem;
-    margin: 0.5em 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #29335c;
-    color: #fbfbf2;
-}
-
-#LOGO_HEI{
-    position: relative;
-    bottom: 25%;
-    left: 80%;
-}
 
 .ajout_destination{
     text-align: center;
-}
-
-#STAR1 {
-    position: relative;
-    bottom: 75%;
-    left: 90%;
 }
 
 .tableform tr {
