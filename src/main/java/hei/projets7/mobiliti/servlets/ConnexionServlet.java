@@ -23,14 +23,15 @@ import org.apache.logging.log4j.Logger;
 @WebServlet("/connexion")
 public class ConnexionServlet extends UtilsServlet {
 
-    static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
     private EleveServices eleveServices = new EleveServices();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        String utilisateurConnecte = (String) req.getSession().getAttribute("utilisateurConnecte");
 
-        System.out.println("J'ai récupéré " + utilisateurConnecte + " dans la session");
+        //System.out.println("J'ai récupéré " + utilisateurConnecte + " dans la session");
+        LOGGER.info("J'ai récupéré " + utilisateurConnecte + " dans la session");
 
         WebContext context = new WebContext(req, resp, req.getServletContext());
         List<Eleve> listOfEleve = EleveServices.getInstance().listEleve();
@@ -65,15 +66,26 @@ public class ConnexionServlet extends UtilsServlet {
 
         Eleve newEleve = eleveServices.getEleve(email);
 
+        // CRYPTER MDP
+        String mdpArgon = MotDePasseUtils.genererMotDePasse(mdp);
+
+
         //COMPARE WITH BDD
         if(newEleve != null && newEleve.getEmail().equals(email) && eleveServices.checkPassword(email, mdp)){
 
-            //System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres");
-            LOGGER.info("J'ai " +email+ " et "+ mdp + " en paramètres");
-            req.getSession().setAttribute("utilisateurConnecte", email);
+            if(MotDePasseUtils.validerMotDePasse(mdp, mdpArgon)){
+                //System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres");
+                LOGGER.info("J'ai " +email+ " et "+ mdp + " en paramètres");
+                req.getSession().setAttribute("utilisateurConnecte", email);
+
+            }else{
+                //System.out.println("Probleme mot de passe");
+                LOGGER.info("Probleme de mot de mot de passe");
+            }
+
         }else{
             //System.out.println("Identifiants inconnus");
-            LOGGER.info("Identifiants inconnus");
+            LOGGER.error("Identifiants inconnus");
         }
 
         resp.sendRedirect("connexion");

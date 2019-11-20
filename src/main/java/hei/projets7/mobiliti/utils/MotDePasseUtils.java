@@ -23,9 +23,12 @@ public class MotDePasseUtils {
         return instancierArgon2().verify(hashCorrect, motDePasse);
     }
 
+    /*
     public static void main(String[] args) {
         System.out.println(String.format("Le mot de passe chiffré de eleve est : %s",
-                MotDePasseUtils.genererMotDePasse("1234")));
+                MotDePasseUtils.genererMotDePasse("test")));
     }
+
+     */
 
 }

@@ -16,6 +16,6 @@ public class FavorisServlet extends UtilsServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-        templateEngine.process("Favoris", context, resp.getWriter());
+        templateEngine.process("prive/Favoris", context, resp.getWriter());
     }
 }
