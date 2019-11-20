@@ -1,5 +1,6 @@
 package hei.projets7.mobiliti.servlets;
 
+import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.DestinationServices;
@@ -64,28 +65,37 @@ public class ConnexionServlet extends UtilsServlet {
 
         // CREATE ELEVE
 
-        Eleve newEleve = eleveServices.getEleve(email);
+        Eleve newEleve = null;
+        try {
+            newEleve = eleveServices.getEleve(email);
+        } catch (EleveNotFoundException e) {
+            e.printStackTrace();
+        }
 
         // CRYPTER MDP
         String mdpArgon = MotDePasseUtils.genererMotDePasse(mdp);
 
 
         //COMPARE WITH BDD
-        if(newEleve != null && newEleve.getEmail().equals(email) && eleveServices.checkPassword(email, mdp)){
+        try {
+            if(newEleve != null && newEleve.getEmail().equals(email) && eleveServices.checkPassword(email, mdp)){
 
-            if(MotDePasseUtils.validerMotDePasse(mdp, mdpArgon)){
-                //System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres");
-                LOGGER.info("J'ai " +email+ " et "+ mdp + " en paramètres");
-                req.getSession().setAttribute("utilisateurConnecte", email);
+                if(MotDePasseUtils.validerMotDePasse(mdp, mdpArgon)){
+                    //System.out.println("J'ai " +email+ " et "+ mdp + " en paramètres");
+                    LOGGER.info("J'ai " +email+ " et "+ mdp + " en paramètres");
+                    req.getSession().setAttribute("utilisateurConnecte", email);
+
+                }else{
+                    //System.out.println("Probleme mot de passe Argon");
+                    LOGGER.info("Probleme mot de mot de passe Argon");
+                }
 
             }else{
-                //System.out.println("Probleme mot de passe Argon");
-                LOGGER.info("Probleme mot de mot de passe Argon");
+                //System.out.println("Identifiants inconnus");
+                LOGGER.error("Identifiants inconnus");
             }
-
-        }else{
-            //System.out.println("Identifiants inconnus");
-            LOGGER.error("Identifiants inconnus");
+        } catch (EleveNotFoundException e) {
+            e.printStackTrace();
         }
 
         resp.sendRedirect("accueil");

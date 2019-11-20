@@ -5,26 +5,53 @@ import hei.projets7.mobiliti.daos.impl.ConnexionEleveDaoImpl;
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
+import hei.projets7.mobiliti.exception.PasswordIllegalFormatException;
 import hei.projets7.mobiliti.pojos.Eleve;
 import org.thymeleaf.expression.Strings;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 
 public class EleveServices {
 
+    private InscriptionEleveDao inscriptionEleveDao = new InscriptionEleveDaoImpl();
+    private ConnexionEleveDaoImpl connexionEleveDao = new ConnexionEleveDaoImpl();
 
     private static class EleveLibraryHolder {
         private final static EleveServices instance = new EleveServices();
     }
 
+
     public static EleveServices getInstance() {
         return EleveLibraryHolder.instance;
     }
 
-    private InscriptionEleveDao inscriptionEleveDao = new InscriptionEleveDaoImpl();
-    private ConnexionEleveDaoImpl connexionEleveDao = new ConnexionEleveDaoImpl();
+
+    public Eleve getEleve(String email) throws EleveNotFoundException {
+        Eleve eleve =connexionEleveDao.read(email);
+        if (eleve!=null){
+            return eleve;
+        }
+        throw new EleveNotFoundException(email);
+    }
+
+
+    public List<Eleve> listEleve() {
+        return inscriptionEleveDao.listEleve();
+    }
+
+
+    public void modifyPassword(String email, String password) throws EleveNotFoundException, PasswordIllegalFormatException {
+        Eleve eleve = getEleve(email);
+        Integer id=eleve.getId_eleve();
+        if (eleve.getPassword()==null || " ".equals(eleve.getPassword())){
+            throw new PasswordIllegalFormatException();
+        }
+        connexionEleveDao.modifyPassword(id, password);
+    }
+
 
     public Eleve addEleve(Eleve eleve) throws EleveAlreadyExistException {
 
@@ -60,39 +87,25 @@ public class EleveServices {
         return inscriptionEleveDao.addEleve(eleve);
     }
 
-    public List<Eleve> listEleve() {
-        return inscriptionEleveDao.listEleve();
-    }
 
-    public void modifyPassword(String email, String password){
-        Eleve eleve =connexionEleveDao.read(email);
-        Integer id=eleve.getId_eleve();
-        connexionEleveDao.modifyPassword(id, password);
-    }
-
-
-    public boolean checkPassword(String email, String mdp) {
+    public boolean checkPassword(String email, String mdp) throws EleveNotFoundException {
         //LOGGER.info("Vérification du mot de passe pour le user {}", login);
 
-        Eleve eleve = connexionEleveDao.read(email);
+        Eleve eleve = getEleve(email);
         return eleve.getPassword().equals(mdp);
     }
 
 
-    public Eleve getEleve(String email){
-        return connexionEleveDao.read(email);
-    }
-
     public String getPasswordByEmail (String email) throws EleveNotFoundException {
         //Récupération des informations de connexion par le mail
         //LOGGER.info("Recuperation du password du user avec l'email {}",user.getPassword());
-        Eleve eleve = connexionEleveDao.read(email);
+        Eleve eleve = getEleve(email);
         return eleve.getPassword();
     }
 
 
-    public void deleteUser(String email){
-        Eleve eleve=connexionEleveDao.read(email);
+    public void deleteUser(String email) throws EleveNotFoundException {
+        Eleve eleve=getEleve(email);
         connexionEleveDao.deleteEleve(eleve.getId_eleve());
     }
 
