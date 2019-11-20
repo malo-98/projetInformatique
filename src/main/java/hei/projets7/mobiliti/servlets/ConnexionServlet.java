@@ -30,7 +30,8 @@ public class ConnexionServlet extends UtilsServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        String utilisateurConnecte = (String) req.getSession().getAttribute("utilisateurConnecte");
 
-        System.out.println("J'ai récupéré " + utilisateurConnecte + " dans la session");
+        //System.out.println("J'ai récupéré " + utilisateurConnecte + " dans la session");
+        LOGGER.info("J'ai récupéré " + utilisateurConnecte + " dans la session");
 
         WebContext context = new WebContext(req, resp, req.getServletContext());
         List<Eleve> listOfEleve = EleveServices.getInstance().listEleve();
@@ -73,7 +74,7 @@ public class ConnexionServlet extends UtilsServlet {
             req.getSession().setAttribute("utilisateurConnecte", email);
         }else{
             //System.out.println("Identifiants inconnus");
-            LOGGER.info("Identifiants inconnus");
+            LOGGER.error("Identifiants inconnus");
         }
 
         resp.sendRedirect("connexion");

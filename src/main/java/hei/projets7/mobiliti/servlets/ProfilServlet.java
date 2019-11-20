@@ -18,6 +18,6 @@ public class ProfilServlet extends UtilsServlet {
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
-        templateEngine.process("Profil", context, resp.getWriter());
+        templateEngine.process("prive/Profil", context, resp.getWriter());
     }
 }
