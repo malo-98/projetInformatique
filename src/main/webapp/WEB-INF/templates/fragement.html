@@ -59,6 +59,13 @@
     </a>
 </div>
 
+    <div class="connecte" th:each="eleve:${eleveList}" th:fragment="connecté">
+        <h2 th:text="${eleve.prenom}">prenom</h2>
+    </div>
+
+
+
+
 
 </body>
 </html>

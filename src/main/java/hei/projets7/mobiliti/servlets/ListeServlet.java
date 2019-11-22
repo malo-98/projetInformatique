@@ -1,8 +1,11 @@
 package hei.projets7.mobiliti.servlets;
 
 import hei.projets7.mobiliti.exception.DestinationAlreadyExistException;
+import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Destination;
+import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.DestinationServices;
+import hei.projets7.mobiliti.services.EleveServices;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -24,6 +27,11 @@ public class ListeServlet extends UtilsServlet {
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         templateEngine.process("Liste", context, resp.getWriter());
+
+        List<Eleve> listOfEleve = EleveServices.getInstance().listEleve();
+        context.setVariable("eleveList",listOfEleve);
+
+        templateEngine.process("Liste", context, resp.getWriter());
     }
 
     @Override
@@ -36,11 +44,25 @@ public class ListeServlet extends UtilsServlet {
         String domaine = req.getParameter("domaine");
         Integer nbre=Integer.parseInt(req.getParameter("nombre"));
 
+        //GET ELEVE PARAMETERS
+        String Nom = req.getParameter("Nom");
+        String Prenom = req.getParameter("Prenom");
+        String Domaine = req.getParameter("Domaine");
+        String Email = req.getParameter("Email");
+        String Mdp = req.getParameter("Mdp");
+
         //CREATE DESTINATION
         Destination newDestination=new Destination(null, name, ville, pays, desc, domaine, nbre);
         try {
             Destination createdDestination=DestinationServices.getInstance().addDestination(newDestination);
         } catch (DestinationAlreadyExistException e) {
+            e.printStackTrace();
+        }
+        //CREATE ELEVE
+        Eleve newEleve=new Eleve(null, Nom, Prenom, Domaine, Email, Mdp);
+        try {
+            Eleve createdEleve=EleveServices.getInstance().addEleve(newEleve);
+        } catch (EleveAlreadyExistException e) {
             e.printStackTrace();
         }
 
