@@ -17,13 +17,13 @@
         <h1>Profil</h1>
         <section class="profilinfo">
             <p class="elementform">Nom :</p>
-            <p>Jourdan</p>
+            <p th:text="${eleveConnecte.nom}">Jourdan</p>
             <p class="elementform">Prénom :</p>
-            <p>Paul</p>
+            <p th:text="${eleveConnecte.prenom}">Paul</p>
             <p class="elementform">Domaine :</p>
-            <p>ITI</p>
+            <p th:text="${eleveConnecte.domaine}">ITI</p>
             <p class="elementform">Mail :</p>
-            <p>paul.jourdan@hotmail.fr</p>
+            <p th:text="${eleveConnecte.email}">paul.jourdan@hotmail.fr</p>
             <p class="elementform">Mot de passe :</p>
             <p>......</p>
         </section>

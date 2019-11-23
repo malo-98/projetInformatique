@@ -67,6 +67,12 @@ caption {
 }
 
 /*Fin du CSS général*/
+
+/*Utilisateur*/
+#utilisateur{
+    text-align: center;
+    color: #29335c;
+}
 /*2. CSS de liste */
 
 /*Liste correction*/

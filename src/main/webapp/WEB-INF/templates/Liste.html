@@ -3,16 +3,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Liste</title>
+    <title>Mobiliti</title>
     <META charset="utf-8">
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="tetepage">
     <div class="titre" th:insert="~{fragement::titre}"></div>
-    <div class="connecte" th:insert="~{fragement::connecté}"></div>
-    </div>
     <!-- ************** Barre de menu ************** -->
     <nav th:insert="~{fragement::menu}"></nav>
 
@@ -26,6 +23,9 @@
     <h2 id="titre_listuniv">Liste des universités partenaires</h2>
     </br>
 
+    <div id="utilisateur">
+        <h2>Bienvenue Monsieur <bold th:text="${eleveConnecte.nom}">Malo</bold></h2>
+    </div>
 
     <ul id="list">
         <li th:each="destination:${destinationList}">
@@ -105,7 +105,7 @@
     <!-- ************** Pied de page ************** -->
     <FOOTER th:insert="~{fragement::pied}"></FOOTER>
 
-</BODY>
+</body>
 
 
  

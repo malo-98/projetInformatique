@@ -2,10 +2,13 @@ package hei.projets7.mobiliti.servlets;
 
 import hei.projets7.mobiliti.exception.DestinationAlreadyExistException;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
+import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.DestinationServices;
 import hei.projets7.mobiliti.services.EleveServices;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -18,20 +21,29 @@ import java.util.List;
 
 @WebServlet("/accueil")
 public class ListeServlet extends UtilsServlet {
+    private static final Logger LOGGER = LogManager.getLogger();
+    private EleveServices eleveServices=new EleveServices();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
+
+        LOGGER.info("J'ai récupéré " + utilisateurConnecte + " dans la session");
+
         WebContext context = new WebContext(req, resp, req.getServletContext());
         List<Destination> listOfDestination = DestinationServices.getInstance().destinationList();
         context.setVariable("destinationList",listOfDestination);
+        Eleve eleve= null;
+        try {
+            eleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
+        } catch (EleveNotFoundException e) {
+            e.printStackTrace();
+        }
+        context.setVariable("eleveConnecte",eleve);
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         templateEngine.process("Liste", context, resp.getWriter());
 
-        List<Eleve> listOfEleve = EleveServices.getInstance().listEleve();
-        context.setVariable("eleveList",listOfEleve);
-
-        templateEngine.process("Liste", context, resp.getWriter());
     }
 
     @Override
@@ -44,25 +56,12 @@ public class ListeServlet extends UtilsServlet {
         String domaine = req.getParameter("domaine");
         Integer nbre=Integer.parseInt(req.getParameter("nombre"));
 
-        //GET ELEVE PARAMETERS
-        String Nom = req.getParameter("Nom");
-        String Prenom = req.getParameter("Prenom");
-        String Domaine = req.getParameter("Domaine");
-        String Email = req.getParameter("Email");
-        String Mdp = req.getParameter("Mdp");
 
         //CREATE DESTINATION
         Destination newDestination=new Destination(null, name, ville, pays, desc, domaine, nbre);
         try {
             Destination createdDestination=DestinationServices.getInstance().addDestination(newDestination);
         } catch (DestinationAlreadyExistException e) {
-            e.printStackTrace();
-        }
-        //CREATE ELEVE
-        Eleve newEleve=new Eleve(null, Nom, Prenom, Domaine, Email, Mdp);
-        try {
-            Eleve createdEleve=EleveServices.getInstance().addEleve(newEleve);
-        } catch (EleveAlreadyExistException e) {
             e.printStackTrace();
         }
 
