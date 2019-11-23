@@ -14,8 +14,8 @@
 
     <!-- ************** Corps de la page ************** -->
     <div class="profilpage">
-        <h1>Profil</h1>
-        <section class="profilinfo">
+        <h1 th:unless="${eleveConnecte==null}">Profil</h1>
+        <section th:unless="${ eleveConnecte==null}" class="profilinfo">
             <p class="elementform">Nom :</p>
             <p th:text="${eleveConnecte.nom}">Jourdan</p>
             <p class="elementform">Prénom :</p>
@@ -26,11 +26,15 @@
             <p th:text="${eleveConnecte.email}">paul.jourdan@hotmail.fr</p>
             <p class="elementform">Mot de passe :</p>
             <p>......</p>
+            <div class="photoprofil">
+                <p>Photo :</p>
+                <img src="images/Paul.JPG" width="150" height="150" alt="Photo Paul"/>
+            </div>
         </section>
-        <div class="photoprofil">
-            <p>Photo :</p>
-            <img src="images/Paul.JPG" width="150" height="150" alt="Photo Paul"/>
-        </div>
+        <section th:if="${eleveConnecte==null}">
+            <p>Vous n'êtes pas connecté :</p>
+            <a href="connexion" class="bouton1">Se connecter</a>
+        </section>
     </div>
 
 

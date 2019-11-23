@@ -28,9 +28,14 @@
                 <SPAN>Profil</SPAN>
             </A>
         </LI>
-        <LI>
+        <LI th:if="${eleveConnecte==null}">
             <A title="Connexion" href="connexion" class="bouton" target="_top">
                 <SPAN>Connexion</SPAN>
+            </A>
+        </LI>
+        <LI th:unless="${eleveConnecte==null}">
+            <A title="Deconnexion" href="deconnexion" class="bouton" target="_top">
+                <SPAN>Deconnexion</SPAN>
             </A>
         </LI>
     </UL>

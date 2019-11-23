@@ -23,7 +23,7 @@
     <h2 id="titre_listuniv">Liste des universités partenaires</h2>
     </br>
 
-    <div id="utilisateur">
+    <div th:unless="${eleveConnecte==null}" id="utilisateur">
         <h2>Bienvenue Monsieur <bold th:text="${eleveConnecte.nom}">Malo</bold></h2>
     </div>
 
