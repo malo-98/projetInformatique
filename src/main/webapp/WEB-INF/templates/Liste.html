@@ -27,6 +27,55 @@
         <h2>Bienvenue Monsieur <bold th:text="${eleveConnecte.nom}">Malo</bold></h2>
     </div>
 
+    <div id="searchbar">
+        <h1>Rechercher une destination</h1>
+        <script type="text/javascript">
+            function FindNext () {
+                var str = document.getElementById ("findField").value;
+                if (str == "") {
+                    alert ("Please enter some text to search!");
+                    return;
+                }
+
+                var supported = false;
+                var found = false;
+                if (window.find) {
+                    supported = true;
+                    found = window.find (str);
+                }
+                else {
+                    if (document.selection && document.selection.createRange) {
+                        var textRange = document.selection.createRange ();
+                        if (textRange.findText) {
+                            supported = true;
+                            if (textRange.text.length > 0) {
+                                textRange.collapse (true);
+                                textRange.move ("character", 1);
+                            }
+                            found = textRange.findText (str);
+                            if (found) {
+                                textRange.select ();
+                            }
+                        }
+                    }
+                }
+
+                if (supported) {
+                    if (!found) {
+                        alert ("La recherche suivante n'a pas été trouvé:\n" + str);
+                    }
+                }
+                else {
+                    alert ("Votre navigateur ne peut pas effectuer cette recherche !");
+                }
+            }
+        </script>
+
+        <input type="text" id="findField" value="recherche" size="20" />
+        <button onclick="FindNext ();">Rechercher</button>
+    </div>
+
+
     <ul id="list">
         <li th:each="destination:${destinationList}">
             <h2><bold th:text="${destination.city}">Laval</bold> - <bold th:text="${destination.country}">Canada</bold> - <bold th:text="${destination.domaine}">ITI</bold></h2>
