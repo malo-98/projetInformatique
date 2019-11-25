@@ -16,7 +16,7 @@
 
     <!-- ************** Corps de la page ************** -->
     <div id="login">
-        <form id="form_list" method="post" ><!--onsubmit="return verif_identifiants()"-->
+        <form id="form_list" method="post" onsubmit="return verif_identifiants()">
             <h1>Connexion</h1>
             <label><b>Email</b></label>
             <input type="text" placeholder="Entrer votre email" name="email" required>
@@ -34,26 +34,32 @@
         </p>
     </div>
 
-    <!--
+<!--
     <script language="javascript">
 
-        function verif_identifiants(champ){
-            if(champ==null){
+        let email_entre = document.forms["flog"].elements["email"].value;
+        let mdp_entre=document.forms["flog"].elements["mdp"].value;
 
-                var erreur = "Vous n'avez pas renseigné d'identifiant";
-                return false;
-            }
 
-            else if(champ){
+        function verif_identifiants(email_entre,mdp_entre){
 
-                var erreur = "Votre pseudo fait plus de 25 caractères.";
-                return false;
+            email = document.getElementById("email");
+            mdp = document.getElementById("mdp");
+
+            if(email !== email_entre || mdp !== mdp_entre){
+
+                alert("Identifiants inconnus");
+
             }
 
          }
 
+
     </script>
+
     -->
+
+
 
     <!-- ************** Pied de page ************** -->
     <FOOTER th:insert="~{fragement::pied}"></FOOTER>
