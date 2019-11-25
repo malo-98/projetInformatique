@@ -75,6 +75,15 @@ caption {
 }
 /*2. CSS de liste */
 
+/*Searchbar*/
+
+#searchbar h1{
+    margin-bottom: 2%;
+}
+
+
+
+
 /*Liste correction*/
 #list{
     list-style-type: none;
