@@ -18,12 +18,12 @@
                 <SPAN>Map</SPAN>
             </A>
         </LI>
-        <LI>
+        <LI th:if="${eleveConnecte!=null}">
             <A title="Favoris" href="favoris" class="bouton" target="_top">
                 <SPAN>Favoris</SPAN>
             </A>
         </LI>
-        <LI>
+        <LI th:if="${eleveConnecte!=null}">
             <A title="Profil" href="profil" class="bouton" target="_top">
                 <SPAN>Profil</SPAN>
             </A>
