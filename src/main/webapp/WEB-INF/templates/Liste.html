@@ -39,24 +39,19 @@
 
                 var supported = false;
                 var found = false;
-                if (window.find) {        // Firefox, Google Chrome, Safari
+                if (window.find) {
                     supported = true;
-                    // if some content is selected, the start position of the search
-                    // will be the end position of the selection
                     found = window.find (str);
                 }
                 else {
-                    if (document.selection && document.selection.createRange) { // Internet Explorer, Opera before version 10.5
+                    if (document.selection && document.selection.createRange) {
                         var textRange = document.selection.createRange ();
-                        if (textRange.findText) {   // Internet Explorer
+                        if (textRange.findText) {
                             supported = true;
-                            // if some content is selected, the start position of the search
-                            // will be the position after the start position of the selection
                             if (textRange.text.length > 0) {
                                 textRange.collapse (true);
                                 textRange.move ("character", 1);
                             }
-
                             found = textRange.findText (str);
                             if (found) {
                                 textRange.select ();
@@ -67,11 +62,11 @@
 
                 if (supported) {
                     if (!found) {
-                        alert ("The following text was not found:\n" + str);
+                        alert ("La recherche suivante n'a pas été trouvé:\n" + str);
                     }
                 }
                 else {
-                    alert ("Your browser does not support this example!");
+                    alert ("Votre navigateur ne peut pas effectuer cette recherche !");
                 }
             }
         </script>

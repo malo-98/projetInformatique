@@ -248,6 +248,34 @@ a.bouton1:hover {
     background-color: #fbfbf2;
     color: black;
 }
+
+/*Connexion CSS*/
+
+#login h1 {
+    margin-bottom: 5%;
+}
+
+#login label {
+    background-color: #29335c;
+    color: #fbfbf2;
+    margin: 2%;
+    width: 5%;
+    padding: 0.5%;
+}
+
+#submit {margin-top: 2%;}
+
+#sign_in {
+    text-align: center;
+    margin-bottom: 5%;
+    font-size: 1em;
+    margin-top: 5%;
+}
+
+#sign_in a {
+    margin: 3%;
+}
+
 /*LAST. CSS du footer*/
 .footerbis {
     color: #29335c;
