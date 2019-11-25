@@ -21,7 +21,7 @@ public class AuthentificationFilter implements Filter {
         if (email == null || "".equals(email)) {
             System.out.println("Il faut être connecté pour accéder à cette page !");
             HttpServletResponse httpResponse = (HttpServletResponse) response;
-            httpResponse.sendRedirect("/connexion");
+            httpResponse.sendRedirect("connexion");
 
         }
         chain.doFilter(request, response);
