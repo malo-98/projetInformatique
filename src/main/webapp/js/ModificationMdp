@@ -1,0 +1,24 @@
+function validate() {
+
+    var a = document.getElementById("NouveauMdp").value;
+    var b = document.getElementById("MdpVerification").value;
+    var isSame=false;
+
+    if (a!=b) {
+        alert("Les mots de passe ne correspondent pas.");
+        var isSame=false;
+        return false; }
+    else {
+        alert("Les mots de passe correspondent.");
+        var isSame=true;
+        return true; }
+
+    if (isSame)
+    {
+        document.getElementById('submit').disabled='';
+    } else {
+        document.getElementById('submit').disabled='disabled';
+    }
+};
+
+

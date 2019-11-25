@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script type="application/javascript">
+    function validate() {
+
+        var a = document.getElementById("NouveauMdp").value;
+        var b = document.getElementById("MdpVerification").value;
+        var isSame=false;
+
+        if (a!=b) {
+            var isSame=false;
+             }
+        else {
+            var isSame=true;
+             }
+
+        if (isSame)
+        {
+            document.getElementById('submit').disabled='';
+        } else {
+            document.getElementById('submit').disabled='disabled';
+        }
+    };
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ModificationMdp</title>
+</head>
+<body>
+<div class="titre" th:insert="~{fragement::titre}"></div>
+<nav th:insert="~{fragement::menu}"></nav>
+    <form method="post">
+        <div>
+            <label for="NouveauMdp"><p class="formulaire-text">Nouveau mot de pase :</p></label>
+            <input class="input" type="password" id="NouveauMdp" name="NouveauMdp" required>
+        </div>
+        <div>
+            <label for="MdpVerification"><p class="formulaire-text">ressaisissez votre nouveau mot de passe :</p></label>
+            <input class="input" type="password" id="MdpVerification" name="MdpVerification" required onkeyup="validate()">
+        </div>
+        <div>
+            <input class="input form-button" type="submit" id='submit' value='ModificationMdp' disabled="disabled">
+        </div>
+    </form>
+<FOOTER th:insert="~{fragement::pied}"></FOOTER>
+</body>
+</html>

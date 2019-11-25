@@ -46,9 +46,11 @@ public class EleveServices {
     public void modifyPassword(String email, String password) throws EleveNotFoundException, PasswordIllegalFormatException {
         Eleve eleve = getEleve(email);
         Integer id=eleve.getId_eleve();
-        if (eleve.getPassword()==null || " ".equals(eleve.getPassword())){
+        if (password==null || " ".equals(password)){
             throw new PasswordIllegalFormatException();
         }
+
+
         connexionEleveDao.modifyPassword(id, password);
     }
 
