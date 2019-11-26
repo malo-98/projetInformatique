@@ -21,5 +21,22 @@ public class Favoris {
         this.id_eleve=id_eleve;
     }
 
+    public int getId(){return this.id;}
+
+    public String getName(){return this.name;}
+
+    public String getCity(){return this.city;}
+
+    public String getCountry(){return this.country;}
+
+    public String getDomaine(){return this.domaine;}
+
+    public String getDescription(){return this.description;}
+
+    public int getPlace(){return this.nbre_place;}
+
+    public int getIdEleve(){return  this.id_eleve;}
+
+    public void setId(int id) {this.id=id;}
 
 }
