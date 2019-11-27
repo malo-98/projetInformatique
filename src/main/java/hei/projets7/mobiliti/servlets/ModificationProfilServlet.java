@@ -16,9 +16,20 @@ import java.io.IOException;
 @WebServlet("/modification")
 public class ModificationProfilServlet extends UtilsServlet {
 
+    private EleveServices eleveServices = new EleveServices();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
         WebContext context = new WebContext(req, resp, req.getServletContext());
+
+        Eleve eleve= null;
+        try {
+            eleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
+        } catch (EleveNotFoundException e) {
+            e.printStackTrace();
+        }
+        context.setVariable("eleveConnecte",eleve);
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
