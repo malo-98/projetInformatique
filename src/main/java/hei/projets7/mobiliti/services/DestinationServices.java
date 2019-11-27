@@ -1,7 +1,9 @@
 package hei.projets7.mobiliti.services;
 
+import hei.projets7.mobiliti.daos.DestinationDao;
 import hei.projets7.mobiliti.daos.impl.DestinationDaoImpl;
 import hei.projets7.mobiliti.exception.DestinationAlreadyExistException;
+import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Destination;
 
@@ -54,6 +56,14 @@ public class DestinationServices {
 
 
     public void deleteDestination(Integer id){destinationDao.deleteDestinationByID(id);}
+
+    public Destination getDestination(Integer id) throws DestinationNotFoundException {
+        Destination destination = destinationDao.read(id);
+        if (destination!=null){
+            return destination;
+        }
+        throw new DestinationNotFoundException(id);
+    }
 
 }
 

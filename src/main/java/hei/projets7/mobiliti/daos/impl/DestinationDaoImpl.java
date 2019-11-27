@@ -9,6 +9,27 @@ import java.util.List;
 
 public class DestinationDaoImpl implements DestinationDao {
 
+    private static Destination resultSetToDestination(ResultSet resultSet) throws SQLException {
+        return new Destination(resultSet.getInt("id_destination"), resultSet.getString("Nom"),resultSet.getString("Ville"), resultSet.getString("Pays"), resultSet.getString("Description"),resultSet.getString("Domaine"), resultSet.getInt("Nombre_de_place"));
+    }
+
+    public Destination read(Integer id) {
+        Destination destination = null;
+        String query="SELECT id_destination, Nom, Ville, Pays, Description, Domaine, Nombre_de_place FROM destination WHERE id_destination=?";
+        try {
+            Connection connection = DataSourceProvider.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                destination = resultSetToDestination(resultSet);
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return destination;
+    }
+
     public List<Destination> listDestinations(){
         List<Destination> destinations=new ArrayList<>();
         try (Connection connection=DataSourceProvider.getDataSource().getConnection()){
