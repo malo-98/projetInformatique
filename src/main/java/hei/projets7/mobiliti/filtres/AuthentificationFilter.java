@@ -28,7 +28,7 @@ public class AuthentificationFilter implements Filter {
                 //httpResponse.sendRedirect("connexion");
            }
            else{
-               httpResponse.sendRedirect("connexion");
+               httpResponse.sendRedirect(httpRequest.getContextPath()+"/connexion");
            }
 
         }
