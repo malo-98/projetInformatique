@@ -29,6 +29,6 @@ public class DestinationServlet extends UtilsServlet {
             e.printStackTrace();
         }
 
-        templateEngine.process("destination", webContext, resp.getWriter());
+        templateEngine.process("Destination", webContext, resp.getWriter());
     }
 }

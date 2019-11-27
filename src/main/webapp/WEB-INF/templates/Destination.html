@@ -17,12 +17,20 @@
 
     <!-- ************** Corps de la page ************** -->
     <p>Inofrmations sur l'université</p>
-    <div id="id_destination">id : </div>
-    <div id="Nom"> Nom : </div>
-    <div id="Ville">Ville : </div>
-    <div id="Pays"> Pays : </div>
-    <div id="description">Description : </div>
-    <div id="nb_place"> Nb de place : </div>
+    <label id="id_destination">id : </label>
+    <p th:text="${destination.id}"></p>
+    <label id="nom">nom : </label>
+    <p th:text="${destination.name}"></p>
+    <label id="ville">Ville : </label>
+    <p th:text="${destination.city}"></p>
+    <label id="Pays">Pays : </label>
+    <p th:text="${destination.country}"></p>
+    <label id="description">description : </label>
+    <p th:text="${destination.description}"></p>
+    <label id="domaine">domaine : </label>
+    <p th:text="${destination.domaine}"></p>
+    <label id="nb_place">nb place : </label>
+    <p th:text="${destination.place}"></p>
 
 
     <!-- ************** Pied de page ************** -->
