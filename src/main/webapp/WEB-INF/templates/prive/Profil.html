@@ -6,6 +6,8 @@
     <title>Profil</title>
     <META charset="utf-8">
     <LINK href="css/styles.css" rel="stylesheet" type="text/css" >
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 </head>
     <div class="titre" th:insert="~{fragement::titre}"></div>
@@ -18,10 +20,13 @@
         <h1 th:unless="${eleveConnecte==null}">Profil</h1>
         <section th:unless="${ eleveConnecte==null}" class="profilinfo">
             <p class="elementform">Nom :</p>
+            <a href="modification" ><i class='fas fa-pen' style='font-size:24px'></i></a>
             <p th:text="${eleveConnecte.nom}">Jourdan</p>
             <p class="elementform">Prénom :</p>
+            <a href="modification" ><i class='fas fa-pen' style='font-size:24px'></i></a>
             <p th:text="${eleveConnecte.prenom}">Paul</p>
             <p class="elementform">Domaine :</p>
+            <a href="modification" ><i class='fas fa-pen' style='font-size:24px'></i></a>
             <p th:text="${eleveConnecte.domaine}">ITI</p>
             <p class="elementform">Mail :</p>
             <p th:text="${eleveConnecte.email}">paul.jourdan@hotmail.fr</p>
@@ -31,7 +36,7 @@
                 <p>Photo :</p>
                 <img src="images/Paul.JPG" width="150" height="150" alt="Photo Paul"/>
             </div>
-            <a href="ModificationMdp" ><span class="ui-icon-pencil">  Modifier mot de passe</span></a>
+            <a href="ModificationMdp" ><i class='fas fa-pen' style='font-size:24px'></i></a>
         </section>
         <section th:if="${eleveConnecte==null}">
             <p>Vous n'êtes pas connecté :</p>
