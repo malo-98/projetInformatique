@@ -16,14 +16,23 @@ public class AuthentificationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String email = (String) httpRequest.getSession().getAttribute("utilisateurConnecte");
+
         if (email == null || "".equals(email)) {
-            System.out.println("Il faut être connecté pour accéder à cette page !");
             HttpServletResponse httpResponse = (HttpServletResponse) response;
-            httpResponse.sendRedirect("connexion");
+           if (httpRequest.getServletPath().contains("Favoris") || httpRequest.getServletPath().contains("Profil")) {
+
+                System.out.println("Il faut être connecté pour accéder à cette page !");
+                //httpResponse.sendRedirect("connexion");
+           }
+           else{
+               httpResponse.sendRedirect("connexion");
+           }
 
         }
+        else
         chain.doFilter(request, response);
 
     }

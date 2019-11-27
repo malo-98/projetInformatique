@@ -5,7 +5,7 @@ body {
     font-family: Calibri, sans-serif;
     font-size: 0.8em;
     color: #29335c;
-    background-color: #fbfbf2;
+    background-color: /*#fbfbf2*/ #ececec;
 }
 
 h1 {
