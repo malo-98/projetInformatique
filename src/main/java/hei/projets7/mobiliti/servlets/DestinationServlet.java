@@ -18,20 +18,17 @@ public class DestinationServlet extends UtilsServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer DestinationId=Integer.parseInt(req.getParameter("id_destination"));
+        int destinationId = Integer.parseInt(req.getParameter("id"));
 
-        ObjectMapper mapper = new ObjectMapper();
+        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+
+        WebContext webContext = new WebContext(req, resp, req.getServletContext());
         try {
-            Destination destination= DestinationServices.getInstance().getDestination(DestinationId);
-            String jsonDestination = mapper.writeValueAsString(destination);
-            resp.getWriter().print(jsonDestination);
+            webContext.setVariable("destination", DestinationServices.getInstance().getDestination(destinationId));
         } catch (DestinationNotFoundException e) {
             e.printStackTrace();
         }
 
-
-
-
-
+        templateEngine.process("destination", webContext, resp.getWriter());
     }
 }
