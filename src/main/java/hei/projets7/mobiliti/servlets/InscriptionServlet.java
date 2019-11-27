@@ -1,5 +1,6 @@
 package hei.projets7.mobiliti.servlets;
 
+import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.EleveServices;
@@ -39,7 +40,7 @@ public class InscriptionServlet extends UtilsServlet {
             Eleve newEleve = new Eleve(null,nom,prenom,email,password,domaine);
             Eleve createdEleve = EleveServices.getInstance().addEleve(newEleve);
 
-        } catch (IllegalArgumentException | EleveAlreadyExistException e) {
+        } catch ( EleveAlreadyExistException | DonneIllegalFormatException e) {
             req.getSession().setAttribute("errorMessage", e.getMessage());
         }
 

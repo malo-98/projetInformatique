@@ -1,5 +1,6 @@
 package hei.projets7.mobiliti.servlets;
 
+import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.EleveServices;
@@ -38,21 +39,21 @@ public class ModificationProfilServlet extends UtilsServlet {
         if (nom!=null || nom != " "){
             try {
                 EleveServices.getInstance().modifyNom(emailActuel,nom);
-            } catch (EleveNotFoundException e) {
+            } catch (EleveNotFoundException | DonneIllegalFormatException e) {
                 e.printStackTrace();
             }
         }
         if (prenom!=null || prenom != " "){
             try {
                 EleveServices.getInstance().modifyPrenom(emailActuel,prenom);
-            } catch (EleveNotFoundException e) {
+            } catch (EleveNotFoundException | DonneIllegalFormatException e) {
                 e.printStackTrace();
             }
         }
         if (domaine!=null || domaine != " "){
             try {
                 EleveServices.getInstance().modifyDomaine(emailActuel,domaine);
-            } catch (EleveNotFoundException e) {
+            } catch (EleveNotFoundException | DonneIllegalFormatException e) {
                 e.printStackTrace();
             }
         }

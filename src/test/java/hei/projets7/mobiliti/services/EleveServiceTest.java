@@ -3,6 +3,7 @@ package hei.projets7.mobiliti.services;
 import hei.projets7.mobiliti.daos.ConnexionEleveDao;
 import hei.projets7.mobiliti.daos.impl.ConnexionEleveDaoImpl;
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
+import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.exception.PasswordIllegalFormatException;
@@ -54,7 +55,7 @@ public class EleveServiceTest  {
 
     ///////////////////// Test sur Add ////////////////////////
     @Test
-    public void shouldAddEleve() throws EleveAlreadyExistException {
+    public void shouldAddEleve() throws EleveAlreadyExistException, DonneIllegalFormatException {
         //GIVEN
         List<Eleve> eleves = new ArrayList<Eleve>();
         Eleve e1= new Eleve(1,"testNom1","testPrenom1","testDomaine1","testEmail1","testMdp1");
@@ -71,7 +72,7 @@ public class EleveServiceTest  {
     }
 
     @Test(expected = EleveAlreadyExistException.class)
-    public void shouldNotAddEleveAndThrowEleveAlreadyExistException() throws EleveAlreadyExistException {
+    public void shouldNotAddEleveAndThrowEleveAlreadyExistException() throws EleveAlreadyExistException, DonneIllegalFormatException {
         //GIVEN
         List<Eleve> eleves = new ArrayList<Eleve>();
         Eleve e1= new Eleve(1,"testNom1","testPrenom1","testEmail1","testMdp1","testdomaine1");
@@ -86,17 +87,17 @@ public class EleveServiceTest  {
         fail("Eleve already exist exception");
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldNotAddEleveAndThrowIllegalArgumentException() throws EleveAlreadyExistException {
+    @Test(expected = DonneIllegalFormatException.class)
+    public void shouldNotAddEleveAndThrowDonneIllegalFormatException() throws EleveAlreadyExistException, DonneIllegalFormatException {
         //GIVEN
         Eleve e2= new Eleve(1," "," "," "," "," ");
-        Mockito.lenient().when(inscriptionEleveDao.addEleve(e2)).thenThrow(new IllegalArgumentException("The eleve can not be null."));
+        Mockito.lenient().when(inscriptionEleveDao.addEleve(e2)).thenReturn(e2);
 
         //WHEN
         eleveServices.addEleve(e2);
 
         //THEN
-        fail("illegal argument exception");
+        fail("illegal format exception");
 
 
     }

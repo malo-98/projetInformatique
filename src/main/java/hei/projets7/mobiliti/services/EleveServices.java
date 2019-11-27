@@ -3,6 +3,7 @@ package hei.projets7.mobiliti.services;
 import hei.projets7.mobiliti.daos.InscriptionEleveDao;
 import hei.projets7.mobiliti.daos.impl.ConnexionEleveDaoImpl;
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
+import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.exception.PasswordIllegalFormatException;
@@ -53,45 +54,45 @@ public class EleveServices {
         connexionEleveDao.modifyPassword(id, password);
     }
 
-    public void modifyNom(String email, String nom) throws EleveNotFoundException, IllegalArgumentException {
+    public void modifyNom(String email, String nom) throws EleveNotFoundException, IllegalArgumentException, DonneIllegalFormatException {
         Eleve eleve = getEleve(email);
         Integer id=eleve.getId_eleve();
         if (nom==null || " ".equals(nom)){
-            throw new IllegalArgumentException(" ne peut pas être nul ");
+            throw new DonneIllegalFormatException();
         }
         connexionEleveDao.modifyNom(id, nom);
     }
 
-    public void modifyPrenom(String email, String prenom) throws EleveNotFoundException, IllegalArgumentException {
+    public void modifyPrenom(String email, String prenom) throws EleveNotFoundException, IllegalArgumentException, DonneIllegalFormatException {
         Eleve eleve = getEleve(email);
         Integer id=eleve.getId_eleve();
         if (prenom==null || " ".equals(prenom)){
-            throw new IllegalArgumentException(" ne peut pas être nul ");
+            throw new DonneIllegalFormatException();
         }
         connexionEleveDao.modifyPrenom(id, prenom);
     }
 
-    public void modifyEmail(String email, String email2) throws EleveNotFoundException, IllegalArgumentException {
+    public void modifyEmail(String email, String email2) throws EleveNotFoundException, IllegalArgumentException, DonneIllegalFormatException {
         Eleve eleve = getEleve(email);
         Integer id=eleve.getId_eleve();
         if (email2==null || " ".equals(email2)){
-            throw new IllegalArgumentException(" ne peut pas être nul ");
+            throw new DonneIllegalFormatException();
         }
         connexionEleveDao.modifyEmail(id, email2);
     }
 
-    public void modifyDomaine(String email, String domaine) throws EleveNotFoundException, IllegalArgumentException {
+    public void modifyDomaine(String email, String domaine) throws EleveNotFoundException, IllegalArgumentException, DonneIllegalFormatException {
         Eleve eleve = getEleve(email);
         Integer id=eleve.getId_eleve();
         if (domaine==null || " ".equals(domaine)){
-            throw new IllegalArgumentException(" ne peut pas être nul ");
+            throw new DonneIllegalFormatException();
         }
         connexionEleveDao.modifyDomaine(id, domaine);
     }
 
 
 
-    public Eleve addEleve(Eleve eleve) throws EleveAlreadyExistException {
+    public Eleve addEleve(Eleve eleve) throws EleveAlreadyExistException, DonneIllegalFormatException {
 
         List<Eleve> eleves = inscriptionEleveDao.listEleve();
         List<String> emails=new ArrayList<String>();
@@ -104,22 +105,22 @@ public class EleveServices {
         }
 
         if(eleve == null) {
-            throw new IllegalArgumentException("The eleve can not be null.");
+            throw new DonneIllegalFormatException();
         }
         if(eleve.getNom() == null || " ".equals(eleve.getNom())){
-            throw new IllegalArgumentException("The Nom can not be null.");
+            throw new DonneIllegalFormatException();
         }
         if(eleve.getPrenom() == null || " ".equals(eleve.getPrenom())){
-            throw new IllegalArgumentException("The Prenom can not be null.");
+            throw new DonneIllegalFormatException();
         }
         if(eleve.getEmail() == null || " ".equals(eleve.getEmail())){
-            throw new IllegalArgumentException("The Email can not be null.");
+            throw new DonneIllegalFormatException();
         }
         if(eleve.getPassword() == null || " ".equals(eleve.getPassword())){
-            throw new IllegalArgumentException("The Password can not be null.");
+            throw new DonneIllegalFormatException();
         }
         if(eleve.getDomaine() == null || " ".equals(eleve.getDomaine())){
-            throw new IllegalArgumentException("The Domaine can not be null.");
+            throw new DonneIllegalFormatException();
         }
 
         return inscriptionEleveDao.addEleve(eleve);
