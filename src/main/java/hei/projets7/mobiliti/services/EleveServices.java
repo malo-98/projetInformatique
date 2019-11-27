@@ -10,6 +10,7 @@ import hei.projets7.mobiliti.pojos.Eleve;
 import org.thymeleaf.expression.Strings;
 
 import java.util.ArrayList;
+import java.util.IllegalFormatException;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -49,9 +50,43 @@ public class EleveServices {
         if (password==null || " ".equals(password)){
             throw new PasswordIllegalFormatException();
         }
-
-
         connexionEleveDao.modifyPassword(id, password);
+    }
+
+    public void modifyNom(String email, String nom) throws EleveNotFoundException, IllegalArgumentException {
+        Eleve eleve = getEleve(email);
+        Integer id=eleve.getId_eleve();
+        if (nom==null || " ".equals(nom)){
+            throw new IllegalArgumentException(" ne peut pas être nul ");
+        }
+        connexionEleveDao.modifyNom(id, nom);
+    }
+
+    public void modifyPrenom(String email, String prenom) throws EleveNotFoundException, IllegalArgumentException {
+        Eleve eleve = getEleve(email);
+        Integer id=eleve.getId_eleve();
+        if (prenom==null || " ".equals(prenom)){
+            throw new IllegalArgumentException(" ne peut pas être nul ");
+        }
+        connexionEleveDao.modifyPrenom(id, prenom);
+    }
+
+    public void modifyEmail(String email, String email2) throws EleveNotFoundException, IllegalArgumentException {
+        Eleve eleve = getEleve(email);
+        Integer id=eleve.getId_eleve();
+        if (email2==null || " ".equals(email2)){
+            throw new IllegalArgumentException(" ne peut pas être nul ");
+        }
+        connexionEleveDao.modifyEmail(id, email2);
+    }
+
+    public void modifyDomaine(String email, String domaine) throws EleveNotFoundException, IllegalArgumentException {
+        Eleve eleve = getEleve(email);
+        Integer id=eleve.getId_eleve();
+        if (domaine==null || " ".equals(domaine)){
+            throw new IllegalArgumentException(" ne peut pas être nul ");
+        }
+        connexionEleveDao.modifyDomaine(id, domaine);
     }
 
 

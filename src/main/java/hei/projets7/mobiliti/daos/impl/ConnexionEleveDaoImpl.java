@@ -69,6 +69,62 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
     }
 
     @Override
+    public void modifyNom(Integer id, String nom) {
+        String sqlQuery="UPDATE eleve SET Nom=? WHERE id_eleve=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1, nom);
+                statement.setInt(2, id);
+                statement.executeUpdate();
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void modifyPrenom(Integer id, String prenom) {
+        String sqlQuery="UPDATE eleve SET Prenom=? WHERE id_eleve=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1, prenom);
+                statement.setInt(2, id);
+                statement.executeUpdate();
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void modifyEmail(Integer id, String email) {
+        String sqlQuery="UPDATE eleve SET Email=? WHERE id_eleve=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1, email);
+                statement.setInt(2, id);
+                statement.executeUpdate();
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void modifyDomaine(Integer id, String domaine) {
+        String sqlQuery="UPDATE eleve SET Domaine=? WHERE id_eleve=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1, domaine);
+                statement.setInt(2, id);
+                statement.executeUpdate();
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void deleteEleve(Integer id) {
         String query="DELETE FROM eleve where email=?";
         try {

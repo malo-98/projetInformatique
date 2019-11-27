@@ -79,7 +79,7 @@ public class DestinationServiceTest {
     public void shouldNotAddDestinationAndThrowIllegalArgumentException() throws DestinationAlreadyExistException {
         //GIVEN
         Destination d2= new Destination(1," "," "," "," "," ",null);
-        Mockito.when(destinationDao.addDestination(d2)).thenThrow(new IllegalArgumentException("The Destination can not be null."));
+        Mockito.lenient().when(destinationDao.addDestination(d2)).thenThrow(new IllegalArgumentException("The Destination can not be null."));
 
         //WHEN
         destinationServices.addDestination(d2);

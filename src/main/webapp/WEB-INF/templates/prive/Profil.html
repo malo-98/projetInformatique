@@ -5,7 +5,8 @@
 <head>
     <title>Profil</title>
     <META charset="utf-8">
-    <LINK href="css/styles.css" rel="stylesheet" type="text/css">
+    <LINK href="css/styles.css" rel="stylesheet" type="text/css" >
+
 </head>
     <div class="titre" th:insert="~{fragement::titre}"></div>
 
@@ -30,7 +31,7 @@
                 <p>Photo :</p>
                 <img src="images/Paul.JPG" width="150" height="150" alt="Photo Paul"/>
             </div>
-            <a href="ModificationMdp" >Modification Mdp</a>
+            <a href="ModificationMdp" ><span class="ui-icon-pencil"></span></a>
         </section>
         <section th:if="${eleveConnecte==null}">
             <p>Vous n'êtes pas connecté :</p>
