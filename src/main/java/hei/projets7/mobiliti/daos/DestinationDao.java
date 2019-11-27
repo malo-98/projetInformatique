@@ -5,6 +5,8 @@ import hei.projets7.mobiliti.pojos.Destination;
 import java.util.List;
 
 public interface DestinationDao {
+    Destination read(Integer id);
+
     List<Destination> listDestinations();
 
     Destination addDestination(Destination destination);
