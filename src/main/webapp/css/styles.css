@@ -207,12 +207,15 @@ a.bouton1:hover {
 /*css photo + encadré photo*/
 .photoprofil {
     margin-top: 8%;
+    padding: 6%;
     position: absolute;
     top: 10%;
     left: 70%;
     }
 
 .photoprofil p {
+    padding: 1%;
+    margin: 3%;
     font-size:2em;
     background-color: #29335c;
     color: #fbfbf2;

@@ -26,12 +26,12 @@
             <p class="elementform">Mail :</p>
             <p th:text="${eleveConnecte.email}">paul.jourdan@hotmail.fr</p>
             <p class="elementform">Mot de passe :</p>
-            <p>......</p>
+            <p>********</p>
             <div class="photoprofil">
                 <p>Photo :</p>
                 <img src="images/Paul.JPG" width="150" height="150" alt="Photo Paul"/>
             </div>
-            <a href="ModificationMdp" ><span class="ui-icon-pencil"></span></a>
+            <a href="ModificationMdp" ><span class="ui-icon-pencil">  Modifier mot de passe</span></a>
         </section>
         <section th:if="${eleveConnecte==null}">
             <p>Vous n'êtes pas connecté :</p>
