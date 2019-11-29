@@ -1,23 +1,19 @@
 /*1. CSS Général du site*/
 
 @font-face {
-    font-family: "CaviarDreams";
-    src: url('../fonts/CaviarDreams.ttf');
+    font-family: "Orkney";
+    src: url('../fonts/Orkney-Regular.otf');
 }
+
 @font-face {
-    font-family: "CaviarDreams";
-    font-style: italic;
-    src: url('../fonts/CaviarDreams_Bold.ttf');
-}
-@font-face {
-    font-family: "CaviarDreams";
+    font-family: "Orkney-Bold";
     font-weight: bold;
-    src: url('../fonts/CaviarDreams_Italic.ttf');
+    src: url('../fonts/Orkney-Bold.otf');
 }
 
 body {
     margin: 0;
-    font-family: CaviarDreams, sans-serif;
+    font-family: Orkney, sans-serif;
     font-size: 0.8em;
     color: #29335c;
     background-color: /*#fbfbf2*/ #ececec;
@@ -311,6 +307,7 @@ h1 .fas fa-pen {
 /*Connexion CSS*/
 
 #login h1 {
+    margin-top: 5%;
     margin-bottom: 5%;
 }
 
