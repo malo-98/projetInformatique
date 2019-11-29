@@ -1,6 +1,7 @@
 package hei.projets7.mobiliti.daos.impl;
 
 import hei.projets7.mobiliti.daos.ChoixDao;
+import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Choix;
 import hei.projets7.mobiliti.pojos.Eleve;
 
