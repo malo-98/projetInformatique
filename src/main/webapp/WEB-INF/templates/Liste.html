@@ -33,7 +33,8 @@
             <img src="images/HEI.jpg" alt="Avatar" style="width:100%">
             <div class="container">
                 <h3>Connectez vous pour pouvoir choisir votre destination favorite</h3>
-                <p><a href="connexion" class="bouton1">Se connecter</a></p>
+                <p th:if="${eleveConnecte==null}"><a href="connexion" class="bouton1">Se connecter</a></p>
+                <p th:unless="${eleveConnecte==null}"><a href="profil" class="bouton1">Mon profil</a></p>
             </div>
         </div>
     </section>
@@ -95,7 +96,7 @@
 
     <ul id="list">
             <li th:each="destination:${destinationList}">
-                <h2><bold th:text="${destination.city}">Laval</bold> - <bold th:text="${destination.country}">Canada</bold> - <bold th:text="${destination.domaine}">ITI</bold><a th:href="${ 'destination?id=' + destination.id }"><i class="fa fa-search" style="font-size:36px"></i></a></h2>
+                <h2><bold th:text="${destination.city}">Laval</bold> - <bold th:text="${destination.country}">Canada</bold> - <bold th:text="${destination.domaine}">ITI</bold><a th:href="${ 'destination?id=' + destination.id }">-<i class="fa fa-search" style="font-size:36px; color: white; text-decoration: none;"></i></a></h2>
                 <img  src="images/HEI.jpg" width="100" height="100" alt="Logo HEI" id="LOGO_HEI"/>
                 <p id="des-list" th:text="${destination.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
