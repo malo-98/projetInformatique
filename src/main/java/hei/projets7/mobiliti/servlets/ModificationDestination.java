@@ -20,6 +20,7 @@ import java.io.IOException;
 @WebServlet("/modifDestination")
 public class ModificationDestination extends UtilsServlet{
 
+    private Integer idDestination=null;
     private static final Logger LOGGER = LogManager.getLogger();
     private DestinationServices destinationServices = new DestinationServices();
 
@@ -27,7 +28,7 @@ public class ModificationDestination extends UtilsServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.info("modif destination " + req.getParameter("id"));
         int destinationId = Integer.parseInt(req.getParameter("id"));
-
+        idDestination=destinationId;
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
@@ -40,7 +41,7 @@ public class ModificationDestination extends UtilsServlet{
         templateEngine.process("ModificationDestination", webContext, resp.getWriter());
     }
 
-   /* @Override
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         String nom = req.getParameter("NouveauNom");
@@ -52,7 +53,7 @@ public class ModificationDestination extends UtilsServlet{
 
 
         try {
-            DestinationServices.getInstance().modifyNom(id,nom);
+            DestinationServices.getInstance().modifyNom(idDestination,nom);
         } catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
         } catch (DonneIllegalFormatException e) {
@@ -60,7 +61,7 @@ public class ModificationDestination extends UtilsServlet{
         }
 
         try {
-            DestinationServices.getInstance().modifyVille(id,ville);
+            DestinationServices.getInstance().modifyVille(idDestination,ville);
         } catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
         } catch (DonneIllegalFormatException e) {
@@ -68,7 +69,7 @@ public class ModificationDestination extends UtilsServlet{
         }
 
         try {
-            DestinationServices.getInstance().modifyPays(id,pays);
+            DestinationServices.getInstance().modifyPays(idDestination,pays);
         } catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
         } catch (DonneIllegalFormatException e) {
@@ -76,7 +77,7 @@ public class ModificationDestination extends UtilsServlet{
         }
 
         try {
-            DestinationServices.getInstance().modifyDescription(id,description);
+            DestinationServices.getInstance().modifyDescription(idDestination,description);
         } catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
         } catch (DonneIllegalFormatException e) {
@@ -84,7 +85,7 @@ public class ModificationDestination extends UtilsServlet{
         }
 
         try {
-            DestinationServices.getInstance().modifyDomaine(id,domaine);
+            DestinationServices.getInstance().modifyDomaine(idDestination,domaine);
         } catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
         } catch (DonneIllegalFormatException e) {
@@ -92,7 +93,7 @@ public class ModificationDestination extends UtilsServlet{
         }
 
         try {
-            DestinationServices.getInstance().modifyNbrePlace(id,place);
+            DestinationServices.getInstance().modifyNbrePlace(idDestination,place);
         } catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
         } catch (DonneIllegalFormatException e) {
@@ -100,6 +101,6 @@ public class ModificationDestination extends UtilsServlet{
         }
 
         resp.sendRedirect("profil");
-    }*/
+    }
 
 }

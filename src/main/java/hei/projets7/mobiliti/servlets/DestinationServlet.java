@@ -42,6 +42,8 @@ public class DestinationServlet extends UtilsServlet {
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
 
+
+        if (utilisateurConnecte!=null){
         Eleve eleve= null;
         try {
             eleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
@@ -49,7 +51,7 @@ public class DestinationServlet extends UtilsServlet {
             e.printStackTrace();
         }
         webContext.setVariable("eleveConnecte",eleve);
-
+        }
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
         try {
@@ -59,6 +61,7 @@ public class DestinationServlet extends UtilsServlet {
         }
 
         templateEngine.process("Destination", webContext, resp.getWriter());
+
     }
 
     @Override

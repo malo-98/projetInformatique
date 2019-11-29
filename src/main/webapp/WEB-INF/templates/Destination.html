@@ -15,8 +15,8 @@
     <nav th:replace="~{fragement::menu('accueil')}"></nav>
 
     <!-- ************** Corps de la page ************** -->
-    <p class="formulaire-text">Informations sur l'université<a th:href="${ 'modifDestination?id=' + destination.id }" ><i class='fas fa-pen' style='font-size:24px ; color: white;margin-right: 2%'></i></a></p>
-    <article class="info_destination">
+    <p class="formulaire-text">Informations sur l'université<a th:href="${'modifDestination?id='+destination.id}"><i class='fas fa-pen' style='font-size:24px'></i></a></p>
+    <article  class="info_destination">
         <label id="nom">NOM : </label>
         <p th:text="${destination.name}"></p>
         <label id="ville">VILLE : </label>
@@ -40,6 +40,7 @@
     <article class="destination_photo">
         <img src="images/avion.jpg" width="100%" alt="logo mobiliti"/>
     </article>
+
 
 
     <!-- ************** Pied de page ************** -->
