@@ -11,28 +11,28 @@
 
 </head>
     <!-- ************** Barre de menu ************** -->
-    <nav th:insert="~{fragement::menu}"></nav>
+    <nav th:replace="~{fragement::menu('profil')}"></nav>
 
     <!-- ************** Corps de la page ************** -->
     <div class="profilpage">
-        <h1 th:unless="${eleveConnecte==null}">Profil</h1>
+        <h1 th:unless="${eleveConnecte==null}">Profil <a href="modification" ><i class='fas fa-pen' style='font-size:24px ; color:#29335c'></i></a> </h1>
         <section th:unless="${ eleveConnecte==null}" class="profilinfo">
-            <p class="elementform">Nom :  <a href="modification" ><i class='fas fa-pen' style='font-size:24px ; color: white'></i></a></p>
+            <p class="elementform">Nom :  </p>
             <p th:text="${eleveConnecte.nom}">Jourdan</p>
-            <p class="elementform">Prénom :   <a href="modification" ><i class='fas fa-pen' style='font-size:24px; color: white'></i></a></p>
+            <p class="elementform">Prénom : </p>
             <p th:text="${eleveConnecte.prenom}">Paul</p>
-            <p class="elementform">Domaine :   <a href="modification" ><i class='fas fa-pen' style='font-size:24px ; color: white'></i></a></p>
+            <p class="elementform">Domaine : </p>
             <p th:text="${eleveConnecte.domaine}">ITI</p>
             <p class="elementform">Mail :</p>
             <p th:text="${eleveConnecte.email}">paul.jourdan@hotmail.fr</p>
             <p class="elementform">Mot de passe : <a href="ModificationMdp" ><i class='fas fa-pen' style='font-size:24px; color: white'></i></a></p>
             <p>********</p>
-            <p class="elementform">Choix de destination :   <a href="modification" ><i class='fas fa-pen' style='font-size:24px; color: white'></i></a></p>
+            <p class="elementform">Choix de destination : </p>
             <p th:text="${eleveConnecte.email}">paul.jourdan@hotmail.fr</p>
-            <div class="photoprofil">
+            <!--<div class="photoprofil">
                 <p>Photo :</p>
                 <img src="images/Paul.JPG" width="150" height="150" alt="Photo Paul"/>
-            </div>
+            </div>-->
         </section>
         <section th:if="${eleveConnecte==null}">
             <p>Vous n'êtes pas connecté :</p>

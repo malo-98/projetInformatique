@@ -10,7 +10,7 @@
 
 <body>
     <!-- ************** Barre de menu ************** -->
-    <nav th:insert="~{fragement::menu}"></nav>
+    <nav th:replace="~{fragement::menu('connexion')}"></nav>
 
     <!-- ************** Corps de la page ************** -->
     <div id="login">
@@ -23,7 +23,7 @@
             <input type="password" placeholder="Entrer votre mot de passe" name="mdp" required>
         <br/>
 
-            <p th:if="${erreurconnexion}">
+            <p id="erreur_auth" th:if="${erreurconnexion}">
                 identifiants incorrects</p>
 
             <input type="submit" id='submit' value='LOGIN' >

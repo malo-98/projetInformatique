@@ -6,20 +6,22 @@
     <title>Destination</title>
     <META charset="utf-8">
     <LINK href="css/styles.css" rel="stylesheet" type="text/css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
 <body>
     <!-- ************** Barre de menu ************** -->
-    <nav th:insert="~{fragement::menu}"></nav>
+    <nav th:replace="~{fragement::menu('accueil')}"></nav>
 
     <!-- ************** Corps de la page ************** -->
-    <p class="formulaire-text">Inofrmations sur l'université</p>
+    <p class="formulaire-text">Informations sur l'université<a th:href="${ 'modifDestination?id=' + destination.id }" ><i class='fas fa-pen' style='font-size:24px ; color: white;margin-right: 2%'></i></a></p>
     <article class="info_destination">
         <label id="nom">NOM : </label>
         <p th:text="${destination.name}"></p>
         <label id="ville">VILLE : </label>
         <p th:text="${destination.city}"></p>
-        <label id="Pays">PAYS : </label>
+        <label id="pays">PAYS : </label>
         <p th:text="${destination.country}"></p>
         <label id="description">DESCRIPTION : </label>
         <p th:text="${destination.description}"></p>

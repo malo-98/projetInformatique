@@ -119,4 +119,56 @@ public class DestinationDaoImpl implements DestinationDao {
             e.printStackTrace();
         }
     }
+
+    public void modifyNom (int idDestination, String nom){
+        String sqlQuery="UPDATE destination set Nom=? WHERE id_destination=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1,nom);
+                statement.setInt(2, idDestination);
+                statement.executeUpdate();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void modifyVille (int idDestination, String ville){
+        String sqlQuery="UPDATE destination set Ville=? WHERE id_destination=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1,ville);
+                statement.setInt(2, idDestination);
+                statement.executeUpdate();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void modifyPays (int idDestination, String pays){
+        String sqlQuery="UPDATE destination set Pays=? WHERE id_destination=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1,pays);
+                statement.setInt(2, idDestination);
+                statement.executeUpdate();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void modifyDomaine (int idDestination, String domaine){
+        String sqlQuery="UPDATE destination set Domaine=? WHERE id_destination=?;";
+        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
+                statement.setString(1,domaine);
+                statement.setInt(2, idDestination);
+                statement.executeUpdate();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

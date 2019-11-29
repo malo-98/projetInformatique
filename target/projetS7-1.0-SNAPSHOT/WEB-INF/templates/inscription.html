@@ -7,7 +7,7 @@
   </head>
   <body>
   <!-- ************** Barre de menu ************** -->
-  <nav th:insert="~{fragement::menu}"></nav>
+  <nav th:replace="~{fragement::menu('connexion')}"></nav>
 
   <!-- ************** Corps de la page ************** -->
   <form  method="post" class="inscription">

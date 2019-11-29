@@ -1,8 +1,23 @@
 /*1. CSS Général du site*/
 
+@font-face {
+    font-family: "CaviarDreams";
+    src: url('../fonts/CaviarDreams.ttf');
+}
+@font-face {
+    font-family: "CaviarDreams";
+    font-style: italic;
+    src: url('../fonts/CaviarDreams_Bold.ttf');
+}
+@font-face {
+    font-family: "CaviarDreams";
+    font-weight: bold;
+    src: url('../fonts/CaviarDreams_Italic.ttf');
+}
+
 body {
     margin: 0;
-    font-family: Calibri, sans-serif;
+    font-family: CaviarDreams, sans-serif;
     font-size: 0.8em;
     color: #29335c;
     background-color: /*#fbfbf2*/ #ececec;
@@ -68,6 +83,10 @@ caption {
 .navbar span{
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.active{
+    background-color: #be6e46;
 }
 
 /*Fin du CSS général*/
@@ -147,10 +166,12 @@ caption {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 40%;
+    border: solid black 0.2em;
+    border-radius: 1em;
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,1);
 }
 
 .container {
@@ -210,6 +231,15 @@ a.bouton1:hover {
     font-size: 3em;
 }
 
+.profilpage p {
+    border-radius: 1em;
+}
+
+
+
+
+
+
 .elementform {
     font-size:2em;
     background-color: #29335c;
@@ -224,6 +254,10 @@ a.bouton1:hover {
     margin-left: 2em;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+h1 .fas fa-pen {
+    color: #29335c;
 }
 
 /*css photo + encadré photo*/
@@ -299,6 +333,12 @@ a.bouton1:hover {
 
 #sign_in a {
     margin: 3%;
+}
+
+#erreur_auth {
+    color: red;
+    margin-top: 3%;
+    font-size: 1.5em;
 }
 
 /*Page destination*/

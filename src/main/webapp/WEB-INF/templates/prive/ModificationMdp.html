@@ -30,7 +30,7 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-<nav th:insert="~{fragement::menu}"></nav>
+<nav th:replace="~{fragement::menu('profil')}"></nav>
     <form method="post">
         <div>
             <label for="NouveauMdp"><p class="formulaire-text">Nouveau mot de pase :</p></label>

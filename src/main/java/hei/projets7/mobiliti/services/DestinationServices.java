@@ -4,6 +4,7 @@ import hei.projets7.mobiliti.daos.DestinationDao;
 import hei.projets7.mobiliti.daos.impl.DestinationDaoImpl;
 import hei.projets7.mobiliti.exception.DestinationAlreadyExistException;
 import hei.projets7.mobiliti.exception.DestinationNotFoundException;
+import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Destination;
 
@@ -19,7 +20,7 @@ public class DestinationServices {
 
     private DestinationDaoImpl destinationDao= new DestinationDaoImpl();
 
-    private DestinationServices(){
+    public DestinationServices(){
     }
 
     public List<Destination> destinationList(){return destinationDao.listDestinations();}
@@ -64,6 +65,56 @@ public class DestinationServices {
         }
         throw new DestinationNotFoundException(id);
     }
+
+    public void modifyNom(Integer idDestination, String nom) throws DestinationNotFoundException, DonneIllegalFormatException {
+        Destination destination = getDestination(idDestination);
+        if (nom==null || " ".equals(nom)){
+            throw new DonneIllegalFormatException();
+        }
+        destinationDao.modifyNom(idDestination, nom);
+    }
+
+    public void modifyVille(Integer idDestination, String ville) throws DestinationNotFoundException, DonneIllegalFormatException {
+        Destination destination = getDestination(idDestination);
+        if (ville==null || " ".equals(ville)){
+            throw new DonneIllegalFormatException();
+        }
+        destinationDao.modifyVille(idDestination, ville);
+    }
+
+    public void modifyPays(Integer idDestination, String pays) throws DestinationNotFoundException, DonneIllegalFormatException {
+        Destination destination = getDestination(idDestination);
+        if (pays==null || " ".equals(pays)){
+            throw new DonneIllegalFormatException();
+        }
+        destinationDao.modifyPays(idDestination, pays);
+    }
+
+    public void modifyDescription(Integer idDestination, String description) throws DestinationNotFoundException, DonneIllegalFormatException {
+        Destination destination = getDestination(idDestination);
+        if (destination==null || " ".equals(destination)){
+            throw new DonneIllegalFormatException();
+        }
+        destinationDao.modifyDescription(idDestination, description);
+    }
+
+    public void modifyDomaine(Integer idDestination, String domaine) throws DestinationNotFoundException, DonneIllegalFormatException {
+        Destination destination = getDestination(idDestination);
+        if (domaine==null || " ".equals(domaine)){
+            throw new DonneIllegalFormatException();
+        }
+        destinationDao.modifyDomaine(idDestination, domaine);
+    }
+
+    public void modifyNbrePlace(Integer idDestination, Integer place) throws DestinationNotFoundException, DonneIllegalFormatException {
+        Destination destination = getDestination(idDestination);
+        if (place==null){
+            throw new DonneIllegalFormatException();
+        }
+        destinationDao.modifyNbrePlace(idDestination, place);
+    }
+
+
 
 }
 

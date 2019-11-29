@@ -9,6 +9,8 @@ import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.ChoixServices;
 import hei.projets7.mobiliti.services.DestinationServices;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import hei.projets7.mobiliti.services.EleveServices;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,11 +33,19 @@ public class DestinationServlet extends UtilsServlet {
     private static final Logger LOGGER = LogManager.getLogger();
 
 
+    private static final Logger LOGGER = LogManager.getLogger();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<<<<<<< HEAD
         destinationId = Integer.parseInt(req.getParameter("id"));
         utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
 
+=======
+        LOGGER.info("destination detail" + req.getParameter("id"));
+        int destinationId = Integer.parseInt(req.getParameter("id"));
+        String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
+>>>>>>> c3b780354ddf385b94e45c02737deb48be21ec70
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
 
         Eleve eleve= null;
@@ -51,7 +61,7 @@ public class DestinationServlet extends UtilsServlet {
         try {
             webContext.setVariable("destination", DestinationServices.getInstance().getDestination(destinationId));
         } catch (DestinationNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.warn(e);
         }
 
         templateEngine.process("Destination", webContext, resp.getWriter());
