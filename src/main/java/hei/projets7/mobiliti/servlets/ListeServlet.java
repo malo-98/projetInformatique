@@ -32,6 +32,7 @@ public class ListeServlet extends UtilsServlet {
         List<Destination> listOfDestination = DestinationServices.getInstance().destinationList();
         context.setVariable("destinationList",listOfDestination);
 
+
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
         if(utilisateurConnecte != null){
             LOGGER.info("J'ai récupéré " + utilisateurConnecte + " dans la session");
