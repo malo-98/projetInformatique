@@ -23,7 +23,7 @@
             <input type="password" placeholder="Entrer votre mot de passe" name="mdp" required>
         <br/>
 
-            <p th:if="${erreurconnexion}">
+            <p id="erreur_auth" th:if="${erreurconnexion}">
                 identifiants incorrects</p>
 
             <input type="submit" id='submit' value='LOGIN' >

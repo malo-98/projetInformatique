@@ -1,8 +1,23 @@
 /*1. CSS Général du site*/
 
+@font-face {
+    font-family: "CaviarDreams";
+    src: url('../fonts/CaviarDreams.ttf');
+}
+@font-face {
+    font-family: "CaviarDreams";
+    font-style: italic;
+    src: url('../fonts/CaviarDreams_Bold.ttf');
+}
+@font-face {
+    font-family: "CaviarDreams";
+    font-weight: bold;
+    src: url('../fonts/CaviarDreams_Italic.ttf');
+}
+
 body {
     margin: 0;
-    font-family: Calibri, sans-serif;
+    font-family: CaviarDreams, sans-serif;
     font-size: 0.8em;
     color: #29335c;
     background-color: /*#fbfbf2*/ #ececec;
@@ -216,6 +231,15 @@ a.bouton1:hover {
     font-size: 3em;
 }
 
+.profilpage p {
+    border-radius: 1em;
+}
+
+
+
+
+
+
 .elementform {
     font-size:2em;
     background-color: #29335c;
@@ -230,6 +254,10 @@ a.bouton1:hover {
     margin-left: 2em;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+h1 .fas fa-pen {
+    color: #29335c;
 }
 
 /*css photo + encadré photo*/
@@ -305,6 +333,12 @@ a.bouton1:hover {
 
 #sign_in a {
     margin: 3%;
+}
+
+#erreur_auth {
+    color: red;
+    margin-top: 3%;
+    font-size: 1.5em;
 }
 
 /*Page destination*/
