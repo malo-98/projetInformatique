@@ -54,7 +54,7 @@ public class EleveServices {
         connexionEleveDao.modifyPassword(id, password);
     }
 
-    public void modifyNom(String email, String nom) throws EleveNotFoundException, IllegalArgumentException, DonneIllegalFormatException {
+    public void modifyNom(String email, String nom) throws EleveNotFoundException, DonneIllegalFormatException {
         Eleve eleve = getEleve(email);
         Integer id=eleve.getId_eleve();
         if (nom==null || " ".equals(nom)){
@@ -63,7 +63,7 @@ public class EleveServices {
         connexionEleveDao.modifyNom(id, nom);
     }
 
-    public void modifyPrenom(String email, String prenom) throws EleveNotFoundException, IllegalArgumentException, DonneIllegalFormatException {
+    public void modifyPrenom(String email, String prenom) throws EleveNotFoundException, DonneIllegalFormatException {
         Eleve eleve = getEleve(email);
         Integer id=eleve.getId_eleve();
         if (prenom==null || " ".equals(prenom)){
@@ -72,7 +72,7 @@ public class EleveServices {
         connexionEleveDao.modifyPrenom(id, prenom);
     }
 
-    public void modifyEmail(String email, String email2) throws EleveNotFoundException, IllegalArgumentException, DonneIllegalFormatException {
+    public void modifyEmail(String email, String email2) throws EleveNotFoundException, DonneIllegalFormatException {
         Eleve eleve = getEleve(email);
         Integer id=eleve.getId_eleve();
         if (email2==null || " ".equals(email2)){
@@ -81,7 +81,7 @@ public class EleveServices {
         connexionEleveDao.modifyEmail(id, email2);
     }
 
-    public void modifyDomaine(String email, String domaine) throws EleveNotFoundException, IllegalArgumentException, DonneIllegalFormatException {
+    public void modifyDomaine(String email, String domaine) throws EleveNotFoundException, DonneIllegalFormatException {
         Eleve eleve = getEleve(email);
         Integer id=eleve.getId_eleve();
         if (domaine==null || " ".equals(domaine)){
