@@ -62,8 +62,7 @@ public class DestinationDaoImpl implements DestinationDao {
                 statement.setString(1, destination.getName());
                 statement.setString(2, destination.getCity());
                 statement.setString(3,destination.getCountry());
-                statement.setString(4,destination.getDescription());
-                statement.setString(5,destination.getDomaine());
+                statement.setString( 5,destination.getDomaine());
                 statement.setInt(6,destination.getPlace() );
                 statement.executeUpdate();
 
