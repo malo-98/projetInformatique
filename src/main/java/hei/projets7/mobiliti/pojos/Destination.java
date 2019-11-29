@@ -19,6 +19,7 @@ public class Destination {
         this.nbre_place=nbre_place;
     }
 
+
     public int getId(){return this.id;}
 
     public String getName(){return this.name;}
@@ -46,4 +47,5 @@ public class Destination {
     public void setDescription(String description){this.description=description;}
 
     public void setNbre_place(int place){this.nbre_place=place;}
+
 }
