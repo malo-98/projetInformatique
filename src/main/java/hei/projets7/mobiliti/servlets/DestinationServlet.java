@@ -52,13 +52,15 @@ public class DestinationServlet extends UtilsServlet {
         }
         webContext.setVariable("eleveConnecte",eleve);
         }
-        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
+
+        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         try {
             webContext.setVariable("destination", DestinationServices.getInstance().getDestination(destinationId));
         } catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
         }
+
 
         templateEngine.process("Destination", webContext, resp.getWriter());
 
