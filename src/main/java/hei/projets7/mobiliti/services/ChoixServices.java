@@ -45,7 +45,7 @@ public class ChoixServices {
 
 
 
-    public Choix addChoix (Choix choix) throws ChoixAlreadyExistException, SQLException {
+    public Choix addChoix (Choix choix) throws SQLException {
         /*
        String query="SELECT id_eleve, FROM choix";
        Integer id_base =Integer.parseInt(query);
@@ -55,8 +55,7 @@ public class ChoixServices {
         }
 
          */
-
-
+        /*
         if(choix == null) {
             throw new IllegalArgumentException("The destination can not be null.");
         }
@@ -64,7 +63,7 @@ public class ChoixServices {
             throw new IllegalArgumentException("The id can not be null.");
         }
 
-
+         */
         return choixDao.addChoix(choix);
     }
 

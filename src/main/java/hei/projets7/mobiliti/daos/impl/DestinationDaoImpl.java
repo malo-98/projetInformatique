@@ -171,4 +171,5 @@ public class DestinationDaoImpl implements DestinationDao {
             e.printStackTrace();
         }
     }
+
 }

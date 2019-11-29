@@ -33,21 +33,12 @@
             </div>
             <div>
                 <p class="formulaire-text">Choix de destination :</p>
-                    <select class="input" name="NouvelleDestination">
-                        <option value="d">Votre destination</option>
-                        <option value="australie">Australie</option>
-                        <option value="chili">Chili</option>
-                        <option value="espagne">Espagne</option>
-                        <option value="kazak">Kazakstan</option>
-                        <option value="lituanie">Lituanie</option>
-                        <option value="mexique" >Mexique</option>
-                        <option value="perou">Pérou</option>
-                        <option value="suede">Suède</option>
-                        <option value="usa">USA</option>
+                    <select  class="input" name="NouvelleDestination">
+                        <option th:each="destination:${destinationList}" value="d"><p th:text="${destination.name}"></option>
                     </select>
             </div>
             <div>
-                <input class="input form-button" type="submit" id='submit' value='MoficationProfil' >
+                <input class="input form-button" type="submit" id='submit' value='Modification Profil' >
             </div>
         </form>
     </body>

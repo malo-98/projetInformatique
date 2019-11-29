@@ -3,6 +3,7 @@ package hei.projets7.mobiliti.servlets;
 import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
+import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.ChoixServices;
 import hei.projets7.mobiliti.services.DestinationServices;
@@ -15,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/modification")
 public class ModificationProfilServlet extends UtilsServlet {
@@ -25,6 +27,8 @@ public class ModificationProfilServlet extends UtilsServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
         WebContext context = new WebContext(req, resp, req.getServletContext());
+        List<Destination> listOfDestination = DestinationServices.getInstance().destinationList();
+        context.setVariable("destinationList",listOfDestination);
 
         Eleve eleve= null;
         try {
