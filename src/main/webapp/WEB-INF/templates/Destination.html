@@ -15,7 +15,7 @@
     <nav th:replace="~{fragement::menu('accueil')}"></nav>
 
     <!-- ************** Corps de la page ************** -->
-    <p>Inofrmations sur l'université <a th:href="${ 'modifDestination?id=' + destination.id }" ><i class='fas fa-pen' style='font-size:24px ; color: black'></i></a></p>
+    <p class="formulaire-text">Informations sur l'université <a th:href="${ 'modifDestination?id=' + destination.id }" ><i class='fas fa-pen' style='font-size:24px ; color: black'></i></a></p>
     <label id="id_destination" >id : </label>
     <p th:text="${destination.id}"></p>
     <label id="nom">nom : </label>
@@ -30,7 +30,7 @@
     <p th:text="${destination.domaine}"></p>
     <label id="nb_place">nb place : </label>
     <p th:text="${destination.place}"></p>
-    <p class="formulaire-text">Inofrmations sur l'université</p>
+    <p >Inofrmations sur l'université</p>
     <article class="info_destination">
         <label id="nom">NOM : </label>
         <p th:text="${destination.name}"></p>
