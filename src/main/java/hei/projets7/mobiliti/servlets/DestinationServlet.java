@@ -52,14 +52,19 @@ public class DestinationServlet extends UtilsServlet {
             e.printStackTrace();
         }
         webContext.setVariable("eleveConnecte",eleve);
+        }else{
+            Eleve eleve=new Eleve(100000,"nom","prenom","email","mdp","bla");
+            webContext.setVariable("eleveConnecte",eleve);
         }
-        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
+
+        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         try {
             webContext.setVariable("destination", DestinationServices.getInstance().getDestination(destinationId));
         } catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
         }
+
 
         templateEngine.process("Destination", webContext, resp.getWriter());
 
