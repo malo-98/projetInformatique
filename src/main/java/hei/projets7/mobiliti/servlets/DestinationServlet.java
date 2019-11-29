@@ -52,9 +52,6 @@ public class DestinationServlet extends UtilsServlet {
             e.printStackTrace();
         }
         webContext.setVariable("eleveConnecte",eleve);
-        }else{
-            Eleve eleve=new Eleve(100000,"nom","prenom","email","mdp","bla");
-            webContext.setVariable("eleveConnecte",eleve);
         }
 
 

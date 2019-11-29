@@ -44,10 +44,7 @@ public class ListeServlet extends UtilsServlet {
                 LOGGER.error(e.getMessage());
            }
         }
-        else{
-            Eleve eleve=new Eleve(100000,"nom","prenom","email","mdp","bla");
-            context.setVariable("eleveConnecte",eleve);
-        }
+
 
         templateEngine.process("Liste", context, resp.getWriter());
     }
