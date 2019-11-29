@@ -40,7 +40,6 @@ public class DestinationServlet extends UtilsServlet {
         LOGGER.info("destination detail" + req.getParameter("id"));
         int destinationId = Integer.parseInt(req.getParameter("id"));
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
-
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
 
 
@@ -53,13 +52,15 @@ public class DestinationServlet extends UtilsServlet {
         }
         webContext.setVariable("eleveConnecte",eleve);
         }
-        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
+
+        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         try {
             webContext.setVariable("destination", DestinationServices.getInstance().getDestination(destinationId));
         } catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
         }
+
 
         templateEngine.process("Destination", webContext, resp.getWriter());
 

@@ -30,6 +30,7 @@ public class ListeServlet extends UtilsServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
         List<Destination> listOfDestination = DestinationServices.getInstance().destinationList();
+
         context.setVariable("destinationList",listOfDestination);
 
 
@@ -43,6 +44,7 @@ public class ListeServlet extends UtilsServlet {
                 LOGGER.error(e.getMessage());
            }
         }
+
 
         templateEngine.process("Liste", context, resp.getWriter());
     }
