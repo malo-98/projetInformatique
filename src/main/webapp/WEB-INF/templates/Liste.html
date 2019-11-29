@@ -105,7 +105,7 @@
             </li>
     </ul>
 
-    <div class="ajout_destination">
+    <div th:if="${eleveConnecte.email=='admin@admin'}" class="ajout_destination">
     <h2  id="titre_ajout">Ajouter une destination</h2>
     <form  id="form_list" method="post">
         <table class="tableform">
@@ -171,7 +171,7 @@
     </div>
 
     <!-- ************** Pied de page ************** -->
-    <FOOTER th:insert="~{fragement::pied}"></FOOTER>
+    <FOOTER  th:insert="~{fragement::pied}"></FOOTER>
 
 </body>
 

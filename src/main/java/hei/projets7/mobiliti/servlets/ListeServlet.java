@@ -30,6 +30,7 @@ public class ListeServlet extends UtilsServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
         List<Destination> listOfDestination = DestinationServices.getInstance().destinationList();
+
         context.setVariable("destinationList",listOfDestination);
 
 
@@ -42,6 +43,10 @@ public class ListeServlet extends UtilsServlet {
             } catch (EleveNotFoundException e) {
                 LOGGER.error(e.getMessage());
            }
+        }
+        else{
+            Eleve eleve=new Eleve(100000,"nom","prenom","email","mdp","bla");
+            context.setVariable("eleveConnecte",eleve);
         }
 
         templateEngine.process("Liste", context, resp.getWriter());
