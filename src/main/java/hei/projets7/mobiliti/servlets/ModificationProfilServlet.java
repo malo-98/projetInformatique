@@ -54,9 +54,6 @@ public class ModificationProfilServlet extends UtilsServlet {
             e.printStackTrace();
         }
 
-
-
-
         if (nom!=null || nom != " "){
             try {
                 EleveServices.getInstance().modifyNom(emailActuel,nom);

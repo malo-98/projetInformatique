@@ -46,6 +46,15 @@ public class ChoixServices {
 
 
     public Choix addChoix (Choix choix) throws ChoixAlreadyExistException, SQLException {
+        /*
+       String query="SELECT id_eleve, FROM choix";
+       Integer id_base =Integer.parseInt(query);
+
+        if (choix.getId_eleve() == id_base ){
+            throw new ChoixAlreadyExistException(choix);
+        }
+
+         */
 
 
         if(choix == null) {
