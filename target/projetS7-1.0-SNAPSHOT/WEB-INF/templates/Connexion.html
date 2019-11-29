@@ -9,14 +9,12 @@
 </head>
 
 <body>
-    <div class="titre" th:insert="~{fragement::titre}"></div>
-
     <!-- ************** Barre de menu ************** -->
-    <nav th:insert="~{fragement::menu}"></nav>
+    <nav th:replace="~{fragement::menu('connexion')}"></nav>
 
     <!-- ************** Corps de la page ************** -->
     <div id="login">
-        <form id="form_list" method="post" onsubmit="return verif_identifiants()">
+        <form id="form_list" method="post">
             <h1>Connexion</h1>
             <label><b>Email</b></label>
             <input type="text" placeholder="Entrer votre email" name="email" required>
@@ -24,6 +22,10 @@
             <label><b>Mot de passe</b></label>
             <input type="password" placeholder="Entrer votre mot de passe" name="mdp" required>
         <br/>
+
+            <p th:if="${erreurconnexion}">
+                identifiants incorrects</p>
+
             <input type="submit" id='submit' value='LOGIN' >
         </form>
     </div>
@@ -33,32 +35,6 @@
             <a title="Inscription" href="inscription" target="_top">Inscription</a>
         </p>
     </div>
-
-<!--
-    <script language="javascript">
-
-        let email_entre = document.forms["flog"].elements["email"].value;
-        let mdp_entre=document.forms["flog"].elements["mdp"].value;
-
-
-        function verif_identifiants(email_entre,mdp_entre){
-
-            email = document.getElementById("email");
-            mdp = document.getElementById("mdp");
-
-            if(email !== email_entre || mdp !== mdp_entre){
-
-                alert("Identifiants inconnus");
-
-            }
-
-         }
-
-
-    </script>
-
-    -->
-
 
 
     <!-- ************** Pied de page ************** -->

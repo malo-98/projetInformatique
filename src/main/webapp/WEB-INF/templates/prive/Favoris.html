@@ -9,10 +9,8 @@
 </head>
 
 <body>
-    <div class="titre" th:insert="~{fragement::titre}"></div>
-
     <!-- ************** Barre de menu ************** -->
-    <nav th:insert="~{fragement::menu}"></nav>
+    <nav th:replace="~{fragement::menu('favoris')}"></nav>
 
     <!-- ************** Corps de la page ************** -->
     <p> Voici vos destinations favorites</p>

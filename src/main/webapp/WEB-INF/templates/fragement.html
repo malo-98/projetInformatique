@@ -5,30 +5,32 @@
     <title>Title</title>
 </head>
 <body>
-
-<nav th:fragment="menu">
+<nav th:fragment="menu(currentPage)">
     <UL class="navbar">
-        <LI>
+        <li>
+            <img  src="images/logo2.png" height="50" alt="Logo Mobility"/>
+        </li>
+        <LI th:class="${currentPage == 'accueil' ? 'active' : ''}">
             <A title="Liste" href="accueil" class="bouton" target="_top">
                 <SPAN>Liste</SPAN>
             </A>
         </LI>
-        <LI>
+        <LI th:class="${currentPage == 'map' ? 'active' : ''}">
             <A title="Map" href="map" class="bouton" target="_top">
                 <SPAN>Map</SPAN>
             </A>
         </LI>
-        <LI th:if="${eleveConnecte!=null}">
+        <LI  th:if="${eleveConnecte!=null}" th:class="${currentPage == 'favoris' ? 'active' : ''}">
             <A title="Favoris" href="favoris" class="bouton" target="_top">
                 <SPAN>Favoris</SPAN>
             </A>
         </LI>
-        <LI th:if="${eleveConnecte!=null}">
+        <LI  th:if="${eleveConnecte!=null}" th:class="${currentPage == 'profil' ? 'active' : ''}">
             <A title="Profil" href="profil" class="bouton" target="_top">
                 <SPAN>Profil</SPAN>
             </A>
         </LI>
-        <LI th:if="${eleveConnecte==null}">
+        <LI  th:if="${eleveConnecte==null}" th:class="${currentPage == 'connexion' ? 'active' : ''}">
             <A title="Connexion" href="connexion" class="bouton" target="_top">
                 <SPAN>Connexion</SPAN>
             </A>
@@ -58,11 +60,5 @@
     </center>
 </FOOTER>
 
-<div class="titre" th:fragment="titre">
-    <h1>MobilITI</h1>
-    <a href="accueil">
-        <img  src="images/logo2.png" width="156" height="120" alt="Logo Mobility"/>
-    </a>
-</div>
 </body>
 </html>

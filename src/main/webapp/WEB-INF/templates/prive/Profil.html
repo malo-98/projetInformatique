@@ -10,10 +10,8 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 </head>
-    <div class="titre" th:insert="~{fragement::titre}"></div>
-
     <!-- ************** Barre de menu ************** -->
-    <nav th:insert="~{fragement::menu}"></nav>
+    <nav th:replace="~{fragement::menu('profil')}"></nav>
 
     <!-- ************** Corps de la page ************** -->
     <div class="profilpage">
@@ -29,6 +27,8 @@
             <p th:text="${eleveConnecte.email}">paul.jourdan@hotmail.fr</p>
             <p class="elementform">Mot de passe : <a href="ModificationMdp" ><i class='fas fa-pen' style='font-size:24px; color: white'></i></a></p>
             <p>********</p>
+            <p class="elementform">Choix de destination :   <a href="modification" ><i class='fas fa-pen' style='font-size:24px; color: white'></i></a></p>
+            <p th:text="${eleveConnecte.email}">paul.jourdan@hotmail.fr</p>
             <div class="photoprofil">
                 <p>Photo :</p>
                 <img src="images/Paul.JPG" width="150" height="150" alt="Photo Paul"/>

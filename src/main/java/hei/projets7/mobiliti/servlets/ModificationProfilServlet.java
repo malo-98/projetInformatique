@@ -1,8 +1,11 @@
 package hei.projets7.mobiliti.servlets;
 
+import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.services.ChoixServices;
+import hei.projets7.mobiliti.services.DestinationServices;
 import hei.projets7.mobiliti.services.EleveServices;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -38,15 +41,22 @@ public class ModificationProfilServlet extends UtilsServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
         String nom = req.getParameter("NouveauNom");
         String prenom= req.getParameter("NouveauPrenom");
         String domaine=req.getParameter("NouveauDomaine");
+        String destination=req.getParameter("NouvelleDestination");
         String emailActuel =(String) req.getSession().getAttribute("utilisateurConnecte");
         try {
             Eleve eleveActuel= EleveServices.getInstance().getEleve(emailActuel);
+            Integer id_eleve = eleveActuel.getId_eleve();
         } catch (EleveNotFoundException e) {
             e.printStackTrace();
         }
+
+
+
+
         if (nom!=null || nom != " "){
             try {
                 EleveServices.getInstance().modifyNom(emailActuel,nom);
@@ -68,6 +78,20 @@ public class ModificationProfilServlet extends UtilsServlet {
                 e.printStackTrace();
             }
         }
+
+        if (destination!=null || destination !=" "){
+            try {
+                Integer id_destination = EleveServices.getInstance().getDestinationbyEmail(emailActuel);
+                Eleve eleveActuel= EleveServices.getInstance().getEleve(emailActuel);
+                Integer id_eleve = eleveActuel.getId_eleve();
+                ChoixServices.getInstance().modifyChoix(id_eleve, id_destination);
+                //System.out.println("destination modifiée");
+            } catch (EleveNotFoundException | DestinationNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+
 
         resp.sendRedirect("profil");
     }
