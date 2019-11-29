@@ -44,5 +44,8 @@
 
     <!-- ************** Pied de page ************** -->
     <FOOTER th:insert="~{fragement::pied}"></FOOTER>
+    <a th:if="${eleveConnecte!=null && eleveConnecte.email=='admin@admin'}" title="Eleves" href="listEleve" class="bouton" target="_top">
+        <SPAN>voir la liste des Eleves</SPAN>
+    </a>
     </body>
 </html>

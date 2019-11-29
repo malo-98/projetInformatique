@@ -33,8 +33,9 @@
         <div class="card" style="display: inline-block">
             <img src="images/HEI.jpg" alt="Avatar" style="width:100%">
             <div class="container">
-                <h3>Connectez vous pour pouvoir choisir votre destination favorite</h3>
+                <h3 th:if="${eleveConnecte==null}">Connectez vous pour pouvoir choisir votre destination favorite</h3>
                 <p th:if="${eleveConnecte==null}"><a href="connexion" class="bouton1">Se connecter</a></p>
+                <h3 th:unless="${eleveConnecte==null}">Consulter mes informations</h3>
                 <p th:unless="${eleveConnecte==null}"><a href="profil" class="bouton1">Mon profil</a></p>
             </div>
         </div>
