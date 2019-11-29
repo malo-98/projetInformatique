@@ -268,5 +268,168 @@ public class EleveServiceTest  {
     }
 
     //////////////////////////////////////////////////////////////////////
+    ////////// Test sur Modify Nom /////////////////////////////////////
+    @Test
+    public void shouldModifyNom() throws EleveNotFoundException, PasswordIllegalFormatException, DonneIllegalFormatException {
+        //GIVEN
+        Eleve e1= new Eleve(1,"newnom","testPrenom1","testEmail1","newpassword","testdomaine1");
+        String newNom= "newnom";
+        Mockito.when(connexionEleveDao.read(e1.getEmail())).thenReturn(e1);
 
+        //WHEN
+        eleveServices.modifyNom(e1.getEmail(),newNom);
+
+        //THEN
+        Assertions.assertThat(e1.getNom()).isEqualTo(newNom);
+    }
+
+    @Test
+    public void shouldNotModifyNomAndThrowEleveNotFoundException() throws EleveNotFoundException {
+        //GIVEN
+        String email="email";
+        String newNom= "newnom";
+        Mockito.when(connexionEleveDao.read(email)).thenReturn(null);
+        Exception result=null;
+
+        //WHEN
+        try{
+            eleveServices.modifyNom(email,newNom);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(EleveNotFoundException.class);
+        Mockito.verify(connexionEleveDao,Mockito.never()).modifyNom(Mockito.anyInt(),Mockito.anyString());
+
+    }
+
+    @Test
+    public void shouldNotModifyNomAndThrowDonneIllegalFormatException() throws DonneIllegalFormatException{
+        //GIVEN
+        Eleve e1= new Eleve(1,"testNom1","testPrenom1","testEmail1","mdp","testdomaine1");
+        Mockito.when(connexionEleveDao.read(e1.getEmail())).thenReturn(e1);
+        Exception result=null;
+
+        //WHEN
+        try{
+            eleveServices.modifyNom(e1.getEmail(), null);
+        }catch(Exception e){
+            result=e;
+        }
+
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
+        Mockito.verify(connexionEleveDao,Mockito.never()).modifyNom(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// Modify Prenom //////////////////////////////////////////////////////////
+
+    @Test
+    public void shouldModifyPrenom() throws EleveNotFoundException, PasswordIllegalFormatException, DonneIllegalFormatException {
+        //GIVEN
+        Eleve e1= new Eleve(1,"newnom","newprenom","testEmail1","newpassword","testdomaine1");
+        String newPrenom= "newprenom";
+        Mockito.when(connexionEleveDao.read(e1.getEmail())).thenReturn(e1);
+
+        //WHEN
+        eleveServices.modifyPrenom(e1.getEmail(),newPrenom);
+
+        //THEN
+        Assertions.assertThat(e1.getPrenom()).isEqualTo(newPrenom);
+    }
+
+    @Test
+    public void shouldNotModifyPrenomAndThrowEleveNotFoundException() throws EleveNotFoundException {
+        //GIVEN
+        String email="email";
+        String newPrenom= "newprenom";
+        Mockito.when(connexionEleveDao.read(email)).thenReturn(null);
+        Exception result=null;
+
+        //WHEN
+        try{
+            eleveServices.modifyNom(email,newPrenom);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(EleveNotFoundException.class);
+        Mockito.verify(connexionEleveDao,Mockito.never()).modifyPrenom(Mockito.anyInt(),Mockito.anyString());
+
+    }
+
+    @Test
+    public void shouldNotModifyPrenomAndThrowDonneIllegalFormatException() throws DonneIllegalFormatException{
+        //GIVEN
+        Eleve e1= new Eleve(1,"testNom1","testPrenom1","testEmail1","mdp","testdomaine1");
+        Mockito.when(connexionEleveDao.read(e1.getEmail())).thenReturn(e1);
+        Exception result=null;
+
+        //WHEN
+        try{
+            eleveServices.modifyPrenom(e1.getEmail(), null);
+        }catch(Exception e){
+            result=e;
+        }
+
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
+        Mockito.verify(connexionEleveDao,Mockito.never()).modifyPrenom(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////// Modify Domaine /////////////////////////////////////////////////////////////////////
+    @Test
+    public void shouldModifyDomaine() throws EleveNotFoundException, PasswordIllegalFormatException, DonneIllegalFormatException {
+        //GIVEN
+        Eleve e1= new Eleve(1,"newnom","testPrenom1","testEmail1","newpassword","newdomaine");
+        String newDomaine= "newdomaine";
+        Mockito.when(connexionEleveDao.read(e1.getEmail())).thenReturn(e1);
+
+        //WHEN
+        eleveServices.modifyDomaine(e1.getEmail(),newDomaine);
+
+        //THEN
+        Assertions.assertThat(e1.getDomaine()).isEqualTo(newDomaine);
+    }
+
+    @Test
+    public void shouldNotModifyDomaineAndThrowEleveNotFoundException() throws EleveNotFoundException {
+        //GIVEN
+        String email="email";
+        String newDomaine= "newdomaine";
+        Mockito.when(connexionEleveDao.read(email)).thenReturn(null);
+        Exception result=null;
+
+        //WHEN
+        try{
+            eleveServices.modifyDomaine(email,newDomaine);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(EleveNotFoundException.class);
+        Mockito.verify(connexionEleveDao,Mockito.never()).modifyDomaine(Mockito.anyInt(),Mockito.anyString());
+
+    }
+
+    @Test
+    public void shouldNotModifyDomaineAndThrowDonneIllegalFormatException() throws DonneIllegalFormatException{
+        //GIVEN
+        Eleve e1= new Eleve(1,"testNom1","testPrenom1","testEmail1","mdp","testdomaine1");
+        Mockito.when(connexionEleveDao.read(e1.getEmail())).thenReturn(e1);
+        Exception result=null;
+
+        //WHEN
+        try{
+            eleveServices.modifyDomaine(e1.getEmail(), null);
+        }catch(Exception e){
+            result=e;
+        }
+
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
+        Mockito.verify(connexionEleveDao,Mockito.never()).modifyDomaine(Mockito.anyInt(),Mockito.anyString());
+    }
 }
