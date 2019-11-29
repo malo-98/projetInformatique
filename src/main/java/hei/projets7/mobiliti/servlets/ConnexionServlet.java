@@ -31,6 +31,7 @@ public class ConnexionServlet extends UtilsServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+        context.setVariable("erreurconnexion",req.getSession().getAttribute("erreurconnexion"));
         templateEngine.process("Connexion", context, resp.getWriter());
     }
 
@@ -45,7 +46,7 @@ public class ConnexionServlet extends UtilsServlet {
         LOGGER.trace("email : {}", email);
 
         String mdp = req.getParameter("mdp");
-        LOGGER.info("mdp : {}", mdp);
+        LOGGER.trace("mdp : {}", mdp);
 
         //COMPARE WITH BDD
         try {
