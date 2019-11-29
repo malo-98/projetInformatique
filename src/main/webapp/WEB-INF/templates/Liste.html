@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/Favoris.js" type="application/javascript"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
 <body>
@@ -43,7 +44,7 @@
     </br>
 
     <div th:unless="${eleveConnecte==null}" id="utilisateur">
-        <h2>Bienvenue Monsieur <bold th:text="${eleveConnecte.nom}">Malo</bold></h2>
+        <h2>Bienvenue<bold th:text="${eleveConnecte.nom}">Malo</bold></h2>
     </div>
 
     <div id="searchbar">
@@ -97,12 +98,12 @@
 
     <ul id="list">
             <li th:each="destination:${destinationList}">
-                <h2><bold th:text="${destination.city}">Laval</bold> - <bold th:text="${destination.country}">Canada</bold> - <bold th:text="${destination.domaine}">ITI</bold><a th:href="${ 'destination?id=' + destination.id }">-<i class="fa fa-search" style="font-size:36px; color: white; text-decoration: none;"></i></a></h2>
-                <img  src="images/img_liste_dest.jpg" width="150" height="100" alt="img dest" id="LOGO_HEI"/>
-                <p id="des-list" th:text="${destination.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <h2><bold th:text="${destination.city}">Laval</bold> - <bold th:text="${destination.country}">Canada</bold> - <bold th:text="${destination.domaine}">ITI</bold><a th:href="${ 'destination?id=' + destination.id }">-
+                    <i class="fa fa-search" style="font-size:36px; color: white; text-decoration: none; text-align: right;"></i>
+                </a>
+                    <i class='fas fa-star' style='font-size:36px'></i>
+                    <p id="des-list" th:text="${destination.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-
-                <span id="STAR1">&#9733;</span>
             </li>
     </ul>
 

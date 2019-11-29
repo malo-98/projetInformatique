@@ -142,7 +142,7 @@ caption {
 #list li h2,
 #list li p,
 #list li span{
-    margin-left: 11rem;
+    margin-left: 2rem;
 }
 
 #list li img {
@@ -154,8 +154,10 @@ caption {
 
 /*étoile favoris*/
 
-#list star1 {
-
+#STAR1 {
+    display: block;
+    width: 50%;
+    height: 50%;
 }
 
 
