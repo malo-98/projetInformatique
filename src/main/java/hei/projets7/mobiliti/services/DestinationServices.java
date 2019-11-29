@@ -118,6 +118,10 @@ public class DestinationServices {
         return destinationDao.read(id);
     }
 
+    public Integer getIdbyName(String name){
+        return  destinationDao.getIdDestinationByName(name);
+    }
+
 
 }
 

@@ -16,4 +16,6 @@ public interface DestinationDao {
 
     void modifyDescription(int idDestination, String description);
 
+    Integer getIdDestinationByName(String name);
+
 }

@@ -30,6 +30,23 @@ public class DestinationDaoImpl implements DestinationDao {
         return destination;
     }
 
+    public Integer getIdDestinationByName(String name){
+        Integer id_destination=null;
+        String sqlQuery="SELECT id_destination FROM destination where Nom=?;";
+        try{
+            Connection connection=DataSourceProvider.getConnection();
+            PreparedStatement statement=connection.prepareStatement(sqlQuery);
+            statement.setString(1,name);
+            ResultSet resultSet=statement.executeQuery();
+            while (resultSet.next()){
+                id_destination=resultSet.getInt("id_destination");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return id_destination;
+    }
+
     public List<Destination> listDestinations(){
         List<Destination> destinations=new ArrayList<>();
         try (Connection connection=DataSourceProvider.getDataSource().getConnection()){
