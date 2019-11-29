@@ -32,20 +32,6 @@ public class DestinationServlet extends UtilsServlet {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-<<<<<<< HEAD
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        destinationId = Integer.parseInt(req.getParameter("id"));
-        utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
-
-
-        LOGGER.info("destination detail" + req.getParameter("id"));
-        int destinationId = Integer.parseInt(req.getParameter("id"));
-        String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
-
-=======
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         destinationId = Integer.parseInt(req.getParameter("id"));
@@ -54,7 +40,6 @@ public class DestinationServlet extends UtilsServlet {
         LOGGER.info("destination detail" + req.getParameter("id"));
         int destinationId = Integer.parseInt(req.getParameter("id"));
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
->>>>>>> 0f190b7c3c5773c48d98039b03ec3d06061c16c7
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
 
 
