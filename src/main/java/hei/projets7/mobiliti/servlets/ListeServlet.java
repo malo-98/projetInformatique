@@ -26,24 +26,24 @@ public class ListeServlet extends UtilsServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
-
-        LOGGER.info("J'ai récupéré " + utilisateurConnecte + " dans la session");
-
+        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+
         List<Destination> listOfDestination = DestinationServices.getInstance().destinationList();
         context.setVariable("destinationList",listOfDestination);
-        Eleve eleve= null;
-        try {
-            eleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
-        } catch (EleveNotFoundException e) {
-            e.printStackTrace();
+
+        String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
+        if(utilisateurConnecte != null){
+            LOGGER.info("J'ai récupéré " + utilisateurConnecte + " dans la session");
+            try {
+                Eleve eleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
+                context.setVariable("eleveConnecte",eleve);
+            } catch (EleveNotFoundException e) {
+                LOGGER.error(e.getMessage());
+           }
         }
-        context.setVariable("eleveConnecte",eleve);
 
-        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         templateEngine.process("Liste", context, resp.getWriter());
-
     }
 
     @Override
