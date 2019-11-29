@@ -51,7 +51,7 @@ public class DestinationServlet extends UtilsServlet {
             e.printStackTrace();
         }
         webContext.setVariable("eleveConnecte",eleve);
-
+        }
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
 
         try {
@@ -61,7 +61,7 @@ public class DestinationServlet extends UtilsServlet {
         }
 
         templateEngine.process("Destination", webContext, resp.getWriter());
-    }
+
     }
 
     @Override
