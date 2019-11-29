@@ -33,18 +33,16 @@ public class ChoixDaoImpl implements ChoixDao {
     }
 
     @Override
-    public void modifyChoix(Integer id_eleve, Integer id_destination) {
-        String sqlQuery="UPDATE choix SET id_destination=? WHERE id_eleve=?;";
-        try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
-            try(PreparedStatement statement=connection.prepareStatement(sqlQuery)){
-                statement.setInt(2, id_destination);
-                statement.setInt(3, id_eleve);
-                statement.executeUpdate();
-            }
-        }catch(SQLException e){
+    public void modifyChoix(Integer id_eleve) {
+        String deleteQuery="DELETE FROM choix where id_eleve=?;";
+        try{
+            Connection connection=DataSourceProvider.getConnection();
+            PreparedStatement statement=connection.prepareStatement(deleteQuery);
+            statement.setInt(1,id_eleve);
+            statement.executeUpdate();
+        }catch (SQLException e){
             e.printStackTrace();
         }
-
     }
 
 

@@ -196,7 +196,12 @@ caption {
 }
 
 .container {
-    padding: 2px 16px;
+    padding: 6px 16px;
+    margin-top: 3em;
+}
+
+.card {
+    padding:2%;
 }
 
 a.bouton1 {
@@ -215,16 +220,25 @@ a.bouton1:hover {
     margin-left: auto;
     margin-right: auto;
 }
-
+/*ajout destination*/
 .ajout_destination{
     text-align: center;
 }
 
-.tableform tr {
-    margin-left: 5%;
-    margin-right: 5%;
-
+#submit:hover {
+    background-color: #29335c;
+    color: #fbfbf2;
 }
+
+.ajout_destination {
+    margin-top: 5%;
+}
+
+.tableform {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+/*Fin ajout destination*/
 
 #titre_listuniv {
     text-align: center;
@@ -241,6 +255,11 @@ a.bouton1:hover {
     text-align: center;
     margin-left: 25%;
 }
+
+#des-list {
+    font-weight: normal;
+}
+
 /*Fin page d'accueil*/
 /*Fin du CSS de liste */
 
@@ -255,10 +274,6 @@ a.bouton1:hover {
 .profilpage p {
     border-radius: 1em;
 }
-
-
-
-
 
 
 .elementform {
@@ -401,4 +416,6 @@ h1 .fas fa-pen {
 .footerbis img {
     left: 40%;
 }
+
+
 

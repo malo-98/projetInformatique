@@ -3,6 +3,7 @@ package hei.projets7.mobiliti.servlets;
 import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
+import hei.projets7.mobiliti.pojos.Choix;
 import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.ChoixServices;
@@ -16,12 +17,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/modification")
 public class ModificationProfilServlet extends UtilsServlet {
 
     private EleveServices eleveServices = new EleveServices();
+    private DestinationServices destinationServices=new DestinationServices();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -80,17 +83,22 @@ public class ModificationProfilServlet extends UtilsServlet {
             }
         }
 
-        if (destination!=null || destination !=" "){
-            try {
-                Integer id_destination = EleveServices.getInstance().getDestinationbyEmail(emailActuel);
-                Eleve eleveActuel= EleveServices.getInstance().getEleve(emailActuel);
-                Integer id_eleve = eleveActuel.getId_eleve();
-                ChoixServices.getInstance().modifyChoix(id_eleve, id_destination);
-                //System.out.println("destination modifiée");
-            } catch (EleveNotFoundException | DestinationNotFoundException e) {
-                e.printStackTrace();
-            }
+        Eleve eleveActuel= null;
+        try {
+            eleveActuel = EleveServices.getInstance().getEleve(emailActuel);
+        } catch (EleveNotFoundException e) {
+            e.printStackTrace();
         }
+        Integer id_eleve = eleveActuel.getId_eleve();
+        ChoixServices.getInstance().modifyChoix(id_eleve);
+        Integer id_destination=destinationServices.getIdbyName(destination);
+        Choix newChoix = new Choix(null,id_eleve,id_destination);
+        try {
+            ChoixServices.getInstance().addChoix(newChoix);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("destination modifiée");
 
 
 
