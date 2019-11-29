@@ -2,10 +2,13 @@ package hei.projets7.mobiliti.servlets;
 
 import hei.projets7.mobiliti.daos.impl.ChoixDaoImpl;
 import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
+import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Choix;
+import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.ChoixServices;
+import hei.projets7.mobiliti.services.DestinationServices;
 import hei.projets7.mobiliti.services.EleveServices;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -21,11 +24,14 @@ import java.sql.SQLException;
 public class ProfilServlet extends UtilsServlet {
 
     private EleveServices eleveServices=new EleveServices();
+    private DestinationServices destinationServices=new DestinationServices();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
         WebContext context = new WebContext(req, resp, req.getServletContext());
+
 
         Eleve eleve= null;
         try {
@@ -34,6 +40,12 @@ public class ProfilServlet extends UtilsServlet {
             e.printStackTrace();
         }
         context.setVariable("eleveConnecte",eleve);
+        Choix choix_eleve = ChoixServices.getInstance().getChoix(eleve.getId_eleve());
+        Integer destinationId = choix_eleve.getId_destination();
+        Destination destination= destinationServices.read(destinationId);
+
+        context.setVariable("choix",destination);
+
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         templateEngine.process("prive/Profil", context, resp.getWriter());

@@ -114,6 +114,9 @@ public class DestinationServices {
         destinationDao.modifyNbrePlace(idDestination, place);
     }
 
+    public Destination read (Integer id){
+        return destinationDao.read(id);
+    }
 
 
 }
