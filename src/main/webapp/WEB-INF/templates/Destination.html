@@ -6,6 +6,8 @@
     <title>Destination</title>
     <META charset="utf-8">
     <LINK href="css/styles.css" rel="stylesheet" type="text/css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
 <body>
@@ -16,8 +18,8 @@
     <nav th:insert="~{fragement::menu}"></nav>
 
     <!-- ************** Corps de la page ************** -->
-    <p>Inofrmations sur l'université</p>
-    <label id="id_destination">id : </label>
+    <p>Inofrmations sur l'université <a th:href="${ 'modifDestination?id=' + destination.id }" ><i class='fas fa-pen' style='font-size:24px ; color: black'></i></a></p>
+    <label id="id_destination" >id : </label>
     <p th:text="${destination.id}"></p>
     <label id="nom">nom : </label>
     <p th:text="${destination.name}"></p>
