@@ -106,8 +106,8 @@
     </ul>
 
     <div class="ajout_destination">
-    <h2 id="titre_ajout">Ajouter une destination</h2>
-    <form id="form_list" method="post">
+    <h2 th:if="${eleveConnecte.email=='admin@admin'}" id="titre_ajout">Ajouter une destination</h2>
+    <form th:if="${eleveConnecte.email=='admin@admin'}" id="form_list" method="post">
         <table class="tableform">
             <tr>
                 <td>
