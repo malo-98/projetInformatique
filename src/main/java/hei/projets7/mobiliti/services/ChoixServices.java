@@ -28,6 +28,7 @@ public class ChoixServices {
     public Choix getChoix(Integer id_eleve)  {
         Choix choix = choixDao.read(id_eleve);
 
+        
             return choix;
 
     }
