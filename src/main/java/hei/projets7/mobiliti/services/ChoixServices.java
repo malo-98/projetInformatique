@@ -27,20 +27,13 @@ public class ChoixServices {
 
     public Choix getChoix(Integer id_eleve)  {
         Choix choix = choixDao.read(id_eleve);
-
-        
             return choix;
 
     }
 
-
-
     public void modifyChoix(Integer id_eleve)  {
         choixDao.modifyChoix(id_eleve);
     }
-
-
-
 
     public Choix addChoix (Choix choix) throws SQLException {
         /*
@@ -62,6 +55,10 @@ public class ChoixServices {
 
          */
         return choixDao.addChoix(choix);
+    }
+
+    public Integer countChoixByIdDestination(Integer id){
+        return  choixDao.countChoixByIdDestination(id);
     }
 
 
