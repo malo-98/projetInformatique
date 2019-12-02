@@ -35,12 +35,8 @@ public class ChoixServices {
 
 
 
-    public void modifyChoix(Integer id_eleve, Integer id_destination) throws DestinationNotFoundException {
-        Choix choix = getChoix(id_eleve);
-        if (id_destination==null || " ".equals(id_destination)){
-            throw new DestinationNotFoundException(id_destination);
-        }
-        choixDao.modifyChoix(id_eleve,id_destination);
+    public void modifyChoix(Integer id_eleve)  {
+        choixDao.modifyChoix(id_eleve);
     }
 
 
