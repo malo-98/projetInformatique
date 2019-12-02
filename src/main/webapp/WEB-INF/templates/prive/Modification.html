@@ -33,9 +33,7 @@
             </div>
             <div>
                 <p class="formulaire-text">Choix de destination :</p>
-                    <select  class="input" name="NouvelleDestination">
-                        <option th:each="destination:${destinationList}" value="d"><p th:text="${destination.name}"></option>
-                    </select>
+                    <p>Pour modifier une destination vous devez en choisir une nouvelle</p>
             </div>
             <div>
                 <input class="input form-button" type="submit" id='submit' value='Modification Profil' >

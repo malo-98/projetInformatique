@@ -25,7 +25,7 @@ public class ProfilServlet extends UtilsServlet {
 
     private EleveServices eleveServices=new EleveServices();
     private DestinationServices destinationServices=new DestinationServices();
-
+    Integer destinationId=1;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -40,10 +40,11 @@ public class ProfilServlet extends UtilsServlet {
             e.printStackTrace();
         }
         context.setVariable("eleveConnecte",eleve);
-        Choix choix_eleve = ChoixServices.getInstance().getChoix(eleve.getId_eleve());
-        Integer destinationId = choix_eleve.getId_destination();
+        if (ChoixServices.getInstance().getChoix(eleve.getId_eleve())!=null){
+            Choix choix_eleve = ChoixServices.getInstance().getChoix(eleve.getId_eleve());
+            destinationId = choix_eleve.getId_destination();
+        }
         Destination destination= destinationServices.read(destinationId);
-
         context.setVariable("choix",destination);
 
 

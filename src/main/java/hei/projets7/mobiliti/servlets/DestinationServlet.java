@@ -88,7 +88,7 @@ public class DestinationServlet extends UtilsServlet {
 
 
         //CREATE CHOIX
-
+        ChoixServices.getInstance().modifyChoix(id_eleve);
         Choix newChoix = new Choix(null,id_eleve,destinationId);
 
         try {
