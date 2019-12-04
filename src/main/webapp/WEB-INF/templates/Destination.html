@@ -19,7 +19,7 @@
     <!-- ************** Corps de la page ************** -->
     <p class="formulaire-text">Informations sur l'université <small>(Il y'a <bold th:text="${count}">13</bold> personne(s) intéressée(s))</small>
         <a th:if="${eleveConnecte!= null && eleveConnecte.email=='admin@admin'}" th:href="${'modifDestination?id='+destination.id}">
-            <i class='fas fa-pen' style='font-size:24px'></i></a>
+            <i class='fas fa-pen' style='font-size:24px; color: white;'></i></a>
     </p>
     <article  class="info_destination">
         <label id="nom">NOM : </label>
