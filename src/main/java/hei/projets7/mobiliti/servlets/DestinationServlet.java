@@ -78,16 +78,8 @@ public class DestinationServlet extends UtilsServlet {
         } catch (EleveNotFoundException e) {
             e.printStackTrace();
         }
-
-        LOGGER.trace("eleve créé");
-
         //GET PARAMETERS
         Integer id_eleve = newEleve.getId_eleve();
-
-        LOGGER.trace("J'ai récupéré "+ id_eleve+"comme id eleve");
-
-        LOGGER.trace("J'ai récupéré "+destinationId+" comme id destination");
-
 
         //CREATE CHOIX
         ChoixServices.getInstance().modifyChoix(id_eleve);
