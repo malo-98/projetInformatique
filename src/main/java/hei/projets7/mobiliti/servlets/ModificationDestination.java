@@ -100,6 +100,8 @@ public class ModificationDestination extends UtilsServlet{
             LOGGER.warn(e);
         }
 
+
+
         resp.sendRedirect("accueil");
     }
 

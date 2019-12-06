@@ -70,7 +70,7 @@ public class DestinationServlet extends UtilsServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //String email=(String) req.getSession().getAttribute("utilisateurConnecte");
+
         //CREATE ELEVE
         Eleve newEleve = null;
         try {
@@ -98,6 +98,14 @@ public class DestinationServlet extends UtilsServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        try {
+            DestinationServices.getInstance().deleteDestination(destinationId);
+            LOGGER.trace("Dans la servlet, J'ai recup comme id : "+destinationId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         //REDIRECT
         resp.sendRedirect("profil");
