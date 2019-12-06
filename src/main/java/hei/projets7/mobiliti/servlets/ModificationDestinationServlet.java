@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/modifDestination")
-public class ModificationDestination extends UtilsServlet{
+public class ModificationDestinationServlet extends UtilsServlet{
 
     private Integer idDestination=null;
     private static final Logger LOGGER = LogManager.getLogger();
