@@ -35,7 +35,7 @@
                 <td th:text="${eleve.password}"></td>
                 <td th:text="${eleve.domaine}"></td>
                 <td><a th:href="${'modificationProfilAsAdmin?email=' + eleve.email }">Modifier</a></td>
-                <td><a th:href="${'SupprimerProfil?email='+eleve.email}">Supprimer</a></td>
+                <td><a th:href="${'ws/listEleve/'+eleve.email}">Supprimer</a></td>
             </tr>
         </tbody>
     </table>
