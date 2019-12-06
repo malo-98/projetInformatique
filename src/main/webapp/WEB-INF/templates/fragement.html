@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link linkrel="icon" type="image/x-icon" href="../../images/favicon.ico" />
 </head>
 <body>
 <nav th:fragment="menu(currentPage)">
     <ul class="navbar">
+  <!--      <li th:class="${currentPage == 'accueil' ? 'active' : ''}"> -->
         <li>
-            <img  src="images/logo3.png" height="50" alt="Logo Mobility"/>
+            <a title="=Accueil" href="accueil" > <img  src="images/logo3.png" height="50" alt="Logo Mobility"/> </a>
         </li>
-        <li th:class="${currentPage == 'accueil' ? 'active' : ''}">
-            <a title="Liste" href="accueil" class="bouton" target="_top">
+        <li th:class="${currentPage == 'liste' ? 'active' : ''}">
+            <a title="Liste" href="liste" class="bouton" target="_top">
                 <SPAN>Liste</SPAN>
             </a>
         </li>

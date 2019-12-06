@@ -1,15 +1,11 @@
 package hei.projets7.mobiliti.servlets;
 
-import hei.projets7.mobiliti.daos.impl.ChoixDaoImpl;
-import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
-import hei.projets7.mobiliti.exception.DestinationNotFoundException;
+
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
-import hei.projets7.mobiliti.pojos.Choix;
-import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
-import hei.projets7.mobiliti.services.ChoixServices;
-import hei.projets7.mobiliti.services.DestinationServices;
 import hei.projets7.mobiliti.services.EleveServices;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -18,20 +14,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
-@WebServlet("/profil")
-public class ProfilServlet extends UtilsServlet {
+@WebServlet("/accueil")
+public class AccueilServlet extends UtilsServlet {
 
-    private EleveServices eleveServices=new EleveServices();
-    private DestinationServices destinationServices=new DestinationServices();
-    Integer destinationId=1;
+    private static final Logger LOGGER = LogManager.getLogger();
+    private EleveServices eleveServices = new EleveServices();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
         WebContext context = new WebContext(req, resp, req.getServletContext());
-
 
         Eleve eleve= null;
         try {
@@ -40,16 +33,9 @@ public class ProfilServlet extends UtilsServlet {
             e.printStackTrace();
         }
         context.setVariable("eleveConnecte",eleve);
-        if (ChoixServices.getInstance().getChoix(eleve.getId_eleve())!=null){
-            Choix choix_eleve = ChoixServices.getInstance().getChoix(eleve.getId_eleve());
-            destinationId = choix_eleve.getId_destination();
-        }
-        Destination destination= destinationServices.read(destinationId);
-        context.setVariable("choix",destination);
-
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-        templateEngine.process("prive/Profil", context, resp.getWriter());
+        templateEngine.process("Accueil", context, resp.getWriter());
     }
-
 }
+

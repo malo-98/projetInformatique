@@ -83,22 +83,6 @@ public class ModificationProfilServlet extends UtilsServlet {
             }
         }
 
-        Eleve eleveActuel= null;
-        try {
-            eleveActuel = EleveServices.getInstance().getEleve(emailActuel);
-        } catch (EleveNotFoundException e) {
-            e.printStackTrace();
-        }
-        Integer id_eleve = eleveActuel.getId_eleve();
-        ChoixServices.getInstance().modifyChoix(id_eleve);
-        Integer id_destination=destinationServices.getIdbyName(destination);
-        Choix newChoix = new Choix(null,id_eleve,id_destination);
-        try {
-            ChoixServices.getInstance().addChoix(newChoix);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println("destination modifiée");
 
 
 

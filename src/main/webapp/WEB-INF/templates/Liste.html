@@ -6,6 +6,7 @@
     <title>Mobiliti</title>
     <META charset="utf-8">
     <link href="css/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/Favoris.js" type="application/javascript"></script>
@@ -14,10 +15,11 @@
 
 <body>
     <!-- ************** Barre de menu ************** -->
-    <nav th:replace="~{fragement::menu('accueil')}"></nav>
+    <nav th:replace="~{fragement::menu('liste')}"></nav>
 
 
     <!-- ************** Corps de la page ************** -->
+    <!--
     <div id="banniere">
         <h1>MOBILITI</h1>
         <h3>MOBILITI est un nouvel acteur pour les départs à l'étranger à HEI ! Il vous permet d'avoir la liste précise des destinations et d'avoir une idée des endroits préférées de vos camarades.</h3>
@@ -46,7 +48,7 @@
     <div th:unless="${eleveConnecte==null}" id="utilisateur">
         <h2>Bienvenue <bold th:text="${eleveConnecte.prenom}">Malo</bold></h2>
     </div>
-
+-->
     <div id="searchbar">
         <h1>Rechercher une destination</h1>
         <script type="text/javascript">

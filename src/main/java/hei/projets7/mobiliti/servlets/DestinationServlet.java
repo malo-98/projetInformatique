@@ -28,6 +28,7 @@ import java.sql.SQLException;
 public class DestinationServlet extends UtilsServlet {
     private EleveServices eleveServices = new EleveServices();
     private Integer destinationId=null;
+    private Integer count=null;
     private String utilisateurConnecte=null;
 
     private static final Logger LOGGER = LogManager.getLogger();
@@ -40,6 +41,7 @@ public class DestinationServlet extends UtilsServlet {
         LOGGER.info("destination detail" + req.getParameter("id"));
         int destinationId = Integer.parseInt(req.getParameter("id"));
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
+        count=ChoixServices.getInstance().countChoixByIdDestination(destinationId);
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
 
 
@@ -53,7 +55,7 @@ public class DestinationServlet extends UtilsServlet {
         webContext.setVariable("eleveConnecte",eleve);
         }
 
-
+        webContext.setVariable("count",count);
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         try {
             webContext.setVariable("destination", DestinationServices.getInstance().getDestination(destinationId));
@@ -88,7 +90,7 @@ public class DestinationServlet extends UtilsServlet {
 
 
         //CREATE CHOIX
-
+        ChoixServices.getInstance().modifyChoix(id_eleve);
         Choix newChoix = new Choix(null,id_eleve,destinationId);
 
         try {

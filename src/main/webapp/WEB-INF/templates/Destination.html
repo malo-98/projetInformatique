@@ -4,10 +4,12 @@
 
 <head>
     <title>Destination</title>
-    <META charset="utf-8">
-    <LINK href="css/styles.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+
 </head>
 
 <body>
@@ -15,7 +17,10 @@
     <nav th:replace="~{fragement::menu('accueil')}"></nav>
 
     <!-- ************** Corps de la page ************** -->
-    <p class="formulaire-text">Informations sur l'université<a th:if="${eleveConnecte!= null && eleveConnecte.email=='admin@admin'}" th:href="${'modifDestination?id='+destination.id}"><i class='fas fa-pen' style='font-size:24px'></i></a></p>
+    <p class="formulaire-text">Informations sur l'université <small>(Il y'a <bold th:text="${count}">13</bold> personne(s) intéressée(s))</small>
+        <a th:if="${eleveConnecte!= null && eleveConnecte.email=='admin@admin'}" th:href="${'modifDestination?id='+destination.id}">
+            <i class='fas fa-pen' style='font-size:24px; color: white;'></i></a>
+    </p>
     <article  class="info_destination">
         <label id="nom">NOM : </label>
         <p th:text="${destination.name}"></p>
