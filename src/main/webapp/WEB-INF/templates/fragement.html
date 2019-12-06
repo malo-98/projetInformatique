@@ -8,7 +8,8 @@
 <body>
 <nav th:fragment="menu(currentPage)">
     <ul class="navbar">
-        <li th:class="${currentPage == 'accueil' ? 'active' : ''}">
+  <!--      <li th:class="${currentPage == 'accueil' ? 'active' : ''}"> -->
+        <li>
             <a title="=Accueil" href="accueil" > <img  src="images/logo3.png" height="50" alt="Logo Mobility"/> </a>
         </li>
         <li th:class="${currentPage == 'liste' ? 'active' : ''}">
