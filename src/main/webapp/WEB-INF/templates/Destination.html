@@ -43,8 +43,16 @@
 
 
     <article class="destination_photo">
-        <img src="images/avion.jpg" width="100%" alt="logo mobiliti"/>
+        <img src="images/logo3.png" width="10%" alt="logo mobiliti"/>
     </article>
+
+
+    <div th:if="${eleveConnecte !=null && eleveConnecte.email=='admin@admin'}">
+        <form method="post">
+            <input type="submit" value="Supprimer cette destination">
+        </form>
+
+    </div>
 
 
 
