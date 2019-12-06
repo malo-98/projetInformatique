@@ -69,9 +69,4 @@ public class ChoixServices {
         return  choixDao.countChoixByIdDestination(id);
     }
 
-
-
-
-
-
 }

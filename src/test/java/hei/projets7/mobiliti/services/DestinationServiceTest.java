@@ -2,6 +2,8 @@ package hei.projets7.mobiliti.services;
 
 import hei.projets7.mobiliti.daos.impl.DestinationDaoImpl;
 import hei.projets7.mobiliti.exception.DestinationAlreadyExistException;
+import hei.projets7.mobiliti.exception.DestinationNotFoundException;
+import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.pojos.Destination;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -101,7 +103,81 @@ public class DestinationServiceTest {
         destinationServices.deleteDestination(destination.getId());
 
         //THEN
-        Mockito.verify(destinationDao).deleteDestinationByID(destination.getId());
+        Mockito.verify(destinationDao,Mockito.times(1)).deleteDestinationByID(destination.getId());
     }
+
+    @Test
+    public void shouldUpdateNom() throws DestinationNotFoundException, DonneIllegalFormatException {
+        //GIVEN
+        Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        String newName = "test1";
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        //WHEN
+        destinationServices.modifyNom(1,newName);
+        //THEN
+        Mockito.verify(destinationDao,Mockito.times(1)).modifyNom(destination.getId(),newName);
+    }
+
+    @Test
+    public void shouldUpdateDescription() throws DestinationNotFoundException, DonneIllegalFormatException {
+        //GIVEN
+        Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        String newDesc = "des1";
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        //WHEN
+        destinationServices.modifyDescription(1,newDesc);
+        //THEN
+        Mockito.verify(destinationDao,Mockito.times(1)).modifyDescription(destination.getId(),newDesc);
+    }
+
+    @Test
+    public void shouldUpdateVille() throws DestinationNotFoundException, DonneIllegalFormatException {
+        //GIVEN
+        Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        String newCity = "city1";
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        //WHEN
+        destinationServices.modifyVille(1,newCity);
+        //THEN
+        Mockito.verify(destinationDao,Mockito.times(1)).modifyVille(destination.getId(),newCity);
+    }
+
+    @Test
+    public void shouldUpdatePays() throws DestinationNotFoundException, DonneIllegalFormatException {
+        //GIVEN
+        Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        String newCountry = "country1";
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        //WHEN
+        destinationServices.modifyPays(1,newCountry);
+        //THEN
+        Mockito.verify(destinationDao,Mockito.times(1)).modifyPays(destination.getId(),newCountry);
+    }
+
+    @Test
+    public void shouldUpdateDomaine() throws DestinationNotFoundException, DonneIllegalFormatException {
+        //GIVEN
+        Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        String newDomaine = "dom1";
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        //WHEN
+        destinationServices.modifyDomaine(1,newDomaine);
+        //THEN
+        Mockito.verify(destinationDao,Mockito.times(1)).modifyDomaine(destination.getId(),newDomaine);
+    }
+
+    @Test
+    public void shouldUpdateNbrePlace() throws DestinationNotFoundException, DonneIllegalFormatException {
+        //GIVEN
+        Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        Integer newNbplace = 4;
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        //WHEN
+        destinationServices.modifyNbrePlace(1,4);
+        //THEN
+        Mockito.verify(destinationDao,Mockito.times(1)).modifyNbrePlace(destination.getId(),newNbplace);
+    }
+
+
 
 }
