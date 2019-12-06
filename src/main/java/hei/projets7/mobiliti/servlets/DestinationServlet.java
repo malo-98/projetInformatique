@@ -99,11 +99,6 @@ public class DestinationServlet extends UtilsServlet {
             e.printStackTrace();
         }
 
-        try {
-            DestinationServices.getInstance().deleteDestination(destinationId);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
 
         //REDIRECT
