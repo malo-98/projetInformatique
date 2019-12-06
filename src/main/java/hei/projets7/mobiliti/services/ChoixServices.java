@@ -1,9 +1,6 @@
 package hei.projets7.mobiliti.services;
 
-import hei.projets7.mobiliti.daos.ChoixDao;
 import hei.projets7.mobiliti.daos.impl.ChoixDaoImpl;
-import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
-import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.pojos.Choix;
 
 import java.sql.SQLException;
