@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/accueil")
+@WebServlet("/liste")
 public class ListeServlet extends UtilsServlet {
     private static final Logger LOGGER = LogManager.getLogger();
     private EleveServices eleveServices=new EleveServices();
@@ -69,6 +69,6 @@ public class ListeServlet extends UtilsServlet {
         }
 
         //REDIRECT TO LIST
-        resp.sendRedirect("accueil");
+        resp.sendRedirect("liste");
     }
 }
