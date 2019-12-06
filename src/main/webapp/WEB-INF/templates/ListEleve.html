@@ -22,16 +22,18 @@
                 <th>Email</th>
                 <th>mdp</th>
                 <th>Domaine</th>
+                <th>Modifier</th>
             </tr>
         </thead>
         <tbody class="tabEleve" id="bodyTabEleve">
-            <tr th:each="eleve : ${eleveList}">
+            <tr th:each="eleve : ${eleveList}" >
                 <td th:text="${eleve.id_eleve}"></td>
                 <td th:text="${eleve.nom}"></td>
                 <td th:text="${eleve.prenom}"></td>
                 <td th:text="${eleve.email}"></td>
                 <td th:text="${eleve.password}"></td>
                 <td th:text="${eleve.domaine}"></td>
+                <td><a th:href="${ 'modificationProfilAsAdmin?email=' + eleve.email }">Modifier</a></td>
             </tr>
         </tbody>
     </table>

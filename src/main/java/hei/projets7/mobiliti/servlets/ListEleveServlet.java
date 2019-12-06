@@ -1,7 +1,9 @@
 package hei.projets7.mobiliti.servlets;
 
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
+import hei.projets7.mobiliti.pojos.Choix;
 import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.services.ChoixServices;
 import hei.projets7.mobiliti.services.EleveServices;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,6 +32,9 @@ public class ListEleveServlet extends UtilsServlet {
 
         List<Eleve> eleves= EleveServices.getInstance().listEleve();
         context.setVariable("eleveList",eleves);
+
+        List<Choix> choixs= ChoixServices.getInstance().listChoix();
+        context.setVariable("choixList",choixs);
 
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
         if(utilisateurConnecte != null){

@@ -7,11 +7,35 @@ import hei.projets7.mobiliti.pojos.Eleve;
 
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChoixDaoImpl implements ChoixDao {
 
     private static Choix resultSetToChoix(ResultSet resultSet) throws SQLException {
         return new Choix(resultSet.getInt("id_choix"), resultSet.getInt("id_eleve"),resultSet.getInt("id_destination"));
+    }
+
+    @Override
+    public List<Choix> listAll() {
+        List<Choix> choixs=new ArrayList<>();
+        try (Connection connection= DataSourceProvider.getDataSource().getConnection()){
+            try(Statement statement=connection.createStatement()){
+                try(ResultSet results=statement.executeQuery("SELECT * FROM choix ;")){
+                    while (results.next()){
+                        Choix choix=new Choix(
+                                results.getInt("id_choix"),
+                                results.getInt("id_eleve"),
+                                results.getInt("id_destination")
+                        );
+                        choixs.add(choix);
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return choixs;
     }
 
     @Override

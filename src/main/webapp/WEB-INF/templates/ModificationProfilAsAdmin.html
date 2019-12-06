@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ModificationProfilAsAdmin</title>
+</head>
+<body>
+<form method="post">
+    <div>
+        <label for="NouveauNom"><p class="formulaire-text">Nouveau Nom :</p></label>
+        <input class="input" type="text" id="NouveauNom" name="NouveauNom" >
+    </div>
+    <div>
+        <label for="NouveauPrenom"><p class="formulaire-text">Nouveau Prenom :</p></label>
+        <input class="input" type="text" id="NouveauPrenom" name="NouveauPrenom" >
+    </div>
+    <div>
+        <p class="formulaire-text">Domaine :</p>
+        <select class="input" name="NouveauDomaine" >
+            <option value="BTP">Votre domaine</option>
+            <option value="BTP">BTP</option>
+            <option value="BAA">BAA</option>
+            <option value="ITI">ITI</option>
+            <option value="PCE">PCE</option>
+            <option value="CM">CM</option>
+            <option value="ESEA">ESEA</option>
+            <option value="IMS">IMS</option>
+            <option value="SC">SMART CITIES</option>
+            <option value="TIMTEX">TIMTEX</option>
+        </select>
+    </div>
+    <div>
+        <p class="formulaire-text">Choix de destination :</p>
+        <p>Pour modifier une destination vous devez en choisir une nouvelle</p>
+    </div>
+    <div>
+        <input class="input form-button" type="submit" id='submit' value='Modification Profil' >
+    </div>
+</form>
+
+</body>
+</html>

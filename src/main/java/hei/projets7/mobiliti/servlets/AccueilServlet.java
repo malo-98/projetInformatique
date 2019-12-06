@@ -26,6 +26,7 @@ public class AccueilServlet extends UtilsServlet {
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
+        if (utilisateurConnecte!=null){
         Eleve eleve= null;
         try {
             eleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
@@ -33,9 +34,11 @@ public class AccueilServlet extends UtilsServlet {
             e.printStackTrace();
         }
         context.setVariable("eleveConnecte",eleve);
+        }
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         templateEngine.process("Accueil", context, resp.getWriter());
+
     }
 }
 

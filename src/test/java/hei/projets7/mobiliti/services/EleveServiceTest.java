@@ -115,7 +115,7 @@ public class EleveServiceTest  {
         eleveServices.modifyPassword(e1.getEmail(),newPassword);
 
         //THEN
-        Assertions.assertThat(e1.getPassword()).isEqualTo(newPassword);
+        Mockito.verify(connexionEleveDao,Mockito.times(1)).modifyPassword(e1.getId_eleve(),e1.getPassword());
     }
 
     @Test
@@ -280,7 +280,7 @@ public class EleveServiceTest  {
         eleveServices.modifyNom(e1.getEmail(),newNom);
 
         //THEN
-        Assertions.assertThat(e1.getNom()).isEqualTo(newNom);
+        Mockito.verify(connexionEleveDao,Mockito.times(1)).modifyNom(e1.getId_eleve(),e1.getNom());
     }
 
     @Test
@@ -336,7 +336,7 @@ public class EleveServiceTest  {
         eleveServices.modifyPrenom(e1.getEmail(),newPrenom);
 
         //THEN
-        Assertions.assertThat(e1.getPrenom()).isEqualTo(newPrenom);
+        Mockito.verify(connexionEleveDao,Mockito.times(1)).modifyPrenom(e1.getId_eleve(),e1.getPrenom());
     }
 
     @Test
@@ -391,7 +391,7 @@ public class EleveServiceTest  {
         eleveServices.modifyDomaine(e1.getEmail(),newDomaine);
 
         //THEN
-        Assertions.assertThat(e1.getDomaine()).isEqualTo(newDomaine);
+        Mockito.verify(connexionEleveDao,Mockito.times(1)).modifyDomaine(e1.getId_eleve(),e1.getDomaine());
     }
 
     @Test
