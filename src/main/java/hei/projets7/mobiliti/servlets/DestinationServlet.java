@@ -101,7 +101,6 @@ public class DestinationServlet extends UtilsServlet {
 
         try {
             DestinationServices.getInstance().deleteDestination(destinationId);
-            LOGGER.trace("Dans la servlet, J'ai recup comme id : "+destinationId);
         } catch (Exception e) {
             e.printStackTrace();
         }
