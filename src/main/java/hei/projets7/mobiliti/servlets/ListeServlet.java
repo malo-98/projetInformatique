@@ -5,8 +5,10 @@ import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.pojos.Favoris;
 import hei.projets7.mobiliti.services.DestinationServices;
 import hei.projets7.mobiliti.services.EleveServices;
+import hei.projets7.mobiliti.services.FavorisServices;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.thymeleaf.TemplateEngine;
@@ -23,6 +25,7 @@ import java.util.List;
 public class ListeServlet extends UtilsServlet {
     private static final Logger LOGGER = LogManager.getLogger();
     private EleveServices eleveServices=new EleveServices();
+    private String utilisateurConnecte=null;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,7 +37,7 @@ public class ListeServlet extends UtilsServlet {
         context.setVariable("destinationList",listOfDestination);
 
 
-        String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
+       utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
         if(utilisateurConnecte != null){
             LOGGER.info("J'ai récupéré " + utilisateurConnecte + " dans la session");
             try {
@@ -60,6 +63,7 @@ public class ListeServlet extends UtilsServlet {
         Integer nbre=Integer.parseInt(req.getParameter("nombre"));
 
 
+
         //CREATE DESTINATION
         Destination newDestination=new Destination(null, name, ville, pays, desc, domaine, nbre);
         try {
@@ -67,6 +71,7 @@ public class ListeServlet extends UtilsServlet {
         } catch (DestinationAlreadyExistException e) {
             e.printStackTrace();
         }
+
 
         //REDIRECT TO LIST
         resp.sendRedirect("liste");

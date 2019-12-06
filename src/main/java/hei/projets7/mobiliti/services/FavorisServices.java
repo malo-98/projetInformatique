@@ -22,6 +22,6 @@ public class FavorisServices {
 
     public  Favoris addFavoris(Favoris favoris){return  favorisDao.addFavoris(favoris);}
 
-    public void deleteFavorisById(Integer id){favorisDao.deleteFavoris(id);}
+    public void modifyFavoris(Integer id){favorisDao.modifyFavoris(id);}
 
 }

@@ -1,5 +1,6 @@
 package hei.projets7.mobiliti.services;
 
+import hei.projets7.mobiliti.daos.DestinationDao;
 import hei.projets7.mobiliti.daos.impl.DestinationDaoImpl;
 import hei.projets7.mobiliti.exception.DestinationAlreadyExistException;
 import hei.projets7.mobiliti.exception.DestinationNotFoundException;
@@ -178,6 +179,221 @@ public class DestinationServiceTest {
         Mockito.verify(destinationDao,Mockito.times(1)).modifyNbrePlace(destination.getId(),newNbplace);
     }
 
+    @Test
+    public void shouldNotUpdateNameDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
+        //GIVEN
+        Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Exception result=null;
+        //WHEN
+        try{
+            destinationServices.modifyNom(destination.getId(),null);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyNom(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdateDescriptionDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
+        //GIVEN
+        Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Exception result=null;
+        //WHEN
+        try{
+            destinationServices.modifyDescription(destination.getId(),null);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyNom(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdatePaysDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
+        //GIVEN
+        Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Exception result=null;
+        //WHEN
+        try{
+            destinationServices.modifyPays(destination.getId(),null);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyNom(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdateDomaineDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
+        //GIVEN
+        Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Exception result=null;
+        //WHEN
+        try{
+            destinationServices.modifyDomaine(destination.getId(),null);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyNom(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdateNbrePlaceDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
+        //GIVEN
+        Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Exception result=null;
+        //WHEN
+        try{
+            destinationServices.modifyNbrePlace(destination.getId(),null);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyNom(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdateVilleDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
+        //GIVEN
+        Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
+        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Exception result=null;
+        //WHEN
+        try{
+            destinationServices.modifyVille(destination.getId(),null);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyNom(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdateDescriptionDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
+        //GIVEN
+        Integer id=1;
+        String newDesc= "Desc1";
+        Mockito.when(destinationDao.read(id)).thenReturn(null);
+        Exception result=null;
+
+        //WHEN
+        try{
+            destinationServices.modifyDescription(id,newDesc);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdateVilleDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
+        //GIVEN
+        Integer id=1;
+        String newVille= "Ville1";
+        Mockito.when(destinationDao.read(id)).thenReturn(null);
+        Exception result=null;
+
+        //WHEN
+        try{
+            destinationServices.modifyVille(id,newVille);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdatePaysDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
+        //GIVEN
+        Integer id=1;
+        String newPays= "Pays1";
+        Mockito.when(destinationDao.read(id)).thenReturn(null);
+        Exception result=null;
+
+        //WHEN
+        try{
+            destinationServices.modifyPays(id,newPays);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdateDomaineDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
+        //GIVEN
+        Integer id=1;
+        String newDom= "Dom1";
+        Mockito.when(destinationDao.read(id)).thenReturn(null);
+        Exception result=null;
+
+        //WHEN
+        try{
+            destinationServices.modifyDescription(id,newDom);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdateNbrePlaceDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
+        //GIVEN
+        Integer id=1;
+        Integer newNbrePlace=4;
+        Mockito.when(destinationDao.read(id)).thenReturn(null);
+        Exception result=null;
+
+        //WHEN
+        try{
+            destinationServices.modifyNbrePlace(id,newNbrePlace);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
+    }
+
+    @Test
+    public void shouldNotUpdateNameDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
+        //GIVEN
+        Integer id=1;
+        String newName="name1";
+        Mockito.when(destinationDao.read(id)).thenReturn(null);
+        Exception result=null;
+
+        //WHEN
+        try{
+            destinationServices.modifyNom(id,newName);
+        }catch(Exception e){
+            result=e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
+        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
+    }
 
 
 }
