@@ -71,5 +71,23 @@ public class ChoixDaoImpl implements ChoixDao {
         throw new RuntimeException("problème pour l'exécution de cette requête");
     }
 
+    @Override
+    public Integer countChoixByIdDestination(Integer id){
+        Integer result=0;
+        String query="SELECT id_choix, id_eleve, id_destination FROM choix WHERE id_destination=?";
+        try {
+            Connection connection = DataSourceProvider.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                result++;
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+
 
 }
