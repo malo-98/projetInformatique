@@ -8,7 +8,8 @@
 <body>
 <nav th:fragment="menu(currentPage)">
     <ul class="navbar">
-        <li th:class="${currentPage == 'accueil' ? 'active' : ''}">
+  <!--      <li th:class="${currentPage == 'accueil' ? 'active' : ''}"> -->
+        <li>
             <a title="=Accueil" href="accueil" > <img  src="images/logo3.png" height="50" alt="Logo Mobility"/> </a>
         </li>
         <li th:class="${currentPage == 'liste' ? 'active' : ''}">
@@ -48,7 +49,7 @@
         <br/>
         <hr  width="75%" />
         <p>Derni&egrave;re mise &agrave; jour : 2019 <br/>
-            Contact : <a href="mailto: paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr">paul.jourdan-du-mazot-le-rat-de-magnitot@hei.yncrea.fr</a></p>
+            Contact : <a href="mailto: mobil'iti@hei.yncrea.fr">mobil'iti@hei.yncrea.fr</a></p>
         <script language="javascript">
             function ouvre_popup(page)
             {

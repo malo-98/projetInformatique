@@ -56,7 +56,9 @@ public class DestinationServices {
     }
 
 
-    public void deleteDestination(Integer id){destinationDao.deleteDestinationByID(id);}
+    public void deleteDestination(Integer id){
+        System.out.println("Dans les services j'ai en id : "+id);
+        destinationDao.deleteDestinationByID(id);}
 
     public Destination getDestination(Integer id) throws DestinationNotFoundException {
         Destination destination = destinationDao.read(id);

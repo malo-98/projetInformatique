@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <title>listEleve</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
+
+    <!-- ************** Barre de menu ************** -->
+    <nav th:replace="~{fragement::menu('accueil')}"></nav>
+
+    <!-- ************** corps de la page ************** -->
     <table th:if="${eleveConnecte!=null && eleveConnecte.email=='admin@admin'}" class="listEleve">
         <caption id="titreTableau">Tableau des élèves</caption>
-        <thead>
+        <thead class="tabEleve">
             <tr>
                 <th>id</th>
                 <th>Nom</th>
@@ -16,20 +22,26 @@
                 <th>Email</th>
                 <th>mdp</th>
                 <th>Domaine</th>
+                <th>Modifier</th>
             </tr>
         </thead>
-        <tbody>
-            <tr th:each="eleve : ${eleveList}">
+        <tbody class="tabEleve" id="bodyTabEleve">
+            <tr th:each="eleve : ${eleveList}" >
                 <td th:text="${eleve.id_eleve}"></td>
                 <td th:text="${eleve.nom}"></td>
                 <td th:text="${eleve.prenom}"></td>
                 <td th:text="${eleve.email}"></td>
                 <td th:text="${eleve.password}"></td>
                 <td th:text="${eleve.domaine}"></td>
+                <td><a th:href="${ 'modificationProfilAsAdmin?email=' + eleve.email }">Modifier</a></td>
             </tr>
         </tbody>
     </table>
 
 <h3 th:unless="${eleveConnecte!=null && eleveConnecte.email=='admin@admin'}">Il faut être admin pour accéder à cette liste</h3>
+
+    <!-- ************** Pied de page ************** -->
+    <FOOTER  th:insert="~{fragement::pied}"></FOOTER>
+
 </body>
 </html>

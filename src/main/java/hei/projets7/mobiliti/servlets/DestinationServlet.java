@@ -70,6 +70,8 @@ public class DestinationServlet extends UtilsServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //CREATE ELEVE
         Eleve newEleve = null;
         try {
             newEleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
@@ -88,6 +90,13 @@ public class DestinationServlet extends UtilsServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        try {
+            DestinationServices.getInstance().deleteDestination(destinationId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         //REDIRECT
         resp.sendRedirect("profil");

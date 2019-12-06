@@ -1,12 +1,9 @@
 package hei.projets7.mobiliti.servlets;
 
-import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
-import hei.projets7.mobiliti.pojos.Choix;
 import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
-import hei.projets7.mobiliti.services.ChoixServices;
 import hei.projets7.mobiliti.services.DestinationServices;
 import hei.projets7.mobiliti.services.EleveServices;
 import org.apache.logging.log4j.LogManager;
@@ -19,34 +16,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/modification")
-public class ModificationProfilServlet extends UtilsServlet {
+@WebServlet("/modificationProfilAsAdmin")
+public class ModificationProfilAsAdminServlet extends UtilsServlet {
 
+    private String emailEleve=null;
     private EleveServices eleveServices = new EleveServices();
-    private static final Logger LOGGER = LogManager.getLogger();
     private DestinationServices destinationServices=new DestinationServices();
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
+        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        List<Destination> listOfDestination = DestinationServices.getInstance().destinationList();
-        context.setVariable("destinationList",listOfDestination);
+
+        String eleveEmail= (String) req.getParameter("email");
+        emailEleve=eleveEmail;
 
         Eleve eleve= null;
         try {
-            eleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
+            eleve = eleveServices.getInstance().getEleve(emailEleve);
         } catch (EleveNotFoundException e) {
-            LOGGER.warn("eleve not found");
+           LOGGER.warn("eleve not found");
         }
         context.setVariable("eleveConnecte",eleve);
 
-        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-
-        templateEngine.process("prive/Modification", context, resp.getWriter());
+        templateEngine.process("ModificationProfilAsAdmin", context, resp.getWriter());
     }
 
     @Override
@@ -56,40 +52,36 @@ public class ModificationProfilServlet extends UtilsServlet {
         String prenom= req.getParameter("NouveauPrenom");
         String domaine=req.getParameter("NouveauDomaine");
         String destination=req.getParameter("NouvelleDestination");
-        String emailActuel =(String) req.getSession().getAttribute("utilisateurConnecte");
+
         try {
-            Eleve eleveActuel= EleveServices.getInstance().getEleve(emailActuel);
+            Eleve eleveActuel= EleveServices.getInstance().getEleve(emailEleve);
             Integer id_eleve = eleveActuel.getId_eleve();
         } catch (EleveNotFoundException e) {
-            LOGGER.warn("eleve not found");
+            e.printStackTrace();
         }
 
         if (nom!=null || nom != " "){
             try {
-                EleveServices.getInstance().modifyNom(emailActuel,nom);
+                EleveServices.getInstance().modifyNom(emailEleve,nom);
             } catch (EleveNotFoundException | DonneIllegalFormatException e) {
-                LOGGER.warn("error while modifying eleve unknwon or unvalid data");
+                e.printStackTrace();
             }
         }
         if (prenom!=null || prenom != " "){
             try {
-                EleveServices.getInstance().modifyPrenom(emailActuel,prenom);
+                EleveServices.getInstance().modifyPrenom(emailEleve,prenom);
             } catch (EleveNotFoundException | DonneIllegalFormatException e) {
-                LOGGER.warn("error while modifying eleve unknwon or unvalid data");
+                e.printStackTrace();
             }
         }
         if (domaine!=null || domaine != " "){
             try {
-                EleveServices.getInstance().modifyDomaine(emailActuel,domaine);
+                EleveServices.getInstance().modifyDomaine(emailEleve,domaine);
             } catch (EleveNotFoundException | DonneIllegalFormatException e) {
-                LOGGER.warn("error while modifying eleve unknwon or unvalid data");
+                e.printStackTrace();
             }
         }
 
-
-
-
-        resp.sendRedirect("profil");
+        resp.sendRedirect("listEleve");
     }
-
 }
