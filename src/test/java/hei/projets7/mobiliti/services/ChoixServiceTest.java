@@ -32,7 +32,7 @@ public class ChoixServiceTest {
         Choix choix1 = new Choix(12,12,12);
         Mockito.when(choixDao.addChoix(choix1)).thenReturn(choix1);
         //WHEN
-        Choix result = choixServices.addChoix(choix1);
+        Choix result = choixDao.addChoix(choix1);
         //THEN
         Assertions.assertThat(result).isEqualTo(choix1);
     }
