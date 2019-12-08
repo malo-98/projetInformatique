@@ -7,9 +7,9 @@ let getUser=function(element){
     let user=element.querySelector("span.user_id").innerHTML;
 };
 
-let createFavoris=function(){
-    let destination_id=getDestination();
-    let user_id=getUser();
+let createFavoris=function(element){
+    let destination_id=getDestination(element);
+    let user_id=getUser(element);
     let createRequest= new XMLHttpRequest();
     createRequest.open("POST","/favoris/create", true );
     createRequest.send();
@@ -23,17 +23,18 @@ let deleteFavoris=function(){
 };
 
 window.onload = function(){
-    document.querySelectorAll(".destination").forEach(function(element) {
+    document.getElementsByClassName("destination").forEach(function(element){
         star = element.querySelector("i.star");
         star.onclick = function () {
-            if (star.class.contains("unselected")) {
+            classes = star.classList;
+            if (classes.contains("unselected")) {
                 createFavoris(element);
-                star.setAttribute("class", "star selected");
+                classes.replace("unselected","selected")
             }
             ;
-            if (star.class.contains("selected")) {
-                deletefavoris(element);
-                star.setAttribute("class", "star unselected");
+            if (classes.contains("selected")) {
+                deleteFavoris(element);
+                classes.replace("selected", "unselected")
             }
             ;
         };
