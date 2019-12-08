@@ -60,12 +60,13 @@ public class FavorisDaoImpl implements FavorisDao {
 
 
     @Override
-    public void modifyFavoris(Integer id) {
-        String SQLquery="DELETE FROM favoris where id_destination=?";
+    public void modifyFavoris(Integer id_destination, Integer id_user) {
+        String SQLquery="DELETE FROM favoris where id_destination=?, id_user=?";
         try{
             Connection connection=DataSourceProvider.getConnection();
             PreparedStatement statement=connection.prepareStatement(SQLquery);
-            statement.setInt(1,id);
+            statement.setInt(1,id_destination);
+            statement.setInt(2,id_user);
             statement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
