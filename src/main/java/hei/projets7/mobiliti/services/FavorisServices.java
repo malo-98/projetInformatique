@@ -22,6 +22,6 @@ public class FavorisServices {
 
     public  Favoris addFavoris(Favoris favoris){return  favorisDao.addFavoris(favoris);}
 
-    public void modifyFavoris(Integer id){favorisDao.modifyFavoris(id);}
+    public void modifyFavoris(Integer id, Integer user_id){favorisDao.modifyFavoris(id, user_id);}
 
 }

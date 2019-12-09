@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface FavorisDao {
-    void modifyFavoris(Integer id);
+    void modifyFavoris(Integer id, Integer user_id);
     Favoris addFavoris(Favoris favoris) throws SQLException, ChoixAlreadyExistException;
     List<Favoris> listFavorisByIdEleve(Integer id);
 }
