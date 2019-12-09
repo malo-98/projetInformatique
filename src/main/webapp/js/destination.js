@@ -1,12 +1,13 @@
 
-let deleteDestination = function (id_destination) {
-    if (confirm("Are you sure you want to delete " + id_destination + "?")) {
+let deleteDestination = function (destination_id) {
+    if (confirm("Are you sure you want to delete " + destination_id + "?")) {
         let deleteRequest = new XMLHttpRequest();
-        deleteRequest.open("DELETE", "/destination?id=" + id_destination, true);
+        deleteRequest.open("POST", "ws/destination/delete", true);
+        deleteRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
         deleteRequest.onload = function(){
             document.location.reload();
         };
-        deleteRequest.send();
+        deleteRequest.send("id_destination="+destination_id);
     }
 };
 
