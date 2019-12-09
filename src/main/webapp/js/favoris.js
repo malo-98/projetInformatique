@@ -10,7 +10,7 @@ let getUser=function(){
 let createFavoris=function(destination_id, user_id){
     let createRequest= new XMLHttpRequest();
     createRequest.open("POST","ws/favoris/create", true );
-    createRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded")
+    createRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     createRequest.send("destination_id="+destination_id+"&user_id="+user_id);
 };
 
@@ -33,6 +33,7 @@ window.onload = function(){
                 createFavoris(destination_id, user_id);
                 classes.replace("unselected", "selected");
             }
+
             else if (classes.contains("selected")) {
                 let destination_id=destination.querySelector("span.destination_id").innerHTML;
                 let user_id=destination.querySelector("span.user_id").innerHTML;
@@ -40,6 +41,15 @@ window.onload = function(){
                 classes.replace("selected", "unselected");
             }
         };
-    };
+        trash = destination.querySelector("i.trash");
+        trash.onclick = function () {
+            let destination_id=destination.querySelector("span.destination_id").innerHTML;
+            deleteDestination(destination_id);
+        }
+
+
+
+        }
+
 
 };
