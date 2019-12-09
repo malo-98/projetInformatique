@@ -121,6 +121,8 @@ caption {
     justify-content: space-around;
 }
 
+
+
 #list li{
     position: relative;
     width: 96%;
@@ -133,6 +135,8 @@ caption {
     justify-content: space-between;
     background-color: #29335c;
     color: #fbfbf2;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #list li:nth-child(2n){
