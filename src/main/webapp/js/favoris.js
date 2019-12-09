@@ -31,13 +31,18 @@ window.onload = function(){
                 createFavoris(element);
                 classes.replace("unselected","selected")
             }
-            ;
+
             if (classes.contains("selected")) {
                 deleteFavoris(element);
                 classes.replace("selected", "unselected")
             }
-            ;
-        };
-    });
 
+        };
+
+            document.getElementById("delete").onclick = function(){
+                let destination_id= element.querySelector("span.destination_id").innerHTML;
+                deleteDestination(destination_id);
+
+        };
+    })
 };
