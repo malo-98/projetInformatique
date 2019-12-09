@@ -1,6 +1,8 @@
 package hei.projets7.mobiliti.daos.impl;
 
 import hei.projets7.mobiliti.daos.FavorisDao;
+import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
+import hei.projets7.mobiliti.pojos.Choix;
 import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Favoris;
 
@@ -21,13 +23,8 @@ public class FavorisDaoImpl implements FavorisDao {
            while (resultSet.next()){
                Favoris favoris=new Favoris(
                        resultSet.getInt("id_favoris"),
-                       resultSet.getString("Nom"),
-                       resultSet.getString("Ville"),
-                       resultSet.getString("Pays"),
-                       resultSet.getString("Description"),
-                       resultSet.getString("Domaine"),
-                       resultSet.getInt("Nombre_de_place"),
-                       resultSet.getInt("id_eleve")
+                       resultSet.getInt("id_eleve"),
+                       resultSet.getInt("id_destination")
                );
                favorisList.add(favoris);
            }
@@ -40,15 +37,10 @@ public class FavorisDaoImpl implements FavorisDao {
     @Override
     public Favoris addFavoris(Favoris favoris) {
         try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
-            String sqlQuery="INSERT INTO favoris(Nom, Ville, Pays, Description, Domaine, Nombre_de_place, id_eleve) VALUE(?, ?, ?, ?, ?, ?,?);";
+            String sqlQuery="INSERT INTO favoris( id_eleve, id_destination) VALUE(?, ?);";
             try(PreparedStatement statement=connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)){
-                statement.setString(1, favoris.getName());
-                statement.setString(2, favoris.getCity());
-                statement.setString(3,favoris.getCountry());
-                statement.setString(4,favoris.getDescription());
-                statement.setString(5,favoris.getDomaine());
-                statement.setInt(6,favoris.getPlace() );
-                statement.setInt(6,favoris.getIdEleve() );
+                statement.setInt(1, favoris.getIdEleve());
+                statement.setInt(2, favoris.getIdDestination());
                 statement.executeUpdate();
 
                 try(ResultSet resultSet=statement.getGeneratedKeys()){
@@ -66,13 +58,15 @@ public class FavorisDaoImpl implements FavorisDao {
         throw new RuntimeException("problème pour l'exécution de cette requête");
     }
 
+
     @Override
-    public void deleteFavoris(Integer id) {
-        String SQLquery="DELETE FROM favoris where id=?";
+    public void modifyFavoris(Integer id_destination, Integer id_user) {
+        String SQLquery="DELETE FROM favoris where id_destination=?, id_user=?";
         try{
             Connection connection=DataSourceProvider.getConnection();
             PreparedStatement statement=connection.prepareStatement(SQLquery);
-            statement.setInt(1,id);
+            statement.setInt(1,id_destination);
+            statement.setInt(2,id_user);
             statement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();

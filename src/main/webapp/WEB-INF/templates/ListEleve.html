@@ -23,6 +23,7 @@
                 <th>mdp</th>
                 <th>Domaine</th>
                 <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
         <tbody class="tabEleve" id="bodyTabEleve">
@@ -33,7 +34,8 @@
                 <td th:text="${eleve.email}"></td>
                 <td th:text="${eleve.password}"></td>
                 <td th:text="${eleve.domaine}"></td>
-                <td><a th:href="${ 'modificationProfilAsAdmin?email=' + eleve.email }">Modifier</a></td>
+                <td><a th:href="${'modificationProfilAsAdmin?email=' + eleve.email }">Modifier</a></td>
+                <td><a th:href="${'ws/listEleve/'+eleve.email}">Supprimer</a></td>
             </tr>
         </tbody>
     </table>
