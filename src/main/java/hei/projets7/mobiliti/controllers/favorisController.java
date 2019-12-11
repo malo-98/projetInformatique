@@ -15,7 +15,7 @@ public class favorisController {
         FavorisServices.getInstance().addFavoris(favoris);
     }
 
-    @DELETE
+    @POST
     @Path("/delete")
     public void deleteCity(@FormParam("destination_id") Integer id_destination, @FormParam("user_id") Integer user_id){
         FavorisServices.getInstance().modifyFavoris(id_destination, user_id);

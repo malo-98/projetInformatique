@@ -16,7 +16,7 @@ let createFavoris=function(destination_id, user_id){
 
 let deleteFavoris=function(destination_id, user_id){
     let createRequest= new XMLHttpRequest();
-    createRequest.open("DELETE","ws/favoris/delete", true );
+    createRequest.open("POST","ws/favoris/delete", true );
     createRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     createRequest.send("destination_id="+destination_id+"&user_id="+user_id);
 };
