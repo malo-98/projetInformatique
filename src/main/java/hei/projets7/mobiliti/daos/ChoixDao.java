@@ -11,9 +11,9 @@ import java.util.List;
 public interface ChoixDao {
 
     List<Choix> listAll();
-    Choix read(Integer id_eleve) throws EleveNotFoundException, ChoixNotFoundException;
-    void modifyChoix(Integer id_eleve) throws ChoixNotFoundException;
-    Choix addChoix(Choix choix) throws ChoixAlreadyExistException;
+    Choix read(Integer id_eleve);
+    void modifyChoix(Integer id_eleve);
+    Choix addChoix(Choix choix);
     Integer countChoixByIdDestination (Integer id) ;
 
 }
