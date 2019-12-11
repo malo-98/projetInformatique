@@ -33,6 +33,37 @@ public class EleveServiceTest  {
     @InjectMocks
     EleveServices eleveServices;
 
+    //Test get
+
+    @Test
+    public void shouldGetEleve() throws EleveNotFoundException {
+        //GIVEN
+        Eleve eleve = new Eleve(1, "testnom","testprenom","testmail","testmdp","testdom");
+        String email = "testmail";
+        Mockito.when(connexionEleveDao.read(email)).thenReturn(eleve);
+
+        //WHEN
+        Eleve result = eleveServices.getEleve(email);
+
+        //THEN
+        Assertions.assertThat(result).isEqualTo(eleve);
+    }
+
+    @Test(expected = EleveNotFoundException.class)
+    public void shouldNotGetEleveAndThrowEleveNotFoundException() throws EleveNotFoundException {
+
+        //GIVEN
+        String email="email";
+
+        Mockito.when(connexionEleveDao.read(email)).thenReturn(null);
+
+        //WHEN
+        Eleve result =eleveServices.getEleve(email);
+
+        //THEN
+        fail("user not found");
+    }
+    
 
     // Test sur liste
     @Test
@@ -85,6 +116,10 @@ public class EleveServiceTest  {
 
         //THEN
         fail("Eleve already exist exception");
+
+
+
+
     }
 
     @Test(expected = DonneIllegalFormatException.class)
@@ -98,6 +133,7 @@ public class EleveServiceTest  {
 
         //THEN
         fail("illegal format exception");
+
 
 
     }

@@ -2,6 +2,9 @@ package hei.projets7.mobiliti.services;
 
 import hei.projets7.mobiliti.daos.impl.ChoixDaoImpl;
 import hei.projets7.mobiliti.daos.impl.DataSourceProvider;
+import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
+import hei.projets7.mobiliti.exception.ChoixNotFoundException;
+import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Choix;
 import hei.projets7.mobiliti.pojos.Destination;
 
@@ -33,17 +36,17 @@ public class ChoixServices {
     return choixDao.listAll();
     }
 
-    public Choix getChoix(Integer id_eleve)  {
+    public Choix getChoix(Integer id_eleve)  throws EleveNotFoundException, ChoixNotFoundException {
         Choix choix = choixDao.read(id_eleve);
             return choix;
 
     }
 
-    public void modifyChoix(Integer id_eleve)  {
+    public void modifyChoix(Integer id_eleve) throws ChoixNotFoundException {
         choixDao.modifyChoix(id_eleve);
     }
 
-    public Choix addChoix (Choix choix) throws SQLException {
+    public Choix addChoix (Choix choix) throws SQLException, ChoixAlreadyExistException {
         /*
        String query="SELECT id_eleve, FROM choix";
        Integer id_base =Integer.parseInt(query);
@@ -65,7 +68,7 @@ public class ChoixServices {
         return choixDao.addChoix(choix);
     }
 
-    public Integer countChoixByIdDestination(Integer id){
+    public Integer countChoixByIdDestination(Integer id) /*throws ChoixNotFoundException*/ {
         return  choixDao.countChoixByIdDestination(id);
     }
 

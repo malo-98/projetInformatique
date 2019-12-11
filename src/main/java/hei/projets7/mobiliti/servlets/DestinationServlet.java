@@ -2,6 +2,7 @@ package hei.projets7.mobiliti.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
+import hei.projets7.mobiliti.exception.ChoixNotFoundException;
 import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Choix;
@@ -82,12 +83,16 @@ public class DestinationServlet extends UtilsServlet {
         Integer id_eleve = newEleve.getId_eleve();
 
         //CREATE CHOIX
-        ChoixServices.getInstance().modifyChoix(id_eleve);
+        try {
+            ChoixServices.getInstance().modifyChoix(id_eleve);
+        } catch (ChoixNotFoundException e) {
+            e.printStackTrace();
+        }
         Choix newChoix = new Choix(null,id_eleve,destinationId);
 
         try {
             Choix createdChoix=ChoixServices.getInstance().addChoix(newChoix);
-        } catch (SQLException e) {
+        } catch (SQLException | ChoixAlreadyExistException e) {
             e.printStackTrace();
         }
 

@@ -2,6 +2,7 @@ package hei.projets7.mobiliti.servlets;
 
 import hei.projets7.mobiliti.daos.impl.ChoixDaoImpl;
 import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
+import hei.projets7.mobiliti.exception.ChoixNotFoundException;
 import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Choix;
@@ -40,9 +41,13 @@ public class ProfilServlet extends UtilsServlet {
             e.printStackTrace();
         }
         context.setVariable("eleveConnecte",eleve);
-        if (ChoixServices.getInstance().getChoix(eleve.getId_eleve())!=null){
-            Choix choix_eleve = ChoixServices.getInstance().getChoix(eleve.getId_eleve());
-            destinationId = choix_eleve.getId_destination();
+        try {
+            if (ChoixServices.getInstance().getChoix(eleve.getId_eleve())!=null){
+                Choix choix_eleve = ChoixServices.getInstance().getChoix(eleve.getId_eleve());
+                destinationId = choix_eleve.getId_destination();
+            }
+        } catch (EleveNotFoundException | ChoixNotFoundException e) {
+            e.printStackTrace();
         }
         Destination destination= destinationServices.read(destinationId);
         context.setVariable("choix",destination);

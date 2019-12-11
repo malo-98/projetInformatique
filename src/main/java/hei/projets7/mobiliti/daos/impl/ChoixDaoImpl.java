@@ -2,6 +2,8 @@ package hei.projets7.mobiliti.daos.impl;
 
 import hei.projets7.mobiliti.daos.ChoixDao;
 import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
+import hei.projets7.mobiliti.exception.ChoixNotFoundException;
+import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Choix;
 import hei.projets7.mobiliti.pojos.Eleve;
 
@@ -39,7 +41,7 @@ public class ChoixDaoImpl implements ChoixDao {
     }
 
     @Override
-    public Choix read(Integer id_eleve) {
+    public Choix read(Integer id_eleve) throws EleveNotFoundException {
         Choix choix = null;
         String query="SELECT id_choix, id_eleve, id_destination FROM choix WHERE id_eleve=?";
         try {
@@ -57,7 +59,7 @@ public class ChoixDaoImpl implements ChoixDao {
     }
 
     @Override
-    public void modifyChoix(Integer id_eleve) {
+    public void modifyChoix(Integer id_eleve) throws ChoixNotFoundException {
         String deleteQuery="DELETE FROM choix where id_eleve=?;";
         try{
             Connection connection=DataSourceProvider.getConnection();
@@ -72,7 +74,7 @@ public class ChoixDaoImpl implements ChoixDao {
 
 
     @Override
-    public Choix addChoix(Choix choix) throws SQLException {
+    public Choix addChoix(Choix choix) throws ChoixAlreadyExistException {
         try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
             String sqlQuery="INSERT INTO choix(id_eleve, id_destination) VALUE(?, ?);";
             try(PreparedStatement statement=connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
