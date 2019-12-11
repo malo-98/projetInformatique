@@ -1,5 +1,6 @@
 package hei.projets7.mobiliti.controllers;
 
+import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.services.EleveServices;
@@ -25,4 +26,5 @@ public class eleveController {
     ) throws EleveNotFoundException {
         EleveServices.getInstance().deleteUser(email);
     }
+    
 }
