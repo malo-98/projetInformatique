@@ -26,5 +26,5 @@ public class eleveController {
     ) throws EleveNotFoundException {
         EleveServices.getInstance().deleteUser(email);
     }
-    
+
 }
