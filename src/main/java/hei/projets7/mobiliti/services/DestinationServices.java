@@ -56,7 +56,13 @@ public class DestinationServices {
     }
 
 
-    public void deleteDestination(Integer id){destinationDao.deleteDestinationByID(id);}
+    public void deleteDestination(Integer id) throws DonneIllegalFormatException {
+
+        if (id==null || " ".equals(id)){
+            throw new DonneIllegalFormatException();
+        }
+        destinationDao.deleteDestinationByID(id);
+    }
 
     public Destination getDestination(Integer id) throws DestinationNotFoundException {
         Destination destination = destinationDao.read(id);

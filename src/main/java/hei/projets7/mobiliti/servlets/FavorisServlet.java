@@ -1,6 +1,7 @@
 package hei.projets7.mobiliti.servlets;
 
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
+import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
 import hei.projets7.mobiliti.pojos.Favoris;
 import hei.projets7.mobiliti.services.EleveServices;
@@ -35,9 +36,10 @@ public class FavorisServlet extends UtilsServlet {
         } catch (EleveNotFoundException e) {
             e.printStackTrace();
         }
+        Destination destination=null;
         context.setVariable("eleveConnecte",eleve);
-        List<Favoris> favorisList=FavorisServices.getInstance().favorisListByID(eleve.getId_eleve());
-        context.setVariable("listOfFavoris", favorisList);
+        List<Destination> destinationList=favorisServices.favorisListByID(eleve.getId_eleve());
+        context.setVariable("destinationList", destinationList);
 
 
 

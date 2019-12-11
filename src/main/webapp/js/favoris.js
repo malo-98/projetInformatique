@@ -10,21 +10,15 @@ let getUser=function(){
 let createFavoris=function(destination_id, user_id){
     let createRequest= new XMLHttpRequest();
     createRequest.open("POST","ws/favoris/create", true );
-    createRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded")
-    createRequest.onload=function(){
-        classes.replace("unselected","selected");
-    };
+    createRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     createRequest.send("destination_id="+destination_id+"&user_id="+user_id);
 };
 
 let deleteFavoris=function(destination_id, user_id){
     let createRequest= new XMLHttpRequest();
-    createRequest.open("DELETE","ws/favoris/delete", true );
+    createRequest.open("POST","ws/favoris/delete", true );
     createRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    createRequest.onload=function(){
-        classes.replace("selected", "unselected");
-    }
-    createRequest.send("destination_id="+destination_id+"$user_id="+user_id);
+    createRequest.send("destination_id="+destination_id+"&user_id="+user_id);
 };
 
 window.onload = function(){
@@ -37,13 +31,17 @@ window.onload = function(){
                 let destination_id=destination.querySelector("span.destination_id").innerHTML;
                 let user_id=destination.querySelector("span.user_id").innerHTML;
                 createFavoris(destination_id, user_id);
+                classes.replace("unselected", "selected");
             }
+
             else if (classes.contains("selected")) {
                 let destination_id=destination.querySelector("span.destination_id").innerHTML;
                 let user_id=destination.querySelector("span.user_id").innerHTML;
                 deleteFavoris(destination_id, user_id);
+                classes.replace("selected", "unselected");
             }
         };
-    };
+    }
+
 
 };

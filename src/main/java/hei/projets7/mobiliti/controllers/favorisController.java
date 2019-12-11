@@ -1,5 +1,6 @@
 package hei.projets7.mobiliti.controllers;
 
+import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.pojos.Favoris;
 import hei.projets7.mobiliti.services.FavorisServices;
 
@@ -10,12 +11,12 @@ public class favorisController {
 
     @POST
     @Path("/create")
-    public void createCity(@FormParam("destination_id") Integer destination_id, @FormParam("user_id") Integer user_id){
-        Favoris favoris=new Favoris(null, user_id,destination_id);
+    public void createCity(@FormParam("destination_id") Integer destination_id, @FormParam("user_id") Integer user_id) {
+        Favoris favoris=new Favoris(null,  user_id, destination_id);
         FavorisServices.getInstance().addFavoris(favoris);
     }
 
-    @DELETE
+    @POST
     @Path("/delete")
     public void deleteCity(@FormParam("destination_id") Integer id_destination, @FormParam("user_id") Integer user_id){
         FavorisServices.getInstance().modifyFavoris(id_destination, user_id);

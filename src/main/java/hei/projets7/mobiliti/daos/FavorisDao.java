@@ -2,6 +2,7 @@ package hei.projets7.mobiliti.daos;
 
 import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Choix;
+import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Favoris;
 
 import java.sql.SQLException;
@@ -10,5 +11,5 @@ import java.util.List;
 public interface FavorisDao {
     void modifyFavoris(Integer id, Integer user_id);
     Favoris addFavoris(Favoris favoris) throws SQLException, ChoixAlreadyExistException;
-    List<Favoris> listFavorisByIdEleve(Integer id);
+    List<Destination> listFavorisByIdEleve(Integer id);
 }

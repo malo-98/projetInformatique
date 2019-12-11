@@ -96,7 +96,7 @@ public class DestinationServiceTest {
 
 
     @Test
-    public void shouldDeleteDestination(){
+    public void shouldDeleteDestination() throws DonneIllegalFormatException {
         //Given
         Destination destination=new Destination(1, "name1", "city1", "country1", "des1", "dom1", 4);
 
