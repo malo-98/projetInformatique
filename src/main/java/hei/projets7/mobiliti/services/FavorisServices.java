@@ -1,6 +1,5 @@
 package hei.projets7.mobiliti.services;
 
-import hei.projets7.mobiliti.daos.impl.DestinationDaoImpl;
 import hei.projets7.mobiliti.daos.impl.FavorisDaoImpl;
 import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.pojos.Destination;

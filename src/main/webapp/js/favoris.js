@@ -41,15 +41,7 @@ window.onload = function(){
                 classes.replace("selected", "unselected");
             }
         };
-        trash = destination.querySelector("i.trash");
-        trash.onclick = function () {
-            let destination_id=destination.querySelector("span.destination_id").innerHTML;
-            deleteDestination(destination_id);
-        }
-
-
-
-        }
+    }
 
 
 };

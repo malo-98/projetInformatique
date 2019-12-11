@@ -10,9 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/favoris.js" type="application/javascript"></script>
-
-    <script src="js/destination.js" type="application/javascript"></script>
-
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <STYLE>
         .selected{
@@ -88,12 +85,8 @@
                     <a th:href="${ 'destination?id=' + destination.id }">-
                         <i class="fa fa-search" style="font-size:36px; color: white; text-decoration: none; text-align: right;"></i>
                     </a>
-<<<<<<< HEAD
-                    <i th:if="${eleveConnecte!=null}" class='fas fa-star star unselected' style='font-size:36px'></i>
-=======
                     <i th:unless="${eleveConnecte==null}" class="fas fa-star unselected star" style='font-size:36px'></i>
->>>>>>> 9137f0bad11709419fb87c4c6cf179ade69ba74d
-                    <i th:if="${eleveConnecte!=null && eleveConnecte.email=='admin@admin'}" class="fa fa-trash trash" style="font-size:36px; color: white"></i>
+
                     <p id="des-list" th:text="${destination.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 </h2>

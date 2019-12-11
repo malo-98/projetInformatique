@@ -11,3 +11,14 @@ let deleteDestination = function (destination_id) {
     }
 };
 
+window.onload = function(){
+
+    trash = document.querySelector("i.trash");
+    trash.onclick = function () {
+        let destination_id=document.querySelector("span.destination_id").innerHTML;
+        deleteDestination(destination_id);
+        window.location.replace("http://localhost:8080/projetS7_war_exploded/liste");
+
+    }
+};
+
