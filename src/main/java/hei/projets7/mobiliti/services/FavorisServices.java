@@ -2,6 +2,8 @@ package hei.projets7.mobiliti.services;
 
 import hei.projets7.mobiliti.daos.impl.DestinationDaoImpl;
 import hei.projets7.mobiliti.daos.impl.FavorisDaoImpl;
+import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
+import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Favoris;
 
 import java.util.List;
@@ -18,10 +20,12 @@ public class FavorisServices {
     public FavorisServices(){
     }
 
-    public List<Favoris> favorisListByID(Integer id){return favorisDao.listFavorisByIdEleve(id); }
+    public List<Destination> favorisListByID(Integer id){return favorisDao.listFavorisByIdEleve(id); }
 
     public  Favoris addFavoris(Favoris favoris){return  favorisDao.addFavoris(favoris);}
 
-    public void modifyFavoris(Integer id, Integer user_id){favorisDao.modifyFavoris(id, user_id);}
+    public void modifyFavoris(Integer id, Integer user_id) {
+        favorisDao.modifyFavoris(id, user_id);
+    }
 
 }

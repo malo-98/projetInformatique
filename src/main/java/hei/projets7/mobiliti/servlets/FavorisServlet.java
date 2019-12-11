@@ -38,9 +38,8 @@ public class FavorisServlet extends UtilsServlet {
         }
         Destination destination=null;
         context.setVariable("eleveConnecte",eleve);
-        List<Favoris> favorisList=favorisServices.favorisListByID(eleve.getId_eleve());
-        context.setVariable("favorisList", favorisList);
-        context.setVariable("newFavoris", destination);
+        List<Destination> destinationList=favorisServices.favorisListByID(eleve.getId_eleve());
+        context.setVariable("destinationList", destinationList);
 
 
 
