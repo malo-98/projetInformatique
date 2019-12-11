@@ -67,7 +67,6 @@ caption {
     }
 
     .navbar a {
-        margin-top: 2%;
         display:inline-flex;
         color: #fbfbf2;
         margin: 0 5em;
@@ -79,16 +78,18 @@ caption {
         list-style: none;
     }
 
+    .navbar span{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
     .navbar li:hover {
         background-color: #be6e46;
     }
 
-    .navbar span{
-        padding-top: 15%;
-        padding-bottom: 15%;
-
+    .active {
+        background-color: #be6e46;
     }
-
 
 }
 
