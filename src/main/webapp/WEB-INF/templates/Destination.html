@@ -4,11 +4,12 @@
 
 <head>
     <title>Destination</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <script src="js/destination.js" type="application/javascript"></script>
 
 </head>
 
@@ -21,6 +22,7 @@
         <a th:if="${eleveConnecte!= null && eleveConnecte.email=='admin@admin'}" th:href="${'modifDestination?id='+destination.id}">
             <i class='fas fa-pen' style='font-size:24px; color: white;'></i></a>
     </p>
+    <span class="destination_id" hidden="true" th:text="${destination.id}">2</span>
     <article  class="info_destination">
         <label id="nom">NOM : </label>
         <p th:text="${destination.name}"></p>
@@ -37,6 +39,9 @@
         <form method="post">
             <input th:if="${eleveConnecte!=null}" type="submit" value="Choisir cette destination">
         </form>
+
+        <i th:if="${eleveConnecte!=null && eleveConnecte.email=='admin@admin'}" class="fa fa-trash trash" style="font-size:36px; color: white"></i>
+
     </article>
 
 

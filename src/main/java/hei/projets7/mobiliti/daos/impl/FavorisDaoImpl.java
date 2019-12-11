@@ -5,6 +5,7 @@ import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
 import hei.projets7.mobiliti.pojos.Choix;
 import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Favoris;
+import hei.projets7.mobiliti.services.DestinationServices;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,8 +13,9 @@ import java.util.List;
 
 public class FavorisDaoImpl implements FavorisDao {
     @Override
-    public List<Favoris> listFavorisByIdEleve(Integer id) {
+    public List<Destination> listFavorisByIdEleve(Integer id) {
        List<Favoris> favorisList=new ArrayList<>();
+       List<Destination> destinationList=new ArrayList<>();
        String SQLquery="SELECT * FROM favoris WHERE id_eleve=?";
        try{
            Connection connection=DataSourceProvider.getConnection();
@@ -31,7 +33,12 @@ public class FavorisDaoImpl implements FavorisDao {
        }catch (SQLException e){
            e.printStackTrace();
        }
-       return favorisList;
+        for (Favoris favoris:favorisList) {
+            Integer id_destination=favoris.getIdDestination();
+            Destination destination=DestinationServices.getInstance().read(id_destination);
+            destinationList.add(destination);
+        }
+        return destinationList;
     }
 
     @Override
@@ -60,12 +67,13 @@ public class FavorisDaoImpl implements FavorisDao {
 
 
     @Override
-    public void modifyFavoris(Integer id) {
-        String SQLquery="DELETE FROM favoris where id_destination=?";
+    public void modifyFavoris(Integer id_destination, Integer id_user) {
+        String SQLquery="DELETE FROM favoris where id_eleve=? and id_destination=? ";
         try{
             Connection connection=DataSourceProvider.getConnection();
             PreparedStatement statement=connection.prepareStatement(SQLquery);
-            statement.setInt(1,id);
+            statement.setInt(1,id_user);
+            statement.setInt(2,id_destination);
             statement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();

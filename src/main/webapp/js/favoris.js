@@ -1,43 +1,47 @@
 
-let getDestination=function(element){
-    let destination=element.querySelector("span.destination_id").innerHTML;
+/*let getDestination=function(){
+    return  destinationId=document.getElementsByClassName("span.destination_id").innerHTML;
 };
 
-let getUser=function(element){
-    let user=element.querySelector("span.user_id").innerHTML;
-};
+let getUser=function(){
+    return userId=document.getElementsByClassName("span.user_id").innerHTML;
+};*/
 
-let createFavoris=function(element){
-    let destination_id=getDestination(element);
-    let user_id=getUser(element);
+let createFavoris=function(destination_id, user_id){
     let createRequest= new XMLHttpRequest();
-    createRequest.open("POST","/favoris/create", true );
-    createRequest.send();
+    createRequest.open("POST","ws/favoris/create", true );
+    createRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    createRequest.send("destination_id="+destination_id+"&user_id="+user_id);
 };
 
-let deleteFavoris=function(){
-    let destination_id=getDestination();
+let deleteFavoris=function(destination_id, user_id){
     let createRequest= new XMLHttpRequest();
-    createRequest.open("POST","/favoris/delete", true );
-    createRequest.send();
+    createRequest.open("POST","ws/favoris/delete", true );
+    createRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    createRequest.send("destination_id="+destination_id+"&user_id="+user_id);
 };
 
 window.onload = function(){
-    document.getElementsByClassName("destination").forEach(function(element){
-        star = element.querySelector("i.star");
+    var destinations= document.getElementsByClassName("destination");
+    for (let destination of destinations ){
+        star = destination.querySelector("i.star");
         star.onclick = function () {
             classes = star.classList;
             if (classes.contains("unselected")) {
-                createFavoris(element);
-                classes.replace("unselected","selected")
+                let destination_id=destination.querySelector("span.destination_id").innerHTML;
+                let user_id=destination.querySelector("span.user_id").innerHTML;
+                createFavoris(destination_id, user_id);
+                classes.replace("unselected", "selected");
             }
-            ;
-            if (classes.contains("selected")) {
-                deleteFavoris(element);
-                classes.replace("selected", "unselected")
+
+            else if (classes.contains("selected")) {
+                let destination_id=destination.querySelector("span.destination_id").innerHTML;
+                let user_id=destination.querySelector("span.user_id").innerHTML;
+                deleteFavoris(destination_id, user_id);
+                classes.replace("selected", "unselected");
             }
-            ;
         };
-    });
+    }
+
 
 };

@@ -51,6 +51,8 @@ caption {
 }
 
 /*1.A. mise en page navbar*/
+@media only screen and (min-width: 1000px)
+{
 
 .navbar {
     padding: 0;
@@ -79,13 +81,89 @@ caption {
 .navbar span{
     margin-top: auto;
     margin-bottom: auto;
+    }
 }
+
+@media only screen and (max-width: 1000px)
+{
+    #corps_ac {
+        margin-top: 10%;
+    }
+
+    #logo_minimenu {
+        width: 500px;
+    }
+
+    .navbar, .navbar ul {
+        padding:2px;
+        margin:0;
+        list-style:none;
+        width: 170px;
+    }
+
+    .navbar li {
+        position: relative;
+        background:#EFEFEF;
+        color: #EFEFEF;
+    }
+
+    .navbar a {
+        display: block;
+        text-decoration: none;
+        color: #EFEFEF;
+        padding: 3px;
+    }
+
+    div.deroulant {
+        display: none;
+    }
+
+    .navbar:hover .deroulant {
+        display: block;
+    }
+
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .navbar ul {
+        position: absolute;
+        top:-999em;
+        color: #EFEFEF;
+    }
+
+    .navbar ul li a{
+        background-color: #29335c;
+        color: #EFEFEF;
+        margin: 3%;
+    }
+
+    .navbar ul li a SPAN{
+        color: #EFEFEF;
+    }
+
+    .navbar li:hover ul {
+        top: 0;
+        bottom: 40%;
+    }
+
+    .navbar li {
+        font-size: 200%;
+        margin: 3%;
+        border-radius: 10px;
+        background-color: #29335c;
+        color: #EFEFEF;
+    }
+}
+
+/*Fin du CSS général*/
 
 .active{
     background-color: #be6e46;
 }
-
-/*Fin du CSS général*/
 
 /*Utilisateur*/
 #utilisateur{
@@ -121,6 +199,8 @@ caption {
     justify-content: space-around;
 }
 
+
+
 #list li{
     position: relative;
     width: 96%;
@@ -133,6 +213,8 @@ caption {
     justify-content: space-between;
     background-color: #29335c;
     color: #fbfbf2;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #list li:nth-child(2n){

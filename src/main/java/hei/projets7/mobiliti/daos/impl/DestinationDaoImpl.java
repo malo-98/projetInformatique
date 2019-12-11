@@ -100,8 +100,14 @@ public class DestinationDaoImpl implements DestinationDao {
 
     public void deleteDestinationByID(Integer id){
         String SQLquery="DELETE FROM destination where id_destination=?";
+        String SQLquery2="DELETE FROM choix where id_destination=?";
         try{
            Connection connection=DataSourceProvider.getConnection();
+
+            PreparedStatement statement2=connection.prepareStatement(SQLquery2);
+            statement2.setInt(1,id);
+            statement2.executeUpdate();
+
             PreparedStatement statement=connection.prepareStatement(SQLquery);
             statement.setInt(1,id);
             statement.executeUpdate();
