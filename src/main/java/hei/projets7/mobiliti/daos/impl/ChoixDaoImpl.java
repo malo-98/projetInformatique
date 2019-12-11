@@ -41,7 +41,7 @@ public class ChoixDaoImpl implements ChoixDao {
     }
 
     @Override
-    public Choix read(Integer id_eleve) throws EleveNotFoundException {
+    public Choix read(Integer id_eleve) {
         Choix choix = null;
         String query="SELECT id_choix, id_eleve, id_destination FROM choix WHERE id_eleve=?";
         try {
@@ -59,7 +59,7 @@ public class ChoixDaoImpl implements ChoixDao {
     }
 
     @Override
-    public void modifyChoix(Integer id_eleve) throws ChoixNotFoundException {
+    public void modifyChoix(Integer id_eleve) {
         String deleteQuery="DELETE FROM choix where id_eleve=?;";
         try{
             Connection connection=DataSourceProvider.getConnection();
@@ -74,7 +74,7 @@ public class ChoixDaoImpl implements ChoixDao {
 
 
     @Override
-    public Choix addChoix(Choix choix) throws ChoixAlreadyExistException {
+    public Choix addChoix(Choix choix) {
         try(Connection connection=DataSourceProvider.getDataSource().getConnection()){
             String sqlQuery="INSERT INTO choix(id_eleve, id_destination) VALUE(?, ?);";
             try(PreparedStatement statement=connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
