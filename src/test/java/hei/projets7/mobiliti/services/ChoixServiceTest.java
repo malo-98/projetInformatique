@@ -3,22 +3,28 @@ package hei.projets7.mobiliti.services;
 import hei.projets7.mobiliti.daos.ChoixDao;
 import hei.projets7.mobiliti.daos.impl.ChoixDaoImpl;
 import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
+import hei.projets7.mobiliti.exception.ChoixNotFoundException;
 import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
+import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.pojos.Choix;
 import hei.projets7.mobiliti.pojos.Destination;
 import hei.projets7.mobiliti.pojos.Eleve;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ChoixServiceTest {
@@ -31,14 +37,27 @@ public class ChoixServiceTest {
 
     @Test
     public void SouldListAllChoix(){
+        //GIVEN
+        List<Choix> choixes = new ArrayList<Choix>();
+        Choix c1= new Choix(1,1,1 );
+        Choix c2=new Choix(2,2,2);
+        choixes.add(c1);
+        choixes.add(c2);
+        Mockito.when(choixDao.listAll()).thenReturn(choixes);
+
+        //WHEN
+        List<Choix> results=choixDao.listAll();
+
+        //THEN
+        Assertions.assertThat(results).containsExactlyInAnyOrderElementsOf(choixes);
 
     }
 
+//---------------------- Test Get --------------------------------
+
     @Test
-    public void ShouldGetChoix(){
+    public void ShouldGetChoix() throws EleveNotFoundException, ChoixNotFoundException {
         //GIVEN
-        Eleve eleve = new Eleve (1,"ELEVE","eleve","eleve@mail","test","ITI");
-        Destination d1=new Destination(1, "name1", "city1", "country1", "des1", "dom1", 4);
         Choix choix = new Choix (1,1,1);
 
         choixServices.getChoix(1);
@@ -52,8 +71,70 @@ public class ChoixServiceTest {
 
     }
 
+    @Test(expected = EleveNotFoundException.class)
+    public void ShouldNotGetChoixAndThrowEleveNotFoundException() throws ChoixNotFoundException, EleveNotFoundException {
+        //GIVEN
+        Integer id_eleve=null;
+
+        Mockito.when(choixDao.read(id_eleve)).thenReturn(null);
+
+        //WHEN
+        Exception result = null;
+        try{
+            choixServices.getChoix(id_eleve);
+        }catch(Exception e){
+            result = e;
+        }
+
+        //THEN
+
+        Assertions.assertThat(result).isNotNull().isInstanceOf(EleveNotFoundException.class);
+        Mockito.verify(choixServices,Mockito.never()).getChoix(Mockito.anyInt());
+
+    }
+
+    @Test(expected = ChoixNotFoundException.class)
+    public void ShouldNotGetChoixAndThrowChoixNotFoundException() throws ChoixNotFoundException, EleveNotFoundException {
+        //GIVEN
+        Integer id_eleve=1;
+
+        Mockito.when(choixDao.read(id_eleve)).thenReturn(null);
+        Exception result = null;
+
+        //WHEN
+        try{
+            choixServices.getChoix(id_eleve);
+        }catch(Exception e){
+            result = e;
+        }
+        //THEN
+        Assertions.assertThat(result).isNotNull().isInstanceOf(ChoixNotFoundException.class);
+        Mockito.verify(choixServices,Mockito.never()).getChoix(Mockito.anyInt());
+    }
+
+
+// ----------------------- TEST Modify------------------------------------------------------
+
     @Test
-    public void ShouldAddChoix() throws ChoixAlreadyExistException, DonneIllegalFormatException, SQLException {
+    public void ShouldModifyChoix() throws ChoixNotFoundException, ChoixAlreadyExistException, SQLException {
+        //GIVEN
+        Choix choix1 = new Choix(12,12,12);
+        choixServices.addChoix(choix1);
+        //WHEN
+        choixServices.modifyChoix(12);
+        //THEN
+        Mockito.verify(choixDao).modifyChoix(choix1.getId_eleve());
+    }
+
+    @Test
+    public void ShouldNotModifyChoixAndThrowChoixNotFoundException(){
+
+    }
+
+// ----------------------- TEST Add------------------------------------------------------
+
+    @Test
+    public void ShouldAddChoix() throws ChoixAlreadyExistException, DonneIllegalFormatException {
         //GIVEN
         Choix choix1 = new Choix(12,12,12);
         Mockito.when(choixDao.addChoix(choix1)).thenReturn(choix1);
@@ -63,16 +144,7 @@ public class ChoixServiceTest {
         Assertions.assertThat(result).isEqualTo(choix1);
     }
 
-    @Test
-    public void ShouldModifyChoix() throws SQLException {
-        //GIVEN
-        Choix choix1 = new Choix(12,12,12);
-        choixServices.addChoix(choix1);
-        //WHEN
-        choixServices.modifyChoix(12);
-        //THEN
-        Mockito.verify(choixDao).modifyChoix(choix1.getId_eleve());
-    }
+// // ----------------------- TEST Count------------------------------------------------------
 
     /*@Test
     public void ShouldCountChoixByIdDestination() throws SQLException {
