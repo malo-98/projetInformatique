@@ -13,7 +13,7 @@
 
     <!-- ************** Barre de menu ************** -->
     <!--nav th:replace="~{fragement::menu('accueil')}"--><!--/nav-->
-
+    <nav th:replace="~{fragement::menu('liste')}"></nav>
     <!-- ************** corps de la page ************** -->
     <table class="table table-striped table-hover" id="cities-list">
         <caption>Eleve list</caption>
@@ -23,7 +23,7 @@
             <th scope="col">Prenom</th>
             <th scope="col">Domaine</th>
             <th scope="col">Email</th>
-            <th scope="col"> </th>
+            <th scope="col" id="croix_suppression">Supprimer</th>
         </tr>
         </thead>
         <tbody id="listEleve">

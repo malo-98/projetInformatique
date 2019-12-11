@@ -89,10 +89,6 @@ caption {
 
     }
 
-    .active{
-        background-color: #be6e46;
-    }
-
 
 }
 
@@ -542,6 +538,35 @@ tabEleve.td {
 .titreTableau {
     font-family:sans-serif;
 }
+
+/*Style du tableau eleve list*/
+
+#cities-list {
+    text-align: center;
+    margin: auto;
+}
+
+#cities-list tr, td, th{
+    border-style: solid;
+}
+
+#cities-list th {
+    style: bold;
+    font-size: 1rem;
+    height: 40%;
+}
+
+#croix_suppression {
+    width: 10%;
+    height: 10%;
+}
+
+caption {
+    margin-top: 5%;
+    font-size: 3rem;
+}
+
+
 
 
 
