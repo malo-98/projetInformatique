@@ -126,7 +126,7 @@ public class ConnexionEleveDaoImpl implements ConnexionEleveDao {
 
     @Override
     public void deleteEleve(Integer id) {
-        String query="DELETE FROM eleve where email=?";
+        String query="DELETE FROM eleve where id_eleve=?";
         try {
             Connection connection = DataSourceProvider.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);

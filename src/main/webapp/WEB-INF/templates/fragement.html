@@ -2,16 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link linkrel="icon" type="image/x-icon" href="../../images/favicon.ico" />
 </head>
 <body>
 <nav th:fragment="menu(currentPage)">
     <ul class="navbar">
-  <!--      <li th:class="${currentPage == 'accueil' ? 'active' : ''}"> -->
+        <!--      <li th:class="${currentPage == 'accueil' ? 'active' : ''}"> -->
         <li>
-            <a title="=Accueil" href="accueil" > <img  src="images/logo3.png" height="50" alt="Logo Mobility"/> </a>
+            <a title="=Accueil" id="logo_minimenu" href="accueil" > <img  src="images/logo3.png" height="50" alt="Logo Mobility"/> </a>
         </li>
+        <div class="deroulant">
         <li th:class="${currentPage == 'liste' ? 'active' : ''}">
             <a title="Liste" href="liste" class="bouton" target="_top">
                 <SPAN>Liste</SPAN>
@@ -42,6 +44,7 @@
                 <SPAN>Deconnexion</SPAN>
             </a>
         </li>
+        </div>
     </ul>
 </nav>
 <footer th:fragment="pied">

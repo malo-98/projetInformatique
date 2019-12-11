@@ -8,19 +8,21 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/listEleve")
+
+@Path("/eleve")
 public class eleveController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Eleve> listEleve(){
+    public List<Eleve> listEleves() {
         return EleveServices.getInstance().listEleve();
     }
 
     @DELETE
-    @Path("/{eleveEmail}")
-    public void deleteCity(
-            @PathParam("eleveEmail") String eleveEmail) throws EleveNotFoundException {
-        EleveServices.getInstance().deleteUser(eleveEmail);
+    @Path("/{email}")
+    public void deleteEleve(
+            @PathParam("email") String email
+    ) throws EleveNotFoundException {
+        EleveServices.getInstance().deleteUser(email);
     }
 }

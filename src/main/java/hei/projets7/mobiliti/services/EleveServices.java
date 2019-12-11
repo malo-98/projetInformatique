@@ -44,6 +44,8 @@ public class EleveServices {
         return inscriptionEleveDao.listEleve();
     }
 
+    public int countEleve(){return inscriptionEleveDao.countEleve();}
+
 
     public void modifyPassword(String email, String password) throws EleveNotFoundException, PasswordIllegalFormatException {
         Eleve eleve = getEleve(email);
@@ -155,6 +157,5 @@ public class EleveServices {
 
         return choix_eleve.getId_destination() ;
     }
-
 
 }
