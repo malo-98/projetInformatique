@@ -166,6 +166,9 @@ caption {
         background-color: #29335c;
         color: #EFEFEF;
     }
+
+    /*raccourcir le texte avec 3 petits points*/
+
 }
 
 /*Fin du CSS général*/
@@ -205,6 +208,14 @@ caption {
     justify-content: space-around;
 }
 
+#list h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: normal;
+    width: 90%;
+    word-wrap: break-word;
+}
 
 
 #list li{
@@ -219,8 +230,6 @@ caption {
     justify-content: space-between;
     background-color: #29335c;
     color: #fbfbf2;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 
 #list li:nth-child(2n){
