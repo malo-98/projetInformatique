@@ -64,11 +64,23 @@ public class InscriptionEleveDaoImpl implements InscriptionEleveDao {
         return eleves;
     }
 
+    @Override
+    public int countEleve() {
+        int compteur=0;
+        try (Connection connection=DataSourceProvider.getDataSource().getConnection()){
+            try(Statement statement=connection.createStatement()){
+                try(ResultSet results=statement.executeQuery("SELECT * FROM eleve ;")){
+                    while (results.next()){
+                        compteur++;
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return compteur;
 
-
-
-
-
+    }
 
 
 }

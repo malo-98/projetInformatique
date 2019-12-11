@@ -9,5 +9,6 @@ public interface InscriptionEleveDao {
 
     Eleve addEleve(Eleve eleve);
     List<Eleve> listEleve();
+    int countEleve();
 
 }
