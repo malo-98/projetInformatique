@@ -54,34 +54,46 @@ caption {
 @media only screen and (min-width: 1000px)
 {
 
-.navbar {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    font-size: 1.5em;
-    color : #fbfbf2;
-    position: relative;
-    background-color: #29335c;
-}
-
-.navbar a {
-    display:inline-flex;
-    color: #fbfbf2;
-    margin: 0 5em;
-    text-decoration: none;
-}
-
-.navbar li {
-    display: inline-flex;
-    list-style: none;
-}
-
-.navbar span{
-    margin-top: auto;
-    margin-bottom: auto;
+    .navbar {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        font-size: 1.5em;
+        color : #fbfbf2;
+        position: relative;
+        background-color: #29335c;
     }
+
+    .navbar a {
+        margin-top: 2%;
+        display:inline-flex;
+        color: #fbfbf2;
+        margin: 0 5em;
+        text-decoration: none;
+    }
+
+    .navbar li {
+        display: inline-flex;
+        list-style: none;
+    }
+
+    .navbar li:hover {
+        background-color: #be6e46;
+    }
+
+    .navbar span{
+        padding-top: 15%;
+        padding-bottom: 15%;
+
+    }
+
+    .active{
+        background-color: #be6e46;
+    }
+
+
 }
 
 @media only screen and (max-width: 1000px)
@@ -161,9 +173,6 @@ caption {
 
 /*Fin du CSS général*/
 
-.active{
-    background-color: #be6e46;
-}
 
 /*Utilisateur*/
 #utilisateur{
