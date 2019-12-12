@@ -113,18 +113,16 @@ public class ChoixServiceTest {
         Assertions.assertThat(result).isEqualTo(choix1);
     }
 
-    @Test
-    public void ShouldNotAddChoixAndThrowChoixAlreadyExistException() {
+    @Test(expected = ChoixAlreadyExistException.class)
+    public void ShouldNotAddChoixAndThrowChoixAlreadyExistException() throws ChoixAlreadyExistException {
         //GIVEN
         List<Choix> choixes = new ArrayList<Choix>();
         Choix c1= new Choix(1,1,1);
         choixes.add(c1);
         Choix c2= new Choix(1,1,1);
         Mockito.when(choixDao.listAll()).thenReturn(choixes);
-
         //WHEN
-        choixes.add(c2);
-
+        ChoixServices.getInstance().addChoix(c2);
         //THEN
         fail("Choix already exist exception");
     }
