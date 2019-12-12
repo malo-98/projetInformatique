@@ -46,20 +46,16 @@ public class ChoixServiceTest {
 
 //---------------------- Test Get --------------------------------
 
-    @Test
-    public void ShouldGetChoix() throws ChoixNotFoundException {
+    @Test//done by pol
+    public void ShouldGetChoix() throws ChoixNotFoundException, ChoixAlreadyExistException {
         //GIVEN
         Choix choix = new Choix (1,1,1);
-
-        choixServices.getChoix(1);
+        choixServices.addChoix(choix);
         Mockito.when(choixDao.read(1)).thenReturn(choix);
-
         //WHEN
         Choix result = choixServices.getChoix(1);
-
         //THEN
         Assertions.assertThat(result).isEqualTo(choix);
-
     }
 
 
@@ -72,7 +68,7 @@ public class ChoixServiceTest {
     public void ShouldModifyChoix() throws ChoixNotFoundException, ChoixAlreadyExistException {
         //GIVEN
         Choix choix1 = new Choix(12,12,12);
-        choixServices.addChoix(choix1);
+        Mockito.when(choixDao.read(choix1.getId_choix())).thenReturn(choix1);
         //WHEN
         choixServices.modifyChoix(12);
         //THEN
