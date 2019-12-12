@@ -67,7 +67,6 @@ caption {
     }
 
     .navbar a {
-        display:inline-flex;
         color: #fbfbf2;
         margin: 0 5em;
         text-decoration: none;
@@ -95,15 +94,14 @@ caption {
         margin-top: 10%;
     }
 
-    .bouton {
-        display: none;
-    }
-
     .img_minimenu {
+        display: block;
+    }
+    
+    .img_minimenu:hover {
         background-color: #29335c;
     }
-
-
+    
     .navbar, .navbar ul {
         padding:2px;
         margin:0;
@@ -111,27 +109,9 @@ caption {
         width: 170px;
     }
 
-    .navbar li {
-        position: relative;
-        background:#be6e46;
-        color: #EFEFEF;
-    }
-
-    .navbar a {
-        display: block;
-        text-decoration: none;
-        color: #EFEFEF;
-        padding: 3px;
-    }
-
-    div.deroulant {
-        display: none;
-    }
-
-    .navbar:hover .deroulant {
+    .navbar:hover {
         display: block;
     }
-
 
     .navbar {
         position: fixed;
@@ -139,6 +119,7 @@ caption {
         left: 0;
         z-index: 10;
         display: block;
+        color: #EFEFEF;
     }
 
     .navbar ul {
@@ -153,8 +134,10 @@ caption {
         margin: 3%;
     }
 
-    .navbar ul li a SPAN{
+    .navbar SPAN{
         color: #EFEFEF;
+        padding-left: 3%;
+        text-decoration: none;
     }
 
     .navbar li:hover ul {
@@ -162,16 +145,23 @@ caption {
         bottom: 40%;
     }
 
-    .navbar li {
+    .navbar li{
         font-size: 200%;
         margin: 3%;
         border-radius: 10px;
-        background-color: #be6e46;
+        background-color: #29335c;
         color: #EFEFEF;
+        display: block;
+        position: relative;
     }
 
-    /*raccourcir le texte avec 3 petits points*/
+    .navbar li img {
+        padding-left: 25%;
+    }
 
+    .navbar .img_minimenu {
+        display: block;
+    }
 }
 
 /*Fin du CSS général*/
