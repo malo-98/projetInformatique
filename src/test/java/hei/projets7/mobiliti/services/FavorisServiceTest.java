@@ -2,8 +2,8 @@ package hei.projets7.mobiliti.services;
 
 
 import hei.projets7.mobiliti.daos.impl.FavorisDaoImpl;
-import hei.projets7.mobiliti.pojos.Destination;
-import hei.projets7.mobiliti.pojos.Favoris;
+import hei.projets7.mobiliti.entity.Destination;
+import hei.projets7.mobiliti.entity.Favoris;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;

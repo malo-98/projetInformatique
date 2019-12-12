@@ -1,10 +1,7 @@
 package hei.projets7.mobiliti.services;
 
 import hei.projets7.mobiliti.daos.impl.ChoixDaoImpl;
-import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
-import hei.projets7.mobiliti.exception.ChoixNotFoundException;
-import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
-import hei.projets7.mobiliti.exception.EleveNotFoundException;
+import hei.projets7.mobiliti.exception.*;
 import hei.projets7.mobiliti.entity.Choix;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -50,7 +47,7 @@ public class ChoixServiceTest {
 //---------------------- Test Get --------------------------------
 
     @Test
-    public void ShouldGetChoix() throws EleveNotFoundException, ChoixNotFoundException {
+    public void ShouldGetChoix() throws ChoixNotFoundException {
         //GIVEN
         Choix choix = new Choix (1,1,1);
 
@@ -65,33 +62,11 @@ public class ChoixServiceTest {
 
     }
 
-    @Test(expected = EleveNotFoundException.class)
-    public void ShouldNotGetChoixAndThrowEleveNotFoundException() throws ChoixNotFoundException, EleveNotFoundException {
-        //GIVEN
-        Integer id_eleve=null;
-
-        Mockito.when(choixDao.read(id_eleve)).thenReturn(null);
-
-        //WHEN
-        Exception result = null;
-        try{
-            choixServices.getChoix(id_eleve);
-        }catch(Exception e){
-            result = e;
-        }
-
-        //THEN
-
-        Assertions.assertThat(result).isNotNull().isInstanceOf(EleveNotFoundException.class);
-        Mockito.verify(choixServices,Mockito.never()).getChoix(Mockito.anyInt());
-
-    }
 
     @Test(expected = ChoixNotFoundException.class)
-    public void ShouldNotGetChoixAndThrowChoixNotFoundException() throws ChoixNotFoundException, EleveNotFoundException {
+    public void ShouldNotGetChoixAndThrowChoixNotFoundException() throws ChoixNotFoundException {
         //GIVEN
         Integer id_eleve=1;
-
         Mockito.when(choixDao.read(id_eleve)).thenReturn(null);
         Exception result = null;
 
@@ -110,7 +85,7 @@ public class ChoixServiceTest {
 // ----------------------- TEST Modify------------------------------------------------------
 
     @Test
-    public void ShouldModifyChoix() throws ChoixNotFoundException, ChoixAlreadyExistException, SQLException {
+    public void ShouldModifyChoix() throws ChoixNotFoundException, ChoixAlreadyExistException {
         //GIVEN
         Choix choix1 = new Choix(12,12,12);
         choixServices.addChoix(choix1);
@@ -128,7 +103,7 @@ public class ChoixServiceTest {
 // ----------------------- TEST Add------------------------------------------------------
 
     @Test
-    public void ShouldAddChoix() throws ChoixAlreadyExistException, DonneIllegalFormatException {
+    public void ShouldAddChoix() throws ChoixAlreadyExistException {
         //GIVEN
         Choix choix1 = new Choix(12,12,12);
         Mockito.when(choixDao.addChoix(choix1)).thenReturn(choix1);
@@ -138,10 +113,26 @@ public class ChoixServiceTest {
         Assertions.assertThat(result).isEqualTo(choix1);
     }
 
-// // ----------------------- TEST Count------------------------------------------------------
+    @Test
+    public void ShouldNotAddChoixAndThrowChoixAlreadyExistException() {
+        //GIVEN
+        List<Choix> choixes = new ArrayList<Choix>();
+        Choix c1= new Choix(1,1,1);
+        choixes.add(c1);
+        Choix c2= new Choix(1,1,1);
+        Mockito.when(choixDao.listAll()).thenReturn(choixes);
 
-    /*@Test
-    public void ShouldCountChoixByIdDestination() throws SQLException {
+        //WHEN
+        choixes.add(c2);
+
+        //THEN
+        fail("Choix already exist exception");
+    }
+
+// ----------------------- TEST Count------------------------------------------------------
+
+    @Test
+    public void ShouldCountChoixByIdDestination() throws DestinationNotFoundException {
         //GIVEN
         Choix choix1 = new Choix(12,12,12);
         Choix choix2 = new Choix(10,10,12);
@@ -152,6 +143,6 @@ public class ChoixServiceTest {
         Integer result=choixDao.countChoixByIdDestination(12);
         //THEN
         Assertions.assertThat(result).isEqualTo(NumOfEleveOnId12);
-    }*/
+    }
 
 }

@@ -88,7 +88,7 @@ public class DestinationServlet extends UtilsServlet {
 
         try {
             Choix createdChoix=ChoixServices.getInstance().addChoix(newChoix);
-        } catch (SQLException | ChoixAlreadyExistException e) {
+        } catch ( ChoixAlreadyExistException e) {
             e.printStackTrace();
         }
 
