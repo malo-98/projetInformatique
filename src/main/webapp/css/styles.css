@@ -67,7 +67,6 @@ caption {
     }
 
     .navbar a {
-        margin-top: 2%;
         display:inline-flex;
         color: #fbfbf2;
         margin: 0 5em;
@@ -79,16 +78,18 @@ caption {
         list-style: none;
     }
 
+    .navbar span{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
     .navbar li:hover {
         background-color: #be6e46;
     }
 
-    .navbar span{
-        padding-top: 15%;
-        padding-bottom: 15%;
-
+    .active {
+        background-color: #be6e46;
     }
-
 
 }
 
@@ -165,6 +166,9 @@ caption {
         background-color: #29335c;
         color: #EFEFEF;
     }
+
+    /*raccourcir le texte avec 3 petits points*/
+
 }
 
 /*Fin du CSS général*/
@@ -204,6 +208,14 @@ caption {
     justify-content: space-around;
 }
 
+#list h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: normal;
+    width: 90%;
+    word-wrap: break-word;
+}
 
 
 #list li{
@@ -218,8 +230,6 @@ caption {
     justify-content: space-between;
     background-color: #29335c;
     color: #fbfbf2;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 
 #list li:nth-child(2n){
@@ -334,7 +344,7 @@ a.bouton1:hover {
 }
 
 #titre_univ{
-    }
+}
 
 #form_list {
     margin-left: 30%;
@@ -390,7 +400,7 @@ h1 .fas fa-pen {
     position: absolute;
     top: 10%;
     left: 70%;
-    }
+}
 
 .photoprofil p {
     padding: 1%;
@@ -513,7 +523,7 @@ h1 .fas fa-pen {
 
 #tabEleve {
     background-color:#D0E3FA;
-    background-image:url(sky.jpg);
+   /* background-image:url(sky.jpg); */
     border:1px solid #6495ed;
 }
 
@@ -565,7 +575,6 @@ caption {
     margin-top: 5%;
     font-size: 3rem;
 }
-
 
 
 
