@@ -8,8 +8,8 @@ import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.exception.PasswordIllegalFormatException;
-import hei.projets7.mobiliti.pojos.Choix;
-import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.entity.Choix;
+import hei.projets7.mobiliti.entity.Eleve;
 
 import java.util.ArrayList;
 import java.util.List;

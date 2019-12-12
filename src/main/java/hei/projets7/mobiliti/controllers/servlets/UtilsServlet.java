@@ -1,4 +1,4 @@
-package hei.projets7.mobiliti.servlets;
+package hei.projets7.mobiliti.controllers.servlets;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;

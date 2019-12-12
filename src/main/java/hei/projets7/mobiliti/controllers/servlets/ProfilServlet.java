@@ -1,13 +1,10 @@
-package hei.projets7.mobiliti.servlets;
+package hei.projets7.mobiliti.controllers.servlets;
 
-import hei.projets7.mobiliti.daos.impl.ChoixDaoImpl;
-import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
 import hei.projets7.mobiliti.exception.ChoixNotFoundException;
-import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
-import hei.projets7.mobiliti.pojos.Choix;
-import hei.projets7.mobiliti.pojos.Destination;
-import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.entity.Choix;
+import hei.projets7.mobiliti.entity.Destination;
+import hei.projets7.mobiliti.entity.Eleve;
 import hei.projets7.mobiliti.services.ChoixServices;
 import hei.projets7.mobiliti.services.DestinationServices;
 import hei.projets7.mobiliti.services.EleveServices;
@@ -19,7 +16,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet("/profil")
 public class ProfilServlet extends UtilsServlet {
@@ -46,7 +42,7 @@ public class ProfilServlet extends UtilsServlet {
                 Choix choix_eleve = ChoixServices.getInstance().getChoix(eleve.getId_eleve());
                 destinationId = choix_eleve.getId_destination();
             }
-        } catch (EleveNotFoundException | ChoixNotFoundException e) {
+        } catch ( ChoixNotFoundException e) {
             e.printStackTrace();
         }
         Destination destination= destinationServices.read(destinationId);

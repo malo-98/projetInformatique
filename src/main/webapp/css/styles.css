@@ -51,7 +51,7 @@ caption {
 }
 
 /*1.A. mise en page navbar*/
-@media only screen and (min-width: 1000px)
+@media only screen and (min-width: 1200px)
 {
 
     .navbar {
@@ -67,10 +67,10 @@ caption {
     }
 
     .navbar a {
-        display:inline-flex;
         color: #fbfbf2;
         margin: 0 5em;
         text-decoration: none;
+
     }
 
     .navbar li {
@@ -87,20 +87,20 @@ caption {
         background-color: #be6e46;
     }
 
-    .active {
-        background-color: #be6e46;
-    }
-
 }
 
-@media only screen and (max-width: 400px)
+@media only screen and (max-width: 1200px)
 {
     #corps_ac {
         margin-top: 10%;
     }
 
-    #logo_minimenu {
-        width: 500px;
+    .img_minimenu {
+        display: block;
+    }
+
+    .img_minimenu:hover {
+        background-color: #29335c;
     }
 
     .navbar, .navbar ul {
@@ -110,32 +110,17 @@ caption {
         width: 170px;
     }
 
-    .navbar li {
-        position: relative;
-        background:#EFEFEF;
-        color: #EFEFEF;
-    }
-
-    .navbar a {
-        display: block;
-        text-decoration: none;
-        color: #EFEFEF;
-        padding: 3px;
-    }
-
-    div.deroulant {
-        display: none;
-    }
-
-    .navbar:hover .deroulant {
+    .navbar:hover {
         display: block;
     }
-
 
     .navbar {
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 10;
+        display: block;
+        color: #EFEFEF;
     }
 
     .navbar ul {
@@ -145,13 +130,15 @@ caption {
     }
 
     .navbar ul li a{
-        background-color: #29335c;
+        background-color: #be6e46;
         color: #EFEFEF;
         margin: 3%;
     }
 
-    .navbar ul li a SPAN{
+    .navbar SPAN{
         color: #EFEFEF;
+        padding-left: 3%;
+        text-decoration: none;
     }
 
     .navbar li:hover ul {
@@ -159,16 +146,23 @@ caption {
         bottom: 40%;
     }
 
-    .navbar li {
+    .navbar li{
         font-size: 200%;
         margin: 3%;
         border-radius: 10px;
         background-color: #29335c;
         color: #EFEFEF;
+        display: block;
+        position: relative;
     }
 
-    /*raccourcir le texte avec 3 petits points*/
+    .navbar li img {
+        padding-left: 25%;
+    }
 
+    .navbar .img_minimenu {
+        display: block;
+    }
 }
 
 /*Fin du CSS général*/
@@ -284,7 +278,7 @@ caption {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 40%;
-    border: solid black 0.2em;
+    border: solid #be6e46 0.2em;
     border-radius: 1em;
 }
 
@@ -505,9 +499,9 @@ h1 .fas fa-pen {
 }
 
 /*LAST. CSS du footer*/
-.footerbis {
-    color: #29335c;
-    text-align: center;
+
+footer p {
+    color: #be6e46;
 }
 
 .footerbis img {

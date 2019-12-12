@@ -1,8 +1,7 @@
 package hei.projets7.mobiliti.daos;
 
-import hei.projets7.mobiliti.pojos.Destination;
+import hei.projets7.mobiliti.entity.Destination;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface DestinationDao {

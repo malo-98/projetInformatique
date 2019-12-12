@@ -1,20 +1,16 @@
-package hei.projets7.mobiliti.servlets;
+package hei.projets7.mobiliti.controllers.servlets;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
 import hei.projets7.mobiliti.exception.ChoixNotFoundException;
 import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
-import hei.projets7.mobiliti.pojos.Choix;
-import hei.projets7.mobiliti.pojos.Destination;
-import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.entity.Choix;
+import hei.projets7.mobiliti.entity.Eleve;
 import hei.projets7.mobiliti.services.ChoixServices;
 import hei.projets7.mobiliti.services.DestinationServices;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import hei.projets7.mobiliti.services.EleveServices;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -92,7 +88,7 @@ public class DestinationServlet extends UtilsServlet {
 
         try {
             Choix createdChoix=ChoixServices.getInstance().addChoix(newChoix);
-        } catch (SQLException | ChoixAlreadyExistException e) {
+        } catch ( ChoixAlreadyExistException e) {
             e.printStackTrace();
         }
 
