@@ -75,11 +75,9 @@ caption {
         color: #fbfbf2;
         margin: 0 5em;
         text-decoration: none;
-<<<<<<< HEAD
         margin: auto;
 
-=======
->>>>>>> 26c89d57e7a6345a4e3690159cef64ffe6fa4925
+
 
     }
 
@@ -377,20 +375,21 @@ a.bouton1:hover {
     margin-top: 2%;
     margin-bottom: 2%;
     font-size: 3em;
+    text-align: center;
 }
 
 .profilpage p {
     border-radius: 1em;
-}
 
+}
 
 .elementform {
     font-size:2em;
     background-color: #29335c;
     color: #fbfbf2;
-    width: 14%;
+    width: 15%;
     text-align: center;
-    margin-left: 25%;
+
 }
 
 .profilinfo p {
