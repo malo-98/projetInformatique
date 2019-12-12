@@ -1,4 +1,4 @@
-package hei.projets7.mobiliti.pojos;
+package hei.projets7.mobiliti.entity;
 
 public class Eleve {
 

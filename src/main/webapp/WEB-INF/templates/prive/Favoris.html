@@ -4,9 +4,19 @@
 
 <head>
     <title>Favoris</title>
-    <META charset="utf-8">
-    <LINK href="css/styles.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/deleteFavoris.js" type="application/javascript"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
+
+<style>
+    .star{
+        color: red;
+    }
+</style>
 
 <body>
     <!-- ************** Barre de menu ************** -->
@@ -15,8 +25,14 @@
     <!-- ************** Corps de la page ************** -->
     <p> Voici vos destinations favorites</p>
     <ul id="list">
-        <li th:each="destination:${destinationList}">
-            <h2><bold th:text="${destination.city}">Laval</bold> - <bold th:text="${destination.country}">Canada</bold> - <bold th:text="${destination.domaine}">ITI</bold></h2>
+        <li th:each="destination:${destinationList}" class="destination">
+            <h2>
+                <bold th:text="${destination.city}">Laval</bold> - <bold th:text="${destination.country}">Canada</bold> - <bold th:text="${destination.domaine}">ITI</bold>
+                <i th:unless="${eleveConnecte==null}" class="fas fa-star unselected star" style='font-size:36px'>
+                    <span class="destination_id" hidden="true" th:text="${destination.id}">2</span>
+                    <span th:if="${eleveConnecte!=null}" class="user_id" hidden="true" th:text="${eleveConnecte.getId_eleve()}">3</span>
+                </i>
+            </h2>
             <p id="des-list" th:text="${destination.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
         </li>
@@ -24,6 +40,6 @@
 
     </br>
     <!-- ************** Pied de page ************** -->
-    <FOOTER th:insert="~{fragement::pied}"></FOOTER>
+    <footer th:insert="~{fragement::pied}"></footer>
 </body>
 </html>

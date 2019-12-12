@@ -1,8 +1,7 @@
 package hei.projets7.mobiliti.daos.impl;
 
 import hei.projets7.mobiliti.daos.ConnexionEleveDao;
-import hei.projets7.mobiliti.exception.EleveNotFoundException;
-import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.entity.Eleve;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

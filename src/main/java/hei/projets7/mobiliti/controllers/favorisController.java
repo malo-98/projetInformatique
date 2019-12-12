@@ -1,7 +1,6 @@
 package hei.projets7.mobiliti.controllers;
 
-import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
-import hei.projets7.mobiliti.pojos.Favoris;
+import hei.projets7.mobiliti.entity.Favoris;
 import hei.projets7.mobiliti.services.FavorisServices;
 
 import javax.ws.rs.*;

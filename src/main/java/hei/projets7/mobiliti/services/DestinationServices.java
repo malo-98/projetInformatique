@@ -1,12 +1,10 @@
 package hei.projets7.mobiliti.services;
 
-import hei.projets7.mobiliti.daos.DestinationDao;
 import hei.projets7.mobiliti.daos.impl.DestinationDaoImpl;
 import hei.projets7.mobiliti.exception.DestinationAlreadyExistException;
 import hei.projets7.mobiliti.exception.DestinationNotFoundException;
 import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
-import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
-import hei.projets7.mobiliti.pojos.Destination;
+import hei.projets7.mobiliti.entity.Destination;
 
 import java.util.ArrayList;
 import java.util.List;

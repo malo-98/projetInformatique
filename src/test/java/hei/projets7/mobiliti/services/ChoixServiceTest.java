@@ -1,25 +1,19 @@
 package hei.projets7.mobiliti.services;
 
-import hei.projets7.mobiliti.daos.ChoixDao;
 import hei.projets7.mobiliti.daos.impl.ChoixDaoImpl;
 import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
 import hei.projets7.mobiliti.exception.ChoixNotFoundException;
 import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
-import hei.projets7.mobiliti.pojos.Choix;
-import hei.projets7.mobiliti.pojos.Destination;
-import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.entity.Choix;
 import org.assertj.core.api.Assertions;
-import org.junit.Assert;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

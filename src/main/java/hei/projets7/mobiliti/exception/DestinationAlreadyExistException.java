@@ -1,7 +1,6 @@
 package hei.projets7.mobiliti.exception;
 
-import hei.projets7.mobiliti.pojos.Destination;
-import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.entity.Destination;
 
 public class DestinationAlreadyExistException extends Exception {
 

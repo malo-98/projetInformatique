@@ -1,10 +1,8 @@
 package hei.projets7.mobiliti.daos.impl;
 
 import hei.projets7.mobiliti.daos.FavorisDao;
-import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
-import hei.projets7.mobiliti.pojos.Choix;
-import hei.projets7.mobiliti.pojos.Destination;
-import hei.projets7.mobiliti.pojos.Favoris;
+import hei.projets7.mobiliti.entity.Destination;
+import hei.projets7.mobiliti.entity.Favoris;
 import hei.projets7.mobiliti.services.DestinationServices;
 
 import java.sql.*;

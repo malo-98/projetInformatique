@@ -1,4 +1,4 @@
-package hei.projets7.mobiliti.servlets;
+package hei.projets7.mobiliti.controllers.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

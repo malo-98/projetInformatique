@@ -1,14 +1,11 @@
-package hei.projets7.mobiliti.servlets;
+package hei.projets7.mobiliti.controllers.servlets;
 
 import hei.projets7.mobiliti.exception.DestinationAlreadyExistException;
-import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
-import hei.projets7.mobiliti.pojos.Destination;
-import hei.projets7.mobiliti.pojos.Eleve;
-import hei.projets7.mobiliti.pojos.Favoris;
+import hei.projets7.mobiliti.entity.Destination;
+import hei.projets7.mobiliti.entity.Eleve;
 import hei.projets7.mobiliti.services.DestinationServices;
 import hei.projets7.mobiliti.services.EleveServices;
-import hei.projets7.mobiliti.services.FavorisServices;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.thymeleaf.TemplateEngine;
