@@ -85,7 +85,10 @@
                     <a style="text-decoration:none" th:href="${ 'destination?id=' + destination.id }">
                         <i class="fa fa-search" style="font-size:36px; color: white; text-decoration: none; text-align: right;"></i>
                     </a>
-                    <i th:unless="${eleveConnecte==null}" class="fas fa-star unselected star" style='font-size:36px'></i>
+                    <i th:unless="${eleveConnecte==null}" class="fas fa-star unselected star" style='font-size:36px'>
+                        <span class="destination_id" hidden="true" th:text="${destination.id}">2</span>
+                        <span th:if="${eleveConnecte!=null}" class="user_id" hidden="true" th:text="${eleveConnecte.getId_eleve()}">3</span>
+                    </i>
 
                     <p id="des-list" th:text="${destination.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
