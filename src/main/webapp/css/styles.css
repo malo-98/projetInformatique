@@ -51,7 +51,7 @@ caption {
 }
 
 /*1.A. mise en page navbar*/
-@media only screen and (min-width: 1000px)
+@media only screen and (min-width: 1200px)
 {
 
     .navbar {
@@ -87,21 +87,22 @@ caption {
         background-color: #be6e46;
     }
 
-    .active {
-        background-color: #be6e46;
-    }
-
 }
 
-@media only screen and (max-width: 1000px)
+@media only screen and (max-width: 1200px)
 {
     #corps_ac {
         margin-top: 10%;
     }
 
-    #logo_minimenu {
-        width: 500px;
+    .bouton {
+        display: none;
     }
+
+    .img_minimenu {
+        background-color: #29335c;
+    }
+
 
     .navbar, .navbar ul {
         padding:2px;
@@ -112,7 +113,7 @@ caption {
 
     .navbar li {
         position: relative;
-        background:#EFEFEF;
+        background:#be6e46;
         color: #EFEFEF;
     }
 
@@ -136,6 +137,8 @@ caption {
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 10;
+        display: block;
     }
 
     .navbar ul {
@@ -145,7 +148,7 @@ caption {
     }
 
     .navbar ul li a{
-        background-color: #29335c;
+        background-color: #be6e46;
         color: #EFEFEF;
         margin: 3%;
     }
@@ -163,7 +166,7 @@ caption {
         font-size: 200%;
         margin: 3%;
         border-radius: 10px;
-        background-color: #29335c;
+        background-color: #be6e46;
         color: #EFEFEF;
     }
 
@@ -284,7 +287,7 @@ caption {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 40%;
-    border: solid black 0.2em;
+    border: solid #be6e46 0.2em;
     border-radius: 1em;
 }
 
@@ -505,9 +508,9 @@ h1 .fas fa-pen {
 }
 
 /*LAST. CSS du footer*/
-.footerbis {
-    color: #29335c;
-    text-align: center;
+
+footer p {
+    color: #be6e46;
 }
 
 .footerbis img {

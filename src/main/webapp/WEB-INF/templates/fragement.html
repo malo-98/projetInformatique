@@ -9,11 +9,9 @@
 <body>
 <nav th:fragment="menu(currentPage)">
     <ul class="navbar">
-        <li th:class="${currentPage == 'accueil' ? 'active' : ''}">
-        <li>
-            <a title="=Accueil" id="logo_minimenu" href="accueil" > <img  src="images/logo3.png" height="50" alt="Logo Mobility"/> </a>
+        <li th:class="${currentPage == 'accueil' ? 'active' : ''}" class="img_minimenu">
+            <a title="Accueil"  href="accueil" > <img  src="images/logo3.png" height="50" alt="Logo Mobility"/> </a>
         </li>
-        <div class="deroulant">
         <li th:class="${currentPage == 'liste' ? 'active' : ''}">
             <a title="Liste" href="liste" class="bouton" target="_top">
                 <SPAN>Liste</SPAN>
@@ -44,7 +42,6 @@
                 <SPAN>Deconnexion</SPAN>
             </a>
         </li>
-        </div>
     </ul>
 </nav>
 <footer th:fragment="pied">
