@@ -73,47 +73,41 @@ public class DestinationServices {
     }
 
     public void modifyNom(Integer idDestination, String nom) throws DestinationNotFoundException, DonneIllegalFormatException {
-        Destination destination = getDestination(idDestination);
-        if (nom==null || " ".equals(nom)){
+        if (nom=="" || " ".equals(nom)){
             throw new DonneIllegalFormatException();
         }
         destinationDao.modifyNom(idDestination, nom);
     }
 
     public void modifyVille(Integer idDestination, String ville) throws DestinationNotFoundException, DonneIllegalFormatException {
-        Destination destination = getDestination(idDestination);
-        if (ville==null || " ".equals(ville)){
+        if (ville=="" || " ".equals(ville)){
             throw new DonneIllegalFormatException();
         }
         destinationDao.modifyVille(idDestination, ville);
     }
 
     public void modifyPays(Integer idDestination, String pays) throws DestinationNotFoundException, DonneIllegalFormatException {
-        Destination destination = getDestination(idDestination);
-        if (pays==null || " ".equals(pays)){
+        if (pays=="" || " ".equals(pays)){
             throw new DonneIllegalFormatException();
         }
         destinationDao.modifyPays(idDestination, pays);
     }
 
     public void modifyDescription(Integer idDestination, String description) throws DestinationNotFoundException, DonneIllegalFormatException {
-        Destination destination = getDestination(idDestination);
-        if (destination==null || " ".equals(destination)){
+        if (description=="" || " ".equals(description)){
             throw new DonneIllegalFormatException();
         }
         destinationDao.modifyDescription(idDestination, description);
     }
 
     public void modifyDomaine(Integer idDestination, String domaine) throws DestinationNotFoundException, DonneIllegalFormatException {
-        Destination destination = getDestination(idDestination);
-        if (domaine==null || " ".equals(domaine)){
+        if (domaine=="" || " ".equals(domaine)){
             throw new DonneIllegalFormatException();
         }
         destinationDao.modifyDomaine(idDestination, domaine);
     }
 
     public void modifyNbrePlace(Integer idDestination, Integer place) throws DestinationNotFoundException, DonneIllegalFormatException {
-        Destination destination = getDestination(idDestination);
         if (place==null){
             throw new DonneIllegalFormatException();
         }

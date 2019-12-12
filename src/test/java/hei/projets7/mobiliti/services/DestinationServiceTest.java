@@ -112,7 +112,7 @@ public class DestinationServiceTest {
         //GIVEN
         Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
         String newName = "test1";
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         //WHEN
         destinationServices.modifyNom(1,newName);
         //THEN
@@ -124,7 +124,7 @@ public class DestinationServiceTest {
         //GIVEN
         Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
         String newDesc = "des1";
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         //WHEN
         destinationServices.modifyDescription(1,newDesc);
         //THEN
@@ -136,7 +136,7 @@ public class DestinationServiceTest {
         //GIVEN
         Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
         String newCity = "city1";
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         //WHEN
         destinationServices.modifyVille(1,newCity);
         //THEN
@@ -148,7 +148,7 @@ public class DestinationServiceTest {
         //GIVEN
         Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
         String newCountry = "country1";
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         //WHEN
         destinationServices.modifyPays(1,newCountry);
         //THEN
@@ -160,7 +160,7 @@ public class DestinationServiceTest {
         //GIVEN
         Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
         String newDomaine = "dom1";
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         //WHEN
         destinationServices.modifyDomaine(1,newDomaine);
         //THEN
@@ -172,7 +172,7 @@ public class DestinationServiceTest {
         //GIVEN
         Destination destination=new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
         Integer newNbplace = 4;
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         //WHEN
         destinationServices.modifyNbrePlace(1,4);
         //THEN
@@ -183,11 +183,11 @@ public class DestinationServiceTest {
     public void shouldNotUpdateNameDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
         //GIVEN
         Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         Exception result=null;
         //WHEN
         try{
-            destinationServices.modifyNom(destination.getId(),null);
+            destinationServices.modifyNom(destination.getId(),"");
         }catch(Exception e){
             result=e;
         }
@@ -199,29 +199,29 @@ public class DestinationServiceTest {
     @Test
     public void shouldNotUpdateDescriptionDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
         //GIVEN
-        Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Destination destination= new Destination(1, "test1", "city1", "country1", "bla", "dom1", 4);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         Exception result=null;
         //WHEN
         try{
-            destinationServices.modifyDescription(destination.getId(),null);
+            destinationServices.modifyDescription(destination.getId(),"");
         }catch(Exception e){
             result=e;
         }
         //THEN
         Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
-        Mockito.verify(destinationDao,Mockito.never()).modifyNom(Mockito.anyInt(),Mockito.anyString());
+        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
     }
 
     @Test
     public void shouldNotUpdatePaysDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
         //GIVEN
         Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         Exception result=null;
         //WHEN
         try{
-            destinationServices.modifyPays(destination.getId(),null);
+            destinationServices.modifyPays(destination.getId(),"");
         }catch(Exception e){
             result=e;
         }
@@ -234,11 +234,11 @@ public class DestinationServiceTest {
     public void shouldNotUpdateDomaineDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
         //GIVEN
         Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         Exception result=null;
         //WHEN
         try{
-            destinationServices.modifyDomaine(destination.getId(),null);
+            destinationServices.modifyDomaine(destination.getId(),"");
         }catch(Exception e){
             result=e;
         }
@@ -251,7 +251,7 @@ public class DestinationServiceTest {
     public void shouldNotUpdateNbrePlaceDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
         //GIVEN
         Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         Exception result=null;
         //WHEN
         try{
@@ -268,131 +268,17 @@ public class DestinationServiceTest {
     public void shouldNotUpdateVilleDestinationAndThrowIllegalArgumentException() throws DonneIllegalFormatException {
         //GIVEN
         Destination destination= new Destination(1, "test1", "city1", "country1", "des1", "dom1", 4);
-        Mockito.when(destinationDao.read(destination.getId())).thenReturn(destination);
+        Mockito.lenient().when(destinationDao.read(destination.getId())).thenReturn(destination);
         Exception result=null;
         //WHEN
         try{
-            destinationServices.modifyVille(destination.getId(),null);
+            destinationServices.modifyVille(destination.getId(),"");
         }catch(Exception e){
             result=e;
         }
         //THEN
         Assertions.assertThat(result).isNotNull().isInstanceOf(DonneIllegalFormatException.class);
         Mockito.verify(destinationDao,Mockito.never()).modifyNom(Mockito.anyInt(),Mockito.anyString());
-    }
-
-    @Test
-    public void shouldNotUpdateDescriptionDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
-        //GIVEN
-        Integer id=1;
-        String newDesc= "Desc1";
-        Mockito.when(destinationDao.read(id)).thenReturn(null);
-        Exception result=null;
-
-        //WHEN
-        try{
-            destinationServices.modifyDescription(id,newDesc);
-        }catch(Exception e){
-            result=e;
-        }
-        //THEN
-        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
-        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
-    }
-
-    @Test
-    public void shouldNotUpdateVilleDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
-        //GIVEN
-        Integer id=1;
-        String newVille= "Ville1";
-        Mockito.when(destinationDao.read(id)).thenReturn(null);
-        Exception result=null;
-
-        //WHEN
-        try{
-            destinationServices.modifyVille(id,newVille);
-        }catch(Exception e){
-            result=e;
-        }
-        //THEN
-        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
-        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
-    }
-
-    @Test
-    public void shouldNotUpdatePaysDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
-        //GIVEN
-        Integer id=1;
-        String newPays= "Pays1";
-        Mockito.when(destinationDao.read(id)).thenReturn(null);
-        Exception result=null;
-
-        //WHEN
-        try{
-            destinationServices.modifyPays(id,newPays);
-        }catch(Exception e){
-            result=e;
-        }
-        //THEN
-        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
-        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
-    }
-
-    @Test
-    public void shouldNotUpdateDomaineDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
-        //GIVEN
-        Integer id=1;
-        String newDom= "Dom1";
-        Mockito.when(destinationDao.read(id)).thenReturn(null);
-        Exception result=null;
-
-        //WHEN
-        try{
-            destinationServices.modifyDescription(id,newDom);
-        }catch(Exception e){
-            result=e;
-        }
-        //THEN
-        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
-        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
-    }
-
-    @Test
-    public void shouldNotUpdateNbrePlaceDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
-        //GIVEN
-        Integer id=1;
-        Integer newNbrePlace=4;
-        Mockito.when(destinationDao.read(id)).thenReturn(null);
-        Exception result=null;
-
-        //WHEN
-        try{
-            destinationServices.modifyNbrePlace(id,newNbrePlace);
-        }catch(Exception e){
-            result=e;
-        }
-        //THEN
-        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
-        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
-    }
-
-    @Test
-    public void shouldNotUpdateNameDestinationAndThrowDestinationNotFound() throws DestinationNotFoundException {
-        //GIVEN
-        Integer id=1;
-        String newName="name1";
-        Mockito.when(destinationDao.read(id)).thenReturn(null);
-        Exception result=null;
-
-        //WHEN
-        try{
-            destinationServices.modifyNom(id,newName);
-        }catch(Exception e){
-            result=e;
-        }
-        //THEN
-        Assertions.assertThat(result).isNotNull().isInstanceOf(DestinationNotFoundException.class);
-        Mockito.verify(destinationDao,Mockito.never()).modifyDescription(Mockito.anyInt(),Mockito.anyString());
     }
 
 

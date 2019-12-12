@@ -49,58 +49,26 @@ public class ModificationDestinationServlet extends UtilsServlet{
         String pays= req.getParameter("NouveauPays");
         String description= req.getParameter("NouvelleDescription");
         String domaine=req.getParameter("NouveauDomaine");
-        Integer place=Integer.parseInt(req.getParameter("NouvellePlace"));
+        String place=req.getParameter("NouvellePlace");
 
 
         try {
             DestinationServices.getInstance().modifyNom(idDestination,nom);
+            DestinationServices.getInstance().modifyVille(idDestination,ville);
+            DestinationServices.getInstance().modifyPays(idDestination,pays);
+            DestinationServices.getInstance().modifyDescription(idDestination,description);
+            DestinationServices.getInstance().modifyDomaine(idDestination,domaine);
+            DestinationServices.getInstance().modifyNbrePlace(idDestination,Integer.parseInt(place));
+            resp.sendRedirect("liste");
         } catch (DonneIllegalFormatException e) {
             LOGGER.warn(e);
+            req.getSession().setAttribute("errorMessage", e.getMessage());
+            resp.sendRedirect("modifDestination?id="+idDestination);
         }catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
+            req.getSession().setAttribute("errorMessage", e.getMessage());
+            resp.sendRedirect("modifDestination?id="+idDestination);
         }
 
-        try {
-            DestinationServices.getInstance().modifyVille(idDestination,ville);
-        } catch (DestinationNotFoundException e) {
-            LOGGER.warn(e);
-        } catch (DonneIllegalFormatException e) {
-            LOGGER.warn(e);
-        }
-
-        try {
-            DestinationServices.getInstance().modifyPays(idDestination,pays);
-        } catch (DestinationNotFoundException e) {
-            LOGGER.warn(e);
-        } catch (DonneIllegalFormatException e) {
-            LOGGER.warn(e);
-        }
-
-        try {
-            DestinationServices.getInstance().modifyDescription(idDestination,description);
-        } catch (DestinationNotFoundException e) {
-            LOGGER.warn(e);
-        } catch (DonneIllegalFormatException e) {
-            LOGGER.warn(e);
-        }
-
-        try {
-            DestinationServices.getInstance().modifyDomaine(idDestination,domaine);
-        } catch (DestinationNotFoundException e) {
-            LOGGER.warn(e);
-        } catch (DonneIllegalFormatException e) {
-            LOGGER.warn(e);
-        }
-
-        try {
-            DestinationServices.getInstance().modifyNbrePlace(idDestination,place);
-        } catch (DestinationNotFoundException e) {
-            LOGGER.warn(e);
-        } catch (DonneIllegalFormatException e) {
-            LOGGER.warn(e);
-        }
-
-        resp.sendRedirect("accueil");
     }
-
 }
