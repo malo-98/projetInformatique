@@ -38,7 +38,10 @@ public class ChoixServices {
 
     public Choix getChoix(Integer id_eleve)  throws EleveNotFoundException, ChoixNotFoundException {
         Choix choix = choixDao.read(id_eleve);
-            return choix;
+         if (choix!=null){
+             return choix;
+         }
+         throw new ChoixNotFoundException(id_eleve);
 
     }
 

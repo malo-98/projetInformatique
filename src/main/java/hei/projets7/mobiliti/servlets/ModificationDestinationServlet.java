@@ -54,9 +54,9 @@ public class ModificationDestinationServlet extends UtilsServlet{
 
         try {
             DestinationServices.getInstance().modifyNom(idDestination,nom);
-        } catch (DestinationNotFoundException e) {
-            LOGGER.warn(e);
         } catch (DonneIllegalFormatException e) {
+            LOGGER.warn(e);
+        }catch (DestinationNotFoundException e) {
             LOGGER.warn(e);
         }
 
@@ -99,8 +99,6 @@ public class ModificationDestinationServlet extends UtilsServlet{
         } catch (DonneIllegalFormatException e) {
             LOGGER.warn(e);
         }
-
-
 
         resp.sendRedirect("accueil");
     }

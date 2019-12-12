@@ -71,8 +71,8 @@ public class ChoixServiceTest {
 
     }
 
-    @Test(expected = EleveNotFoundException.class)
-    public void ShouldNotGetChoixAndThrowEleveNotFoundException() throws ChoixNotFoundException, EleveNotFoundException {
+    @Test
+    public void ShouldNotGetChoixAndThrowChoixNotFoundException() throws ChoixNotFoundException, EleveNotFoundException {
         //GIVEN
         Integer id_eleve=null;
 
@@ -88,13 +88,13 @@ public class ChoixServiceTest {
 
         //THEN
 
-        Assertions.assertThat(result).isNotNull().isInstanceOf(EleveNotFoundException.class);
-        Mockito.verify(choixServices,Mockito.never()).getChoix(Mockito.anyInt());
+        Assertions.assertThat(result).isNotNull().isInstanceOf(ChoixNotFoundException.class);
+        Mockito.verify(choixDao,Mockito.never()).read(Mockito.anyInt());
 
     }
 
     @Test(expected = ChoixNotFoundException.class)
-    public void ShouldNotGetChoixAndThrowChoixNotFoundException() throws ChoixNotFoundException, EleveNotFoundException {
+    public void ShouldNotGetChoixAndThrowEleveNotFoundException() throws ChoixNotFoundException, EleveNotFoundException {
         //GIVEN
         Integer id_eleve=1;
 
