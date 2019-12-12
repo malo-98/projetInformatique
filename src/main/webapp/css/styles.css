@@ -75,8 +75,11 @@ caption {
         color: #fbfbf2;
         margin: 0 5em;
         text-decoration: none;
+<<<<<<< HEAD
         margin: auto;
 
+=======
+>>>>>>> 26c89d57e7a6345a4e3690159cef64ffe6fa4925
 
     }
 
@@ -112,11 +115,11 @@ caption {
     .img_minimenu {
         display: block;
     }
-    
+
     .img_minimenu:hover {
         background-color: #29335c;
     }
-    
+
     .navbar, .navbar ul {
         padding:2px;
         margin:0;
