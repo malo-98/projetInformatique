@@ -1,7 +1,7 @@
 package hei.projets7.mobiliti.daos.impl;
 
 import hei.projets7.mobiliti.daos.InscriptionEleveDao;
-import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.entity.Eleve;
 
 
 import java.sql.*;

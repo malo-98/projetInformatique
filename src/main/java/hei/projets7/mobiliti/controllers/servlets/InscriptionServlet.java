@@ -1,8 +1,8 @@
-package hei.projets7.mobiliti.servlets;
+package hei.projets7.mobiliti.controllers.servlets;
 
 import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
-import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.entity.Eleve;
 import hei.projets7.mobiliti.services.EleveServices;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;

@@ -1,13 +1,12 @@
 package hei.projets7.mobiliti.services;
 
-import hei.projets7.mobiliti.daos.ConnexionEleveDao;
 import hei.projets7.mobiliti.daos.impl.ConnexionEleveDaoImpl;
 import hei.projets7.mobiliti.daos.impl.InscriptionEleveDaoImpl;
 import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
 import hei.projets7.mobiliti.exception.PasswordIllegalFormatException;
-import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.entity.Eleve;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,8 @@
-package hei.projets7.mobiliti.servlets;
+package hei.projets7.mobiliti.controllers.servlets;
+
 
 import hei.projets7.mobiliti.exception.EleveNotFoundException;
-import hei.projets7.mobiliti.pojos.Eleve;
+import hei.projets7.mobiliti.entity.Eleve;
 import hei.projets7.mobiliti.services.EleveServices;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/map")
-public class MapServlet extends UtilsServlet {
+@WebServlet("/accueil")
+public class AccueilServlet extends UtilsServlet {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private EleveServices eleveServices = new EleveServices();
@@ -25,6 +26,7 @@ public class MapServlet extends UtilsServlet {
         String utilisateurConnecte=(String) req.getSession().getAttribute("utilisateurConnecte");
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
+        if (utilisateurConnecte!=null){
         Eleve eleve= null;
         try {
             eleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
@@ -32,8 +34,11 @@ public class MapServlet extends UtilsServlet {
             e.printStackTrace();
         }
         context.setVariable("eleveConnecte",eleve);
+        }
 
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-        templateEngine.process("Map", context, resp.getWriter());
+        templateEngine.process("Accueil", context, resp.getWriter());
+
     }
 }
+

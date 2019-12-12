@@ -1,6 +1,6 @@
 package hei.projets7.mobiliti.exception;
 
-import hei.projets7.mobiliti.pojos.Choix;
+import hei.projets7.mobiliti.entity.Choix;
 
 public class ChoixAlreadyExistException extends Exception {
 

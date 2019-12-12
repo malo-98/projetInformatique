@@ -1,9 +1,8 @@
 package hei.projets7.mobiliti.daos;
 
 import hei.projets7.mobiliti.exception.ChoixAlreadyExistException;
-import hei.projets7.mobiliti.pojos.Choix;
-import hei.projets7.mobiliti.pojos.Destination;
-import hei.projets7.mobiliti.pojos.Favoris;
+import hei.projets7.mobiliti.entity.Destination;
+import hei.projets7.mobiliti.entity.Favoris;
 
 import java.sql.SQLException;
 import java.util.List;
