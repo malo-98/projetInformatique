@@ -64,22 +64,5 @@ public class FavorisServiceTest {
         //THEN
         Assertions.assertThat(result).isEqualTo(f2);
     }
-
-
-    @Test
-    public void shouldModifyFavoris(){
-        //GIVEN
-        List<Favoris> listFavoris=new ArrayList<>();
-        Favoris f1=new Favoris(1,2,3);
-        Favoris f2=new Favoris(2, 2, 4);
-        listFavoris.add(f1);
-        listFavoris.add(f2);
-
-        //WHEN
-        favorisServices.modifyFavoris(2,4);
-
-        //THEN
-        Assertions.fail("Favoris already delete");
-
-    }
+    
 }
