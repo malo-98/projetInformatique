@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>ModificationDestination</title>
@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<form method="post">
+<form method="post" >
     <div>
         <label for="NouveauNom"><p class="formulaire-text">Nouveau Nom :</p></label>
         <input class="input" type="text" id="NouveauNom" name="NouveauNom" >
@@ -46,6 +46,9 @@
     </div>
     <div>
         <input class="input form-button" type="submit" id='submit' value='Modifier la destination' >
+    </div>
+    <div>
+        <p> ATTENTION : Il faut remplir toutes les cases sinon vous ne pourrez pas faire de modification ! </p>
     </div>
 </form>
 </body>

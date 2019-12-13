@@ -4,6 +4,8 @@ import hei.projets7.mobiliti.exception.DonneIllegalFormatException;
 import hei.projets7.mobiliti.exception.EleveAlreadyExistException;
 import hei.projets7.mobiliti.entity.Eleve;
 import hei.projets7.mobiliti.services.EleveServices;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -15,6 +17,7 @@ import java.io.IOException;
 
 @WebServlet("/inscription")
 public class InscriptionServlet extends UtilsServlet {
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,6 +46,7 @@ public class InscriptionServlet extends UtilsServlet {
         } catch ( EleveAlreadyExistException | DonneIllegalFormatException e) {
             req.getSession().setAttribute("errorMessage", e.getMessage());
         }
+        LOGGER.trace("eleve with email "+email+" created");
 
         resp.sendRedirect("connexion");
     }

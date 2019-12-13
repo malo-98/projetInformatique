@@ -73,7 +73,7 @@ public class DestinationServlet extends UtilsServlet {
         try {
             newEleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
         } catch (EleveNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.warn(e);
         }
         //GET PARAMETERS
         Integer id_eleve = newEleve.getId_eleve();
@@ -88,7 +88,7 @@ public class DestinationServlet extends UtilsServlet {
 
         try {
             Choix createdChoix=ChoixServices.getInstance().addChoix(newChoix);
-        } catch (SQLException | ChoixAlreadyExistException e) {
+        } catch ( ChoixAlreadyExistException e) {
             e.printStackTrace();
         }
 

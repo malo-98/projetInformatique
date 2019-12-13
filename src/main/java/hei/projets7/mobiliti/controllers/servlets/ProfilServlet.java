@@ -42,7 +42,7 @@ public class ProfilServlet extends UtilsServlet {
                 Choix choix_eleve = ChoixServices.getInstance().getChoix(eleve.getId_eleve());
                 destinationId = choix_eleve.getId_destination();
             }
-        } catch (EleveNotFoundException | ChoixNotFoundException e) {
+        } catch ( ChoixNotFoundException e) {
             e.printStackTrace();
         }
         Destination destination= destinationServices.read(destinationId);

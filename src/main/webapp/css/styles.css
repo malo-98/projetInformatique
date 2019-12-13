@@ -51,7 +51,7 @@ caption {
 }
 
 /*1.A. mise en page navbar*/
-@media only screen and (min-width: 1200px)
+@media only screen and (min-width: 1000px)
 {
 
     .navbar {
@@ -66,20 +66,36 @@ caption {
         background-color: #29335c;
     }
 
+    .navbar .img_minimenu img{
+        margin: 0%;
+        padding: 0%;
+    }
+
     .navbar a {
         color: #fbfbf2;
         margin: 0 5em;
         text-decoration: none;
+        margin: auto;
+
+
+
     }
 
     .navbar li {
         display: inline-flex;
         list-style: none;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 0%;
+        margin-bottom: 0%;
+        width: 15%;
+
+
     }
 
     .navbar span{
-        margin-top: auto;
-        margin-bottom: auto;
+        margin: auto;
+
     }
 
     .navbar li:hover {
@@ -88,7 +104,7 @@ caption {
 
 }
 
-@media only screen and (max-width: 1200px)
+@media only screen and (max-width: 1000px)
 {
     #corps_ac {
         margin-top: 10%;
@@ -97,11 +113,11 @@ caption {
     .img_minimenu {
         display: block;
     }
-    
+
     .img_minimenu:hover {
         background-color: #29335c;
     }
-    
+
     .navbar, .navbar ul {
         padding:2px;
         margin:0;
@@ -359,20 +375,21 @@ a.bouton1:hover {
     margin-top: 2%;
     margin-bottom: 2%;
     font-size: 3em;
+    text-align: center;
 }
 
 .profilpage p {
     border-radius: 1em;
-}
 
+}
 
 .elementform {
     font-size:2em;
     background-color: #29335c;
     color: #fbfbf2;
-    width: 14%;
+    width: 15%;
     text-align: center;
-    margin-left: 25%;
+
 }
 
 .profilinfo p {
