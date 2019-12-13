@@ -125,10 +125,6 @@ caption {
         width: 170px;
     }
 
-    .navbar:hover {
-        display: block;
-    }
-
     .navbar {
         position: fixed;
         top: 0;
@@ -169,6 +165,7 @@ caption {
         color: #EFEFEF;
         display: block;
         position: relative;
+        border: solid 3px #be6e46;
     }
 
     .navbar li img {
@@ -380,45 +377,31 @@ a.bouton1:hover {
 
 .profilpage p {
     border-radius: 1em;
+    margin: auto;
+}
 
+.profilpage {
+    text-align: center;
 }
 
 .elementform {
     font-size:2em;
     background-color: #29335c;
     color: #fbfbf2;
-    width: 15%;
     text-align: center;
-
+    width: 20%;
 }
 
 .profilinfo p {
     font-size: 2em;
-    margin-left: 2em;
     margin-top: 0;
     margin-bottom: 0;
 }
 
 h1 .fas fa-pen {
     color: #29335c;
-}
-
-/*css photo + encadré photo*/
-.photoprofil {
-    margin-top: 8%;
-    padding: 6%;
-    position: absolute;
-    top: 10%;
-    left: 70%;
-}
-
-.photoprofil p {
-    padding: 1%;
-    margin: 3%;
-    font-size:2em;
-    background-color: #29335c;
-    color: #fbfbf2;
     text-align: center;
+    margin-left: 40%;
 }
 
 /*Debut CSS de inscription*/
