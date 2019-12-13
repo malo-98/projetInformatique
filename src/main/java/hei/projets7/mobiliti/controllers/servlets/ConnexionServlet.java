@@ -29,7 +29,7 @@ public class ConnexionServlet extends UtilsServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         boolean erreurconnexion = true;
         String redirectPath = "connexion";

@@ -64,27 +64,5 @@ public class FavorisServiceTest {
         //THEN
         Assertions.assertThat(result).isEqualTo(f2);
     }
-
-
-    @Test
-    public void shouldModifyFavoris(){
-        //GIVEN
-        List<Favoris> listFavoris=new ArrayList<>();
-        List<Destination> destinationList=new ArrayList<>();
-        Favoris f1=new Favoris(1,2,3);
-        Favoris f2=new Favoris(2, 2, 4);
-        Destination d1=new Destination(2, "name1", "city1", "country1", "des1", "dom1", 4);
-        listFavoris.add(f1);
-        listFavoris.add(f2);
-        destinationList.add(d1);
-        Mockito.when(favorisDao.listFavorisByIdEleve(2)).thenReturn(destinationList);
-
-        //WHEN
-        List<Destination> destinationList1=favorisServices.favorisListByID(2);
-        favorisServices.modifyFavoris(2,4);
-
-        //THEN
-        Assertions.assertThat(destinationList1).isEmpty();
-
-    }
+    
 }

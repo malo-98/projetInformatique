@@ -33,7 +33,7 @@ public class FavorisServlet extends UtilsServlet {
         try {
             eleve = eleveServices.getInstance().getEleve(utilisateurConnecte);
         } catch (EleveNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.warn(e);
         }
         Destination destination=null;
         context.setVariable("eleveConnecte",eleve);
